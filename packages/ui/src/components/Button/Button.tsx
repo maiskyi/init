@@ -1,9 +1,11 @@
 import cn from "classnames";
 import { forwardRef, type PropsWithChildren } from "react";
-import styles from "./Button.module.scss";
+
 import type { ButtonSize, ButtonVariant } from "./Button.types";
 
-export type ButtonProps = PropsWithChildren<{
+import styles from "./Button.module.scss";
+
+type ButtonProps = PropsWithChildren<{
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
@@ -11,7 +13,7 @@ export type ButtonProps = PropsWithChildren<{
   variant?: ButtonVariant;
 }>;
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -36,3 +38,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+
+export type { ButtonProps };
+export { Button };

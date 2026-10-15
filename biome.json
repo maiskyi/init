@@ -33,7 +33,25 @@
     "enabled": true,
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "sortBareImports": true,
+            "groups": [
+              ":URL:",
+              ":BLANK_LINE:",
+              [":PACKAGE_WITH_PROTOCOL:", ":NODE:", ":BUN:"],
+              ":BLANK_LINE:",
+              [":PACKAGE:", "!:STYLE:"],
+              ":BLANK_LINE:",
+              [":ALIAS:", "!:STYLE:"],
+              ":BLANK_LINE:",
+              [":PATH:", "!:STYLE:"],
+              ":BLANK_LINE:",
+              ":STYLE:"
+            ]
+          }
+        }
       }
     }
   }
