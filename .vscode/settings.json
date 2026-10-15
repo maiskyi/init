@@ -44,5 +44,8 @@
   "[sass]": {
     "editor.defaultFormatter": "syler.sass-indented"
   },
-  "cSpell.words": ["lightningcss", "vike"]
+  "cSpell.words": ["lightningcss", "vike"],
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

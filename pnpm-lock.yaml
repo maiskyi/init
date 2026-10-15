@@ -84,6 +84,9 @@ importers:
       '@storybook/addon-docs':
         specifier: ^10.6.2
         version: 10.6.2(@types/react-dom@19.3.0(@types/react@19.2.18))(@types/react@19.2.18)(storybook@10.6.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
+      '@storybook/addon-themes':
+        specifier: ^10.6.2
+        version: 10.6.2(storybook@10.6.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))
       '@storybook/addon-vitest':
         specifier: ^10.6.2
         version: 10.6.2(@vitest/browser-playwright@5.0.4)(@vitest/browser@5.0.4)(react@19.2.8)(storybook@10.6.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vitest@5.0.4)
@@ -114,9 +117,6 @@ importers:
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
-      playwright:
-        specifier: latest
-        version: 1.64.1
       sass-embedded:
         specifier: ^1.105.1
         version: 1.105.1
@@ -129,9 +129,6 @@ importers:
       vite:
         specifier: ^8.3.0
         version: 8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(sass-embedded@1.105.1)(sass@1.105.1)
-      vitest:
-        specifier: 5.0.4
-        version: 5.0.4(@types/node@24.19.2)(@vitest/browser-playwright@5.0.4)(@vitest/coverage-v8@5.0.4)(@vitest/ui@5.0.4)(vite@8.3.4(@types/node@24.19.2)(esbuild@0.28.2)(sass-embedded@1.105.1)(sass@1.105.1))
 
   packages/uikit:
     dependencies:
@@ -1340,6 +1337,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  '@storybook/addon-themes@10.6.2':
+    resolution: {integrity: sha512-NGvoAPnWH+WnCNVUAzbDzDQHz2dJNEM5CR0KLGjjDUhHjIvCoAzhD4+SMwnZQqznwm5sgYUdyyKqzrHMeSInog==}
+    peerDependencies:
+      storybook: ^10.6.2
 
   '@storybook/addon-vitest@10.6.2':
     resolution: {integrity: sha512-gyyBzncvUyEgWQR3LinnGuI4UsWIUYLyw1u8i244aTxmY4uxCYjsDmUNkaSr8xQzNz8nh2Ckh3G4bO4SvJ6nJQ==}
@@ -3835,6 +3837,11 @@ snapshots:
       '@types/react': 19.2.18
     transitivePeerDependencies:
       - '@types/react-dom'
+
+  '@storybook/addon-themes@10.6.2(storybook@10.6.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))':
+    dependencies:
+      storybook: 10.6.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8)
+      ts-dedent: 2.3.0
 
   '@storybook/addon-vitest@10.6.2(@vitest/browser-playwright@5.0.4)(@vitest/browser@5.0.4)(react@19.2.8)(storybook@10.6.2(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.8))(vitest@5.0.4)':
     dependencies:
