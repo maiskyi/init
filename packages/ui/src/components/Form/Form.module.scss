@@ -33,15 +33,15 @@
       var(--borders-border-light-20);
     background: var(--surface-inputs-default-bg);
     border-radius: var(--Details-Radius-rounded-6);
-    &:has(input:disabled),
-    &:has(input:read-only) {
+    &:has(.input:disabled),
+    &:has(.input:read-only) {
       background-color: var(--surface-inputs-disabled-bg);
       cursor: not-allowed;
-      input {
+      .input {
         color: var(--text-tertiary);
       }
     }
-    &:has(input:focus) {
+    &:has(.input:focus) {
       border-color: var(--borders-border-orange-50);
     }
     .input {
