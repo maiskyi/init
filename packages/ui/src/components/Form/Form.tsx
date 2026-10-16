@@ -4,6 +4,7 @@ import { type FieldValues, FormProvider, useForm } from "react-hook-form";
 import { FormContext } from "./Form.context";
 import { FormAddon } from "./FormAddon";
 import { FormGroup } from "./FormGroup";
+import { FormHint } from "./FormHint";
 import { FormInputGroup } from "./FormInputGroup";
 import { FormLabel } from "./FormLabel";
 import { FormSubmit } from "./FormSubmit";
@@ -22,6 +23,7 @@ interface FormCompoundedComponent {
   Group: typeof FormGroup;
   InputGroup: typeof FormInputGroup;
   Addon: typeof FormAddon;
+  Hint: typeof FormHint;
 }
 
 const Form: FormCompoundedComponent = ({
@@ -48,5 +50,6 @@ Form.Label = FormLabel;
 Form.Group = FormGroup;
 Form.InputGroup = FormInputGroup;
 Form.Addon = FormAddon;
+Form.Hint = FormHint;
 
 export { Form };

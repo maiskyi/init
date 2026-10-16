@@ -34,6 +34,12 @@ export const Default: Story = {
             <Form.Addon position="after">After</Form.Addon>
           </Form.InputGroup>
         </Form.Group>
+        {/* Input with helper text */}
+        <Form.Group>
+          <Form.Label>Text input with hint</Form.Label>
+          <Form.Text {...args} />
+          <Form.Hint>Helper text goes here</Form.Hint>
+        </Form.Group>
       </div>
     </Form>
   ),

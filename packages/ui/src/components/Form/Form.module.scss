@@ -82,6 +82,13 @@
       padding-right: 5px;
     }
   }
+  .hint {
+    padding-top: 4px;
+    color: var(--text-secondary);
+    font:
+      400 12px / 14px "Open Sans",
+      sans-serif;
+  }
 }
 
 .element-input {
