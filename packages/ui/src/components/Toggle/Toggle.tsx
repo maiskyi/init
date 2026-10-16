@@ -3,7 +3,7 @@ import type { ChangeEventHandler, FC } from "react";
 import styles from "./Toggle.module.scss";
 
 interface ToggleProps {
-  value: boolean;
+  value?: boolean;
   onChange?: (value: boolean) => void;
   disabled?: boolean;
   id?: string;

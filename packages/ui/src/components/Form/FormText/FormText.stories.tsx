@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 
+import { Toggle } from "../../Toggle";
 import { Form } from "../Form";
 import { FormText } from "./FormText";
 
@@ -26,7 +27,9 @@ export const Default: Story = {
         <Form.Group>
           <Form.Label>Text input with addons</Form.Label>
           <Form.InputGroup>
-            <Form.Addon position="before">Before</Form.Addon>
+            <Form.Addon position="before">
+              <Toggle />
+            </Form.Addon>
             <Form.Text {...args} />
             <Form.Addon position="after">After</Form.Addon>
           </Form.InputGroup>
