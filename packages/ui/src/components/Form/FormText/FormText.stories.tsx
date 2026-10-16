@@ -9,7 +9,14 @@ const meta: Meta<typeof FormText> = {
   component: FormText,
   render: (args) => (
     <Form onSubmit={fn()}>
-      <Form.Text {...args} />
+      <Form.Group>
+        <Form.Label>Text input</Form.Label>
+        <Form.InputGroup>
+          <Form.Addon position="before">Before</Form.Addon>
+          <Form.Text {...args} />
+          <Form.Addon position="after">After</Form.Addon>
+        </Form.InputGroup>
+      </Form.Group>
     </Form>
   ),
 };
@@ -18,8 +25,4 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
-  args: {
-    children: "Click me",
-  },
-};
+export const Default: Story = {};

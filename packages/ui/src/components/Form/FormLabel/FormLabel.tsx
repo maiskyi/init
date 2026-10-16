@@ -9,11 +9,15 @@ type FormLabelProps = PropsWithChildren<{
 }>;
 
 const FormLabel: FC<FormLabelProps> = ({ children, className, htmlFor }) => {
-  return (
-    <label className={cn(styles.label, className)} htmlFor={htmlFor}>
-      {children}
-    </label>
-  );
+  if (typeof children === "string") {
+    return (
+      <label className={cn(styles.label, className)} htmlFor={htmlFor}>
+        {children}
+      </label>
+    );
+  }
+
+  return <div className={cn(styles.label, className)}>{children}</div>;
 };
 
 export { FormLabel };

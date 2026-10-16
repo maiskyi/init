@@ -1,13 +1,13 @@
 import type { FC } from "react";
 
-import { FormGroup } from "../FormGroup";
+import { FormInput } from "../FormInput";
 
-const FormText: FC = () => {
-  return (
-    <FormGroup>
-      <input type="text" />
-    </FormGroup>
-  );
+interface FormTextProps {
+  className?: string;
+}
+
+const FormText: FC<FormTextProps> = ({ className }) => {
+  return <FormInput className={className} />;
 };
 
 export { FormText };
