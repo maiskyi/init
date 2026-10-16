@@ -1,5 +1,9 @@
 import cn from "classnames";
-import { forwardRef, type HTMLInputTypeAttribute } from "react";
+import {
+  type ChangeEventHandler,
+  forwardRef,
+  type HTMLInputTypeAttribute,
+} from "react";
 
 import styles from "./Input.module.scss";
 
@@ -12,6 +16,9 @@ interface InputProps {
   placeholder?: string;
   readOnly?: boolean;
   className?: string;
+  onChange?: (value: string) => void;
+  onBlur?: () => void;
+  invalid?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -25,9 +32,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       readOnly,
       className,
+      onChange,
+      onBlur,
+      invalid,
     },
     ref,
   ) => {
+    const handleOnChange: ChangeEventHandler<
+      HTMLInputElement,
+      HTMLInputElement
+    > = (event) => {
+      onChange?.(event.target.value);
+    };
+
     return (
       <input
         type={type}
@@ -40,10 +57,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         name={name}
         placeholder={placeholder}
         readOnly={readOnly}
-        className={cn(styles.input, className)}
-        //   onChange={onChange}
+        className={cn(
+          styles.input,
+          {
+            [`${styles.invalid}`]: invalid,
+          },
+          className,
+        )}
+        onChange={handleOnChange}
         ref={ref}
-        //   onBlur={onBlur}
+        onBlur={onBlur}
         //   onFocus={onFocus}
         //   autoComplete={autoComplete}
         //   inputMode={inputMode}

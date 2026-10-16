@@ -8,6 +8,10 @@ import { FormText } from "./FormText";
 const meta: Meta<typeof FormText> = {
   title: "Forms/Text",
   component: FormText,
+  args: {
+    name: "text",
+    className: "",
+  },
 };
 
 type Story = StoryObj<typeof meta>;
@@ -40,6 +44,7 @@ export const Default: Story = {
           <Form.Text {...args} />
           <Form.Hint>Helper text goes here</Form.Hint>
         </Form.Group>
+        <Form.Submit size="large">Submit</Form.Submit>
       </div>
     </Form>
   ),
