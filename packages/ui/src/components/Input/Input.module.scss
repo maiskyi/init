@@ -1,0 +1,35 @@
+[data-theme="duckdice"] {
+  .input {
+    box-sizing: border-box;
+    transition: all 0.2s;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 12px 10px;
+    margin: 0;
+    border: none;
+    background: var(--surface-inputs-default-bg);
+    color: var(--text-accent-white);
+    font:
+      400 14px / 20px "Open Sans",
+      sans-serif;
+    outline: none;
+    border-radius: var(--Details-Radius-rounded-6);
+    border: var(--Details-borders-weight-border-weight-1) solid
+      var(--borders-border-light-20);
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: var(--text-accent-white);
+      -webkit-box-shadow: inset 0 0 0 1000px transparent;
+      -webkit-transition: background-color 5000s ease-in-out 0s;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+    &:focus {
+      border-color: var(--borders-border-orange-50);
+    }
+  }
+}

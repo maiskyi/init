@@ -7,22 +7,31 @@ import { FormText } from "./FormText";
 const meta: Meta<typeof FormText> = {
   title: "Forms/Text",
   component: FormText,
-  render: (args) => (
-    <Form onSubmit={fn()}>
-      <Form.Group>
-        <Form.Label>Text input</Form.Label>
-        <Form.InputGroup>
-          <Form.Addon position="before">Before</Form.Addon>
-          <Form.Text {...args} />
-          <Form.Addon position="after">After</Form.Addon>
-        </Form.InputGroup>
-      </Form.Group>
-    </Form>
-  ),
 };
 
 type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {};
+export const Default: Story = {
+  render: (args) => (
+    <Form onSubmit={fn()}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+        {/* Input with label */}
+        <Form.Group>
+          <Form.Label>Text input</Form.Label>
+          <Form.Text {...args} />
+        </Form.Group>
+        {/* Input with label and addons */}
+        <Form.Group>
+          <Form.Label>Text input with addons</Form.Label>
+          <Form.InputGroup>
+            <Form.Addon position="before">Before</Form.Addon>
+            <Form.Text {...args} />
+            <Form.Addon position="after">After</Form.Addon>
+          </Form.InputGroup>
+        </Form.Group>
+      </div>
+    </Form>
+  ),
+};

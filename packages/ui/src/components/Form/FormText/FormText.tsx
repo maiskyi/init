@@ -1,13 +1,16 @@
+import cn from "classnames";
 import type { FC } from "react";
 
-import { FormInput } from "../FormInput";
+import { Input } from "../../Input";
+
+import styles from "../Form.module.scss";
 
 interface FormTextProps {
   className?: string;
 }
 
 const FormText: FC<FormTextProps> = ({ className }) => {
-  return <FormInput className={className} />;
+  return <Input className={cn(styles.input, className)} />;
 };
 
 export { FormText };
