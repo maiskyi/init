@@ -31,5 +31,8 @@
     &:focus {
       border-color: var(--borders-border-orange-50);
     }
+    &.invalid {
+      border-color: var(--borders-border-red-50);
+    }
   }
 }

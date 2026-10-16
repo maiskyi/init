@@ -9,8 +9,16 @@ const meta: Meta<typeof FormText> = {
   title: "Forms/Text",
   component: FormText,
   args: {
+    type: "text",
     name: "text",
     className: "",
+    placeholder: "Enter text",
+    validation: {
+      required: true,
+      minLength: 3,
+      maxLength: 10,
+      pattern: /^[a-zA-Z0-9]+$/,
+    },
   },
 };
 
@@ -25,7 +33,7 @@ export const Default: Story = {
         {/* Input with label */}
         <Form.Group>
           <Form.Label>Text input</Form.Label>
-          <Form.Text {...args} />
+          <Form.Text {...args} label="Text input" name="simple" />
         </Form.Group>
         {/* Input with label and addons */}
         <Form.Group>
@@ -34,14 +42,15 @@ export const Default: Story = {
             <Form.Addon position="before">
               <Toggle />
             </Form.Addon>
-            <Form.Text {...args} />
+            <Form.Text {...args} label="Text input with addons" name="addons" />
             <Form.Addon position="after">After</Form.Addon>
           </Form.InputGroup>
+          <Form.Hint>Helper text goes here</Form.Hint>
         </Form.Group>
         {/* Input with helper text */}
         <Form.Group>
           <Form.Label>Text input with hint</Form.Label>
-          <Form.Text {...args} />
+          <Form.Text {...args} label="Text input with hint" name="hint" />
           <Form.Hint>Helper text goes here</Form.Hint>
         </Form.Group>
         <Form.Submit size="large">Submit</Form.Submit>

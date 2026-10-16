@@ -8,6 +8,15 @@
         color: var(--text-accent-orange);
       }
     }
+    &:has(.input.invalid) {
+      label.label,
+      div.label label {
+        color: var(--text-accent-red);
+      }
+      .hint:not(.invalid) {
+        display: none;
+      }
+    }
   }
   div.label,
   label.label {
@@ -43,6 +52,9 @@
     }
     &:has(.input:focus) {
       border-color: var(--borders-border-orange-50);
+    }
+    &:has(.input.invalid) {
+      border-color: var(--borders-border-red-50);
     }
     .input {
       border: none;
@@ -88,6 +100,9 @@
     font:
       400 12px / 14px "Open Sans",
       sans-serif;
+    &.invalid {
+      color: var(--text-accent-red);
+    }
   }
 }
 

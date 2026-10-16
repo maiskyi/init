@@ -26,6 +26,9 @@
     "@storybook/addon-vitest": "^10.6.2",
     "@storybook/react-vite": "^10.6.2",
     "@types/babel__core": "^7.20.5",
+    "@types/lodash.get": "^4.4.9",
+    "@types/lodash.invoke": "^4.5.9",
+    "@types/lodash.merge": "^4.6.9",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
@@ -37,10 +40,15 @@
     "react-dom": "^19.2.8",
     "sass-embedded": "^1.105.1",
     "storybook": "^10.6.2",
+    "type-fest": "^5.10.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
+    "lodash.get": "^4.4.2",
+    "lodash.invoke": "^4.5.2",
+    "lodash.merge": "^4.6.2",
     "react-hook-form": "^7.90.0"
   }
 }
