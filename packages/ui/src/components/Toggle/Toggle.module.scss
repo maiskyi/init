@@ -1,0 +1,63 @@
+[data-theme="duckdice"] {
+  .toggle {
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    .input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      &:checked + .track {
+        background: var(--surface-panels-panel-bg-orange);
+        backdrop-filter: blur(calc(var(--Details-Effects-Background-Blur) / 2));
+      }
+      &:checked + .track .thumb {
+        background: var(--Colors-White-100);
+        transform: translateX(14px);
+      }
+      &:disabled {
+        & + .track {
+          background: var(--buttons-layer-gray-disabled);
+          cursor: not-allowed;
+          .thumb {
+            background: var(--icon-tertiary);
+          }
+        }
+        &:checked {
+          & + .track {
+            background: var(--surface-panels-panel-bg-orange-20);
+            .thumb {
+              background: var(--icon-tertiary);
+            }
+          }
+        }
+      }
+    }
+    .track {
+      display: block;
+      position: relative;
+      width: 32px;
+      height: 18px;
+      padding: 0;
+      border-radius: 16px;
+      background: var(--Colors-Gray-600);
+      transition: background-color 0.2s ease;
+    }
+    .thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--icon-primary);
+      transition: transform 0.25s ease;
+    }
+  }
+}

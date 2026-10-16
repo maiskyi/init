@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-
 import { fn } from "storybook/test";
 
 import { Button } from "./Button";
 import type { ButtonSize, ButtonVariant } from "./Button.types";
 
 const sizes: ButtonSize[] = ["small", "medium", "large"];
+
 const variants: ButtonVariant[] = ["primary", "secondary", "tertiary", "ghost"];
 
 const meta: Meta<typeof Button> = {
@@ -20,6 +20,9 @@ const meta: Meta<typeof Button> = {
       control: "radio",
       options: variants,
     },
+    isPending: {
+      control: "boolean",
+    },
   },
   args: {
     onClick: fn(),
@@ -28,6 +31,7 @@ const meta: Meta<typeof Button> = {
     className: "",
     size: "medium",
     variant: "tertiary",
+    isPending: false,
   },
 };
 

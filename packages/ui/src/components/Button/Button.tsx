@@ -11,6 +11,8 @@ type ButtonProps = PropsWithChildren<{
   disabled?: boolean;
   size?: ButtonSize;
   variant?: ButtonVariant;
+  isPending?: boolean;
+  type?: "button" | "submit" | "reset";
 }>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,18 +24,33 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       size = "medium",
       variant = "tertiary",
+      isPending = false,
+      type = "button",
     },
     ref,
   ) => {
+    const handleOnClick = () => {
+      if (isPending) return;
+      onClick?.();
+    };
+
     return (
       <button
-        type="button"
-        onClick={onClick}
-        className={cn(styles.button, styles[size], styles[variant], className)}
+        type={type}
+        onClick={handleOnClick}
+        className={cn(
+          styles.button,
+          styles[size],
+          styles[variant],
+          {
+            [`${styles.pending}`]: isPending,
+          },
+          className,
+        )}
         disabled={disabled}
         ref={ref}
       >
-        {children}
+        <span className={styles.content}>{children}</span>
       </button>
     );
   },

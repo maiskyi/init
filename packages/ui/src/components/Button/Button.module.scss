@@ -174,5 +174,10 @@
     &.full {
       width: 100%;
     }
+    &.pending {
+      .content {
+        opacity: 0;
+      }
+    }
   }
 }
