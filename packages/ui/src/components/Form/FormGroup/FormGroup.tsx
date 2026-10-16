@@ -1,16 +1,14 @@
+import cn from "classnames";
 import type { FC, PropsWithChildren } from "react";
 
+import styles from "../Form.module.scss";
+
 type FormGroupProps = PropsWithChildren<{
-  label?: string;
+  className?: string;
 }>;
 
-const FormGroup: FC<FormGroupProps> = ({ children, label }) => {
-  return (
-    <div className="form-group">
-      <label htmlFor={label}>{label}</label>
-      {children}
-    </div>
-  );
+const FormGroup: FC<FormGroupProps> = ({ children, className }) => {
+  return <div className={cn(styles.group, className)}>{children}</div>;
 };
 
 export { FormGroup };
