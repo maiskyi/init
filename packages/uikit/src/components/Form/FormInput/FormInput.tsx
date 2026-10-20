@@ -4,14 +4,14 @@ import { forwardRef, type HTMLInputTypeAttribute } from 'react';
 import styles from '../Form.module.scss';
 
 interface FormInputProps {
-  type?: HTMLInputTypeAttribute;
-  value?: string;
+  className?: string;
   disabled?: boolean;
   id?: string;
   name?: string;
   placeholder?: string;
   readOnly?: boolean;
-  className?: string;
+  type?: HTMLInputTypeAttribute;
+  value?: string;
 }
 
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(

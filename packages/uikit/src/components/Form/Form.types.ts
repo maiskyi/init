@@ -4,8 +4,8 @@ import type { PartialDeep } from 'type-fest';
 import type { FORM_CONTROL_RULES } from './Form.const';
 
 export interface FormInstance<T extends object = object> {
-  submit: () => Promise<unknown>;
   reset: (values?: PartialDeep<T>) => void;
+  submit: () => Promise<unknown>;
 }
 
 export interface FormControlBaseValidationFnParams {
@@ -32,10 +32,10 @@ export type FormControlRuleFunction = (
 export type FormControlType = keyof typeof FORM_CONTROL_RULES;
 
 interface FormControlValidationGenericErrorFnParams {
-  name: string;
-  label?: string;
-  value?: unknown;
   code: string;
+  label?: string;
+  name: string;
+  value?: unknown;
 }
 
 export interface FormControlValidationGenericError {
@@ -43,8 +43,8 @@ export interface FormControlValidationGenericError {
 }
 
 export interface FormControlValidationErrorFnParams {
-  name: string;
   label?: string;
+  name: string;
   value?: unknown;
 }
 

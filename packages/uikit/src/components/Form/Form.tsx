@@ -16,14 +16,14 @@ type FormProps<T extends FieldValues> = PropsWithChildren<{
 }>;
 
 interface FormCompoundedComponent {
-  <T extends FieldValues = FieldValues>(props: FormProps<T>): ReactElement;
-  Text: typeof FormText;
-  Submit: typeof FormSubmit;
-  Label: typeof FormLabel;
-  Group: typeof FormGroup;
-  InputGroup: typeof FormInputGroup;
   Addon: typeof FormAddon;
+  Group: typeof FormGroup;
   Hint: typeof FormHint;
+  InputGroup: typeof FormInputGroup;
+  Label: typeof FormLabel;
+  Submit: typeof FormSubmit;
+  Text: typeof FormText;
+  <T extends FieldValues = FieldValues>(props: FormProps<T>): ReactElement;
 }
 
 const Form: FormCompoundedComponent = ({

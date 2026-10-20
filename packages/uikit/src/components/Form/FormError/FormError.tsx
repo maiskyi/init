@@ -5,8 +5,8 @@ import type { FieldErrors, FieldValues } from 'react-hook-form';
 import { FormHint } from '../FormHint';
 
 interface FormErrorProps {
-  name: string;
   errors: FieldErrors<FieldValues>;
+  name: string;
 }
 
 const FormError: FC<FormErrorProps> = ({ errors, name }) => {

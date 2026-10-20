@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Select } from './Select';
 
 interface Option {
-  value: number;
   label: string;
+  value: number;
 }
 
 const options: Array<Option> = Array.from({ length: 10 }, (_, index) => ({

@@ -5,9 +5,9 @@ import type {
 
 export interface FormTextValidation extends FormControlBaseValidation {
   email?: boolean;
-  pattern?: RegExp;
-  minLength?: number;
   maxLength?: number;
+  minLength?: number;
+  pattern?: RegExp;
 }
 
 export interface FormTextRules {

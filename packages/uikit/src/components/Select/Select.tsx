@@ -1,11 +1,11 @@
 import type { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
 export interface SelectProps<T extends object> {
+  getOptionLabel: (option: T) => ReactNode;
+  getOptionValue: (option: T) => string | number;
+  onChange: (value: string | number) => void;
   options: T[];
   value: string | number;
-  onChange: (value: string | number) => void;
-  getOptionValue: (option: T) => string | number;
-  getOptionLabel: (option: T) => ReactNode;
 }
 
 interface SelectComponent {

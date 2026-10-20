@@ -17,11 +17,11 @@ interface UseFormControlRulesReturnType {
 }
 
 interface UseFormControlRulesParams {
-  name: string;
-  label?: string;
-  validation?: FormControlBaseValidation;
-  type: FormControlType;
   errors?: Partial<Record<string, string | string[]>>;
+  label?: string;
+  name: string;
+  type: FormControlType;
+  validation?: FormControlBaseValidation;
 }
 
 export const useFormControlRules = ({

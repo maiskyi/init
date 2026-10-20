@@ -12,9 +12,9 @@ interface FormTextProps
     FormControllerProps<string, FormTextValidation>,
     'children' | 'type'
   > {
-  type?: 'text' | 'search' | 'email' | 'url';
-  placeholder?: string;
   className?: string;
+  placeholder?: string;
+  type?: 'text' | 'search' | 'email' | 'url';
 }
 
 const FormText: FC<FormTextProps> = ({

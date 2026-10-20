@@ -8,17 +8,17 @@ import {
 import styles from './Input.module.scss';
 
 interface InputProps {
-  type?: HTMLInputTypeAttribute;
-  value?: string;
+  className?: string;
   disabled?: boolean;
   id?: string;
+  invalid?: boolean;
   name?: string;
+  onBlur?: () => void;
+  onChange?: (value: string) => void;
   placeholder?: string;
   readOnly?: boolean;
-  className?: string;
-  onChange?: (value: string) => void;
-  onBlur?: () => void;
-  invalid?: boolean;
+  type?: HTMLInputTypeAttribute;
+  value?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
