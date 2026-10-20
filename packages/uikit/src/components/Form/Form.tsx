@@ -1,5 +1,10 @@
 import { type PropsWithChildren, type ReactElement } from 'react';
-import { type FieldValues, FormProvider, useForm } from 'react-hook-form';
+import {
+  type DefaultValues,
+  type FieldValues,
+  FormProvider,
+  useForm,
+} from 'react-hook-form';
 
 import { FormContext } from './Form.context';
 import { FormAddon } from './FormAddon';
@@ -32,7 +37,7 @@ const Form: FormCompoundedComponent = ({
   defaultValues,
 }) => {
   const methods = useForm({
-    defaultValues,
+    defaultValues: defaultValues as DefaultValues<typeof defaultValues>,
   });
 
   const submit = methods.handleSubmit(onSubmit);
