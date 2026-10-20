@@ -33,6 +33,7 @@
     "enabled": true,
     "actions": {
       "source": {
+        "useSortedAttributes": "on",
         "organizeImports": {
           "level": "on",
           "options": {
