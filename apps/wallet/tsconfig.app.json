@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowArbitraryExtensions": true,
     "allowImportingTsExtensions": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "jsx": "react-jsx",
     "lib": ["ES2023", "DOM"],
     "module": "esnext",
