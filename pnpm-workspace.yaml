@@ -4,4 +4,5 @@ packages:
   - "playgrounds/*"
 allowBuilds:
   '@parcel/watcher': true
+  '@scarf/scarf': false
   esbuild: true

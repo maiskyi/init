@@ -44,7 +44,7 @@ export default defineConfig({
             name: 'apiQueryOptions',
             path: './src/_services/api/utils/api-query-options/api-query-options.utils.ts',
           },
-          useInfinite: true,
+          useInfinite: false,
           useInfiniteQueryParam: 'pagination[page]',
         },
       },
