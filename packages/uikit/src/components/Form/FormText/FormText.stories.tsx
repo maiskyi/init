@@ -6,20 +6,20 @@ import { Form } from '../Form';
 import { FormText } from './FormText';
 
 const meta: Meta<typeof FormText> = {
-  title: 'Forms/Text',
-  component: FormText,
   args: {
-    type: 'text',
-    name: 'text',
     className: '',
+    name: 'text',
     placeholder: 'Enter text',
+    type: 'text',
     validation: {
-      required: true,
-      minLength: 3,
       maxLength: 10,
+      minLength: 3,
       pattern: /^[a-zA-Z0-9]+$/,
+      required: true,
     },
   },
+  component: FormText,
+  title: 'Forms/Text',
 };
 
 type Story = StoryObj<typeof meta>;

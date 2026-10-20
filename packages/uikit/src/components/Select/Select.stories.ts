@@ -8,19 +8,19 @@ interface Option {
 }
 
 const options: Array<Option> = Array.from({ length: 10 }, (_, index) => ({
-  value: index,
   label: `Option ${index}`,
+  value: index,
 }));
 
 const meta: Meta<typeof Select<Option>> = {
-  title: 'Controls/Select',
-  component: Select,
   args: {
+    getOptionLabel: ({ label }) => label,
+    getOptionValue: ({ value }) => value,
     options,
     value: options[0]?.value,
-    getOptionValue: ({ value }) => value,
-    getOptionLabel: ({ label }) => label,
   },
+  component: Select,
+  title: 'Controls/Select',
 };
 
 type Story = StoryObj<typeof meta>;

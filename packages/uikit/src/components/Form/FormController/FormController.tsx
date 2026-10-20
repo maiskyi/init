@@ -7,12 +7,12 @@ import { FormError } from '../FormError';
 import type { FormControlChildren } from './FormController.types';
 
 interface FormControllerProps<T, V extends FormControlBaseValidation> {
+  children: FormControlChildren<T>;
+  errors?: Partial<Record<keyof V, string | string[]>>;
   label?: string;
   name: string;
   type: FormControlType;
   validation?: V;
-  children: FormControlChildren<T>;
-  errors?: Partial<Record<keyof V, string | string[]>>;
 }
 
 interface FormControllerComponent {
@@ -20,10 +20,10 @@ interface FormControllerComponent {
 }
 
 const FormController: FormControllerComponent = ({
-  name,
   children,
   errors,
   label,
+  name,
   type,
   validation,
 }) => {
@@ -57,10 +57,10 @@ const FormController: FormControllerComponent = ({
           <Fragment>
             {children({
               id,
-              value,
               invalid,
               onBlur,
               onChange,
+              value,
             })}
             <FormError errors={errors} name={name} />
           </Fragment>

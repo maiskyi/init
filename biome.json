@@ -23,6 +23,7 @@
           }
         },
         "useSortedAttributes": "on",
+        "useSortedInterfaceMembers": "on",
         "useSortedKeys": "on"
       }
     },

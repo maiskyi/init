@@ -1,12 +1,4 @@
 {
-  "name": "@rockethash/wallet",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --port 4001 --host",
-    "build": "tsc -b && vite build"
-  },
   "dependencies": {
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
@@ -28,5 +20,13 @@
     "typescript": "~7.0.2",
     "typescript-eslint": "^8.71.2",
     "vite": "^8.3.4"
-  }
+  },
+  "name": "@rockethash/wallet",
+  "private": true,
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite --port 4001 --host"
+  },
+  "type": "module",
+  "version": "0.0.0"
 }

@@ -6,12 +6,12 @@ import { ThemeProvider } from '../src';
 const preview: Preview = {
   decorators: [
     withThemeByDataAttribute<ReactRenderer>({
+      attributeName: 'data-theme',
+      defaultTheme: 'duckdice',
       themes: {
         DuckDice: 'duckdice',
         Tower: 'tower',
       },
-      defaultTheme: 'duckdice',
-      attributeName: 'data-theme',
     }),
     (Story) => (
       <ThemeProvider>
@@ -22,21 +22,21 @@ const preview: Preview = {
 
   parameters: {
     backgrounds: {
+      default: 'duckdice',
       options: {
         duckdice: {
           name: 'DuckDice',
           value: '#222325',
         },
       },
-      default: 'duckdice',
     },
-    layout: 'padded',
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
+    layout: 'padded',
   },
 };
 

@@ -4,14 +4,14 @@ import { fn } from 'storybook/test';
 import { Toggle } from './Toggle';
 
 const meta: Meta<typeof Toggle> = {
-  title: 'Controls/Toggle',
-  component: Toggle,
   args: {
-    onChange: fn(),
-    value: false,
     disabled: false,
     id: 'toggle',
+    onChange: fn(),
+    value: false,
   },
+  component: Toggle,
+  title: 'Controls/Toggle',
 };
 
 type Story = StoryObj<typeof meta>;
