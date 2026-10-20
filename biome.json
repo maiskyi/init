@@ -49,6 +49,12 @@
       },
       "preset": "recommended",
       "style": {
+        "useImportType": {
+          "level": "on",
+          "options": {
+            "style": "inlineType"
+          }
+        },
         "useShorthandFunctionType": "off"
       }
     }
