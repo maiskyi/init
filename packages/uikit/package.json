@@ -1,43 +1,54 @@
 {
-  "name": "@repo/ui",
-  "version": "0.0.0",
+  "name": "@rockethash/uikit",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "exports": {
     "./*": "./src/*.tsx"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "dev": "storybook dev -p 5001",
+    "build": "tsc -b && vite build && storybook build"
+  },
+  "peerDependencies": {
+    "classnames": "^2.5.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@types/node": "26.4.1",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.5",
-    "eslint": "10.9.1",
-    "typescript": "7.0.2",
-    "storybook": "^10.6.2",
-    "@storybook/react-vite": "^10.6.2",
+    "@babel/core": "^7.29.7",
     "@chromatic-com/storybook": "latest",
-    "@storybook/addon-vitest": "^10.6.2",
+    "@repo/typescript-config": "workspace:*",
+    "@rolldown/plugin-babel": "^0.2.3",
     "@storybook/addon-a11y": "^10.6.2",
     "@storybook/addon-docs": "^10.6.2",
-    "eslint-plugin-storybook": "^10.6.2",
-    "vitest": "latest",
-    "@vitest/browser-playwright": "latest",
-    "@vitest/coverage-v8": "latest",
-    "playwright": "latest"
+    "@storybook/addon-themes": "^10.6.2",
+    "@storybook/addon-vitest": "^10.6.2",
+    "@storybook/react-vite": "^10.6.2",
+    "@types/babel__core": "^7.20.5",
+    "@types/lodash.get": "^4.4.9",
+    "@types/lodash.invoke": "^4.5.9",
+    "@types/lodash.merge": "^4.6.9",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/browser-playwright": "5.0.4",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "classnames": "^2.5.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "sass-embedded": "^1.105.1",
+    "storybook": "^10.6.2",
+    "type-fest": "^5.10.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
   },
   "dependencies": {
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
+    "@hookform/error-message": "^2.0.1",
+    "lodash.get": "^4.4.2",
+    "lodash.invoke": "^4.5.2",
+    "lodash.merge": "^4.6.2",
+    "react-hook-form": "^7.90.0"
   }
 }
