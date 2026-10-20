@@ -31,7 +31,7 @@ const meta: Meta<typeof Dropdown> = {
     >
       <Dropdown placement={placement} {...args}>
         <Dropdown.Toggle>
-          <Button>
+          <Button size="large">
             Toggle
             <Dropdown.ToggleArrow />
           </Button>
