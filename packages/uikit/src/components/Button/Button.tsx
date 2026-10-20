@@ -1,7 +1,11 @@
 import cn from 'classnames';
 import { forwardRef, type PropsWithChildren } from 'react';
 
-import { type ButtonSize, type ButtonVariant } from './Button.types';
+import {
+  type ButtonSize,
+  type ButtonType,
+  type ButtonVariant,
+} from './Button.types';
 
 import styles from './Button.module.scss';
 
@@ -12,20 +16,20 @@ type ButtonProps = PropsWithChildren<{
   size?: ButtonSize;
   variant?: ButtonVariant;
   isPending?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  type?: ButtonType;
 }>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      children,
       onClick,
       className,
       disabled,
       size = 'medium',
       variant = 'tertiary',
       isPending = false,
-      type = 'button',
+      type,
+      children,
     },
     ref,
   ) => {

@@ -1,3 +1,7 @@
-export type ButtonSize = 'small' | 'medium' | 'large';
+type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost';
+type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'ghost';
+
+type ButtonType = 'button' | 'submit' | 'reset';
+
+export type { ButtonSize, ButtonType, ButtonVariant };

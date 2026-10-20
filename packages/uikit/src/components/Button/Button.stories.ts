@@ -5,7 +5,7 @@ import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   args: {
-    children: 'Button',
+    children: 'Click me',
     className: '',
     disabled: false,
     isPending: false,
@@ -22,8 +22,4 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
-  args: {
-    children: 'Click me',
-  },
-};
+export const Default: Story = {};
