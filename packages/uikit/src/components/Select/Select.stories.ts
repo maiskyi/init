@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Select } from "./Select";
+import { Select } from './Select';
 
 interface Option {
   value: number;
@@ -13,7 +13,7 @@ const options: Array<Option> = Array.from({ length: 10 }, (_, index) => ({
 }));
 
 const meta: Meta<typeof Select<Option>> = {
-  title: "Controls/Select",
+  title: 'Controls/Select',
   component: Select,
   args: {
     options,

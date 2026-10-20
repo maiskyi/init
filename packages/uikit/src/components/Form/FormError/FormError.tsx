@@ -1,8 +1,8 @@
-import { ErrorMessage } from "@hookform/error-message";
-import type { FC } from "react";
-import type { FieldErrors, FieldValues } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
+import type { FC } from 'react';
+import type { FieldErrors, FieldValues } from 'react-hook-form';
 
-import { FormHint } from "../FormHint";
+import { FormHint } from '../FormHint';
 
 interface FormErrorProps {
   name: string;

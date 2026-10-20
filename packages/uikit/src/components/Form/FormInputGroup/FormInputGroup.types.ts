@@ -1,1 +1,1 @@
-export type FormInputGroupSize = "small" | "medium";
+export type FormInputGroupSize = 'small' | 'medium';

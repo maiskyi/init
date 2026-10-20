@@ -1,9 +1,9 @@
-import cn from "classnames";
-import type { FC, PropsWithChildren } from "react";
+import cn from 'classnames';
+import type { FC, PropsWithChildren } from 'react';
 
-import type { FormInputGroupSize } from "./FormInputGroup.types";
+import type { FormInputGroupSize } from './FormInputGroup.types';
 
-import styles from "../Form.module.scss";
+import styles from '../Form.module.scss';
 
 type FormInputGroupProps = PropsWithChildren<{
   className?: string;
@@ -13,10 +13,10 @@ type FormInputGroupProps = PropsWithChildren<{
 const FormInputGroup: FC<FormInputGroupProps> = ({
   children,
   className,
-  size = "medium",
+  size = 'medium',
 }) => {
   return (
-    <div className={cn(styles["input-group"], styles[size], className)}>
+    <div className={cn(styles['input-group'], styles[size], className)}>
       {children}
     </div>
   );

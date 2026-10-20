@@ -1,7 +1,7 @@
-import cn from "classnames";
-import { forwardRef, type HTMLInputTypeAttribute } from "react";
+import cn from 'classnames';
+import { forwardRef, type HTMLInputTypeAttribute } from 'react';
 
-import styles from "../Form.module.scss";
+import styles from '../Form.module.scss';
 
 interface FormInputProps {
   type?: HTMLInputTypeAttribute;
@@ -17,7 +17,7 @@ interface FormInputProps {
 const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
-      type = "text",
+      type = 'text',
       value,
       disabled,
       id,

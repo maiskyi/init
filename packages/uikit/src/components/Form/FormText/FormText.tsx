@@ -1,18 +1,18 @@
-import cn from "classnames";
-import type { FC } from "react";
+import cn from 'classnames';
+import type { FC } from 'react';
 
-import { Input } from "../../Input";
-import { FormController, type FormControllerProps } from "../FormController";
-import type { FormTextValidation } from "./FormText.types";
+import { Input } from '../../Input';
+import { FormController, type FormControllerProps } from '../FormController';
+import type { FormTextValidation } from './FormText.types';
 
-import styles from "../Form.module.scss";
+import styles from '../Form.module.scss';
 
 interface FormTextProps
   extends Omit<
     FormControllerProps<string, FormTextValidation>,
-    "children" | "type"
+    'children' | 'type'
   > {
-  type?: "text" | "search" | "email" | "url";
+  type?: 'text' | 'search' | 'email' | 'url';
   placeholder?: string;
   className?: string;
 }
@@ -21,7 +21,7 @@ const FormText: FC<FormTextProps> = ({
   className,
   name,
   placeholder,
-  type = "text",
+  type = 'text',
   validation,
   label,
 }) => {
@@ -32,7 +32,7 @@ const FormText: FC<FormTextProps> = ({
       validation={validation}
       label={label}
     >
-      {({ id, value = "", invalid, onBlur, onChange }) => (
+      {({ id, value = '', invalid, onBlur, onChange }) => (
         <Input
           id={id}
           value={value}

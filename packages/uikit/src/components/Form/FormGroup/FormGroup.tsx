@@ -1,7 +1,7 @@
-import cn from "classnames";
-import type { FC, PropsWithChildren } from "react";
+import cn from 'classnames';
+import type { FC, PropsWithChildren } from 'react';
 
-import styles from "../Form.module.scss";
+import styles from '../Form.module.scss';
 
 type FormGroupProps = PropsWithChildren<{
   className?: string;

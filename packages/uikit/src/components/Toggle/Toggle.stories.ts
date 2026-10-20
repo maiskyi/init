@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "storybook/test";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
-import { Toggle } from "./Toggle";
+import { Toggle } from './Toggle';
 
 const meta: Meta<typeof Toggle> = {
-  title: "Controls/Toggle",
+  title: 'Controls/Toggle',
   component: Toggle,
   args: {
     onChange: fn(),
     value: false,
     disabled: false,
-    id: "toggle",
+    id: 'toggle',
   },
 };
 

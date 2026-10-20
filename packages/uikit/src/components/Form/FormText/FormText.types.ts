@@ -1,7 +1,7 @@
 import type {
   FormControlBaseValidation,
   FormControlRuleFunction,
-} from "../Form.types";
+} from '../Form.types';
 
 export interface FormTextValidation extends FormControlBaseValidation {
   email?: boolean;

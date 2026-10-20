@@ -1,1 +1,1 @@
-export type FormAddonPosition = "before" | "after";
+export type FormAddonPosition = 'before' | 'after';

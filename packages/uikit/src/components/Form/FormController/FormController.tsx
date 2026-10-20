@@ -1,10 +1,10 @@
-import { Fragment, type ReactElement, useId } from "react";
-import { Controller } from "react-hook-form";
+import { Fragment, type ReactElement, useId } from 'react';
+import { Controller } from 'react-hook-form';
 
-import { useFormControlRules } from "../Form.hooks";
-import type { FormControlBaseValidation, FormControlType } from "../Form.types";
-import { FormError } from "../FormError";
-import type { FormControlChildren } from "./FormController.types";
+import { useFormControlRules } from '../Form.hooks';
+import type { FormControlBaseValidation, FormControlType } from '../Form.types';
+import { FormError } from '../FormError';
+import type { FormControlChildren } from './FormController.types';
 
 interface FormControllerProps<T, V extends FormControlBaseValidation> {
   label?: string;

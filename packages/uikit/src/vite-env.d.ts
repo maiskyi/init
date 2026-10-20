@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-declare module "*.module.scss" {
+declare module '*.module.scss' {
   const classes: CSSModuleClasses;
   export default classes;
 }

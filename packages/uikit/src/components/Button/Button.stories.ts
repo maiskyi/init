@@ -1,20 +1,20 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "storybook/test";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
-import { Button } from "./Button";
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
-  title: "Controls/Button",
+  title: 'Controls/Button',
   component: Button,
   args: {
     onClick: fn(),
-    children: "Button",
+    children: 'Button',
     disabled: false,
-    className: "",
-    size: "medium",
-    variant: "tertiary",
+    className: '',
+    size: 'medium',
+    variant: 'tertiary',
     isPending: false,
-    type: "button",
+    type: 'button',
   },
 };
 
@@ -24,6 +24,6 @@ export default meta;
 
 export const Default: Story = {
   args: {
-    children: "Click me",
+    children: 'Click me',
   },
 };

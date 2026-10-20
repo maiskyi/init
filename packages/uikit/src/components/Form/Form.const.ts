@@ -6,8 +6,8 @@
 // import type { FormRadioGroupRules } from "./FormRadioGroup/FormRadioGroup.types";
 // import { FORM_SELECT_RULES } from "./FormSelect/FormSelect.const";
 // import type { FormSelectRules } from "./FormSelect/FormSelect.types";
-import { FORM_TEXT_RULES } from "./FormText/FormText.const";
-import type { FormTextRules } from "./FormText/FormText.types";
+import { FORM_TEXT_RULES } from './FormText/FormText.const';
+import type { FormTextRules } from './FormText/FormText.types';
 
 interface FormControlRules extends FormTextRules {}
 // FormPasswordRules,

@@ -1,11 +1,11 @@
-import cn from "classnames";
+import cn from 'classnames';
 import {
   type ChangeEventHandler,
   forwardRef,
   type HTMLInputTypeAttribute,
-} from "react";
+} from 'react';
 
-import styles from "./Input.module.scss";
+import styles from './Input.module.scss';
 
 interface InputProps {
   type?: HTMLInputTypeAttribute;
@@ -24,7 +24,7 @@ interface InputProps {
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      type = "text",
+      type = 'text',
       value,
       disabled,
       id,

@@ -1,16 +1,16 @@
-import get from "lodash.get";
-import invoke from "lodash.invoke";
-import merge from "lodash.merge";
-import type { ControllerProps } from "react-hook-form";
-import * as ReactFormHook from "react-hook-form";
+import get from 'lodash.get';
+import invoke from 'lodash.invoke';
+import merge from 'lodash.merge';
+import type { ControllerProps } from 'react-hook-form';
+import * as ReactFormHook from 'react-hook-form';
 
-import { FORM_CONTROL_RULES } from "./Form.const";
-import { VALIDATION_MESSAGES } from "./Form.messages";
-import type { FormControlBaseValidation, FormControlType } from "./Form.types";
+import { FORM_CONTROL_RULES } from './Form.const';
+import { VALIDATION_MESSAGES } from './Form.messages';
+import type { FormControlBaseValidation, FormControlType } from './Form.types';
 
 const { useWatch } = ReactFormHook;
 
-type FormItemRules = ControllerProps["rules"];
+type FormItemRules = ControllerProps['rules'];
 
 interface UseFormControlRulesReturnType {
   rules: FormItemRules;
@@ -32,7 +32,7 @@ export const useFormControlRules = ({
   validation = {},
 }: UseFormControlRulesParams): UseFormControlRulesReturnType => {
   const disabled = !Object.entries(validation).some(
-    ([, value]) => typeof value === "function",
+    ([, value]) => typeof value === 'function',
   );
 
   const values = useWatch({
@@ -42,19 +42,19 @@ export const useFormControlRules = ({
   const rules: FormItemRules = Object.entries(validation).reduce(
     (res, [key, initialValue]) => {
       const value = (() => {
-        if (typeof initialValue === "function") {
+        if (typeof initialValue === 'function') {
           return initialValue({ values });
         }
         return initialValue;
       })();
 
-      if (typeof value === "boolean" && !value) {
+      if (typeof value === 'boolean' && !value) {
         return res;
       }
 
       const message =
         get(fieldsErrorMessages, key) ||
-        invoke(VALIDATION_MESSAGES, [type, "errors", key], {
+        invoke(VALIDATION_MESSAGES, [type, 'errors', key], {
           label,
           name,
           value,

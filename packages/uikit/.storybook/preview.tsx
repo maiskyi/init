@@ -1,17 +1,17 @@
-import { withThemeByDataAttribute } from "@storybook/addon-themes";
-import type { Preview, ReactRenderer } from "@storybook/react-vite";
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import type { Preview, ReactRenderer } from '@storybook/react-vite';
 
-import { ThemeProvider } from "../src";
+import { ThemeProvider } from '../src';
 
 const preview: Preview = {
   decorators: [
     withThemeByDataAttribute<ReactRenderer>({
       themes: {
-        DuckDice: "duckdice",
-        Tower: "tower",
+        DuckDice: 'duckdice',
+        Tower: 'tower',
       },
-      defaultTheme: "duckdice",
-      attributeName: "data-theme",
+      defaultTheme: 'duckdice',
+      attributeName: 'data-theme',
     }),
     (Story) => (
       <ThemeProvider>
@@ -24,13 +24,13 @@ const preview: Preview = {
     backgrounds: {
       options: {
         duckdice: {
-          name: "DuckDice",
-          value: "#222325",
+          name: 'DuckDice',
+          value: '#222325',
         },
       },
-      default: "duckdice",
+      default: 'duckdice',
     },
-    layout: "padded",
+    layout: 'padded',
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -1,6 +1,6 @@
-import type { ChangeEventHandler, FC } from "react";
+import type { ChangeEventHandler, FC } from 'react';
 
-import styles from "./Toggle.module.scss";
+import styles from './Toggle.module.scss';
 
 interface ToggleProps {
   value?: boolean;

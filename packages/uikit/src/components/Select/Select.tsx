@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, ReactElement, ReactNode } from "react";
+import type { ChangeEventHandler, ReactElement, ReactNode } from 'react';
 
 export interface SelectProps<T extends object> {
   options: T[];

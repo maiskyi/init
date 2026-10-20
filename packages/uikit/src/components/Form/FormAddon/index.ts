@@ -1,1 +1,1 @@
-export { FormAddon } from "./FormAddon";
+export { FormAddon } from './FormAddon';

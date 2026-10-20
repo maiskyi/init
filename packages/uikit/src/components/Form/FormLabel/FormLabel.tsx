@@ -1,7 +1,7 @@
-import cn from "classnames";
-import type { FC, PropsWithChildren } from "react";
+import cn from 'classnames';
+import type { FC, PropsWithChildren } from 'react';
 
-import styles from "../Form.module.scss";
+import styles from '../Form.module.scss';
 
 type FormLabelProps = PropsWithChildren<{
   className?: string;
@@ -9,7 +9,7 @@ type FormLabelProps = PropsWithChildren<{
 }>;
 
 const FormLabel: FC<FormLabelProps> = ({ children, className, htmlFor }) => {
-  if (typeof children === "string") {
+  if (typeof children === 'string') {
     return (
       <label className={cn(styles.label, className)} htmlFor={htmlFor}>
         {children}

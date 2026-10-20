@@ -1,10 +1,10 @@
-import { type FC, useContext } from "react";
-import { useFormState } from "react-hook-form";
+import { type FC, useContext } from 'react';
+import { useFormState } from 'react-hook-form';
 
-import { Button, type ButtonProps } from "../../Button";
-import { FormContext } from "../Form.context";
+import { Button, type ButtonProps } from '../../Button';
+import { FormContext } from '../Form.context';
 
-type FormSubmitProps = Omit<ButtonProps, "type" | "onClick">;
+type FormSubmitProps = Omit<ButtonProps, 'type' | 'onClick'>;
 
 const FormSubmit: FC<FormSubmitProps> = ({
   children,

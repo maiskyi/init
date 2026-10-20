@@ -1,4 +1,4 @@
-import type { FormTextRules } from "./FormText.types";
+import type { FormTextRules } from './FormText.types';
 
 export const FORM_TEXT_RULES: FormTextRules = {
   text: {

@@ -1,7 +1,7 @@
-import type { ControllerProps } from "react-hook-form";
-import type { PartialDeep } from "type-fest";
+import type { ControllerProps } from 'react-hook-form';
+import type { PartialDeep } from 'type-fest';
 
-import type { FORM_CONTROL_RULES } from "./Form.const";
+import type { FORM_CONTROL_RULES } from './Form.const';
 
 export interface FormInstance<T extends object = object> {
   submit: () => Promise<unknown>;
@@ -27,7 +27,7 @@ interface FormControlRuleFunctionParams {
 
 export type FormControlRuleFunction = (
   params: FormControlRuleFunctionParams,
-) => ControllerProps["rules"];
+) => ControllerProps['rules'];
 
 export type FormControlType = keyof typeof FORM_CONTROL_RULES;
 
