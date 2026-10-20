@@ -1,13 +1,11 @@
 {
-  "name": "wallet",
+  "name": "@rockethash/wallet",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "vite --port 4001 --host",
+    "build": "tsc -b && vite build"
   },
   "dependencies": {
     "react": "^19.3.1",
