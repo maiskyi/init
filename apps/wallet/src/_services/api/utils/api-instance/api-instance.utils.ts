@@ -1,7 +1,7 @@
 import { stringify } from 'qs';
 
 import { Api } from '../../services/api';
-import { ApiInstanceParams } from './api-instance.types';
+import { type ApiInstanceParams } from './api-instance.types';
 
 const getData = async <T>(context: Request | Response): Promise<T> => {
   const contentType = context.headers.get('content-type');
@@ -36,7 +36,7 @@ export const apiInstance = async <T>(
     signal,
     url: path,
   }: ApiInstanceParams,
-  init?: RequestInit
+  init?: RequestInit,
 ): Promise<T> => {
   const search = stringify(params, {
     addQueryPrefix: true,

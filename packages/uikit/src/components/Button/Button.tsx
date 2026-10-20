@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { forwardRef, type PropsWithChildren } from 'react';
 
-import type { ButtonSize, ButtonVariant } from './Button.types';
+import { type ButtonSize, type ButtonVariant } from './Button.types';
 
 import styles from './Button.module.scss';
 

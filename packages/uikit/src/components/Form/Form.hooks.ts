@@ -1,12 +1,15 @@
 import get from 'lodash.get';
 import invoke from 'lodash.invoke';
 import merge from 'lodash.merge';
-import type { ControllerProps } from 'react-hook-form';
 import * as ReactFormHook from 'react-hook-form';
+import { type ControllerProps } from 'react-hook-form';
 
 import { FORM_CONTROL_RULES } from './Form.const';
 import { VALIDATION_MESSAGES } from './Form.messages';
-import type { FormControlBaseValidation, FormControlType } from './Form.types';
+import {
+  type FormControlBaseValidation,
+  type FormControlType,
+} from './Form.types';
 
 const { useWatch } = ReactFormHook;
 

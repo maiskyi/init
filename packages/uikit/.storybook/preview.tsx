@@ -1,5 +1,5 @@
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import type { Preview, ReactRenderer } from '@storybook/react-vite';
+import { type Preview, type ReactRenderer } from '@storybook/react-vite';
 
 import { ThemeProvider } from '../src';
 

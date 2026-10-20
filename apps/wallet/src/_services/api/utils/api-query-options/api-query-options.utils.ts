@@ -1,5 +1,5 @@
 export const apiQueryOptions = <T extends object = object>(
-  options: T
+  options: T,
 ): typeof options => {
   return Object.assign({}, options, {
     refetchOnWindowFocus: false,

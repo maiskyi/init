@@ -1,7 +1,7 @@
-import type { ControllerProps } from 'react-hook-form';
-import type { PartialDeep } from 'type-fest';
+import { type ControllerProps } from 'react-hook-form';
+import { type PartialDeep } from 'type-fest';
 
-import type { FORM_CONTROL_RULES } from './Form.const';
+import { type FORM_CONTROL_RULES } from './Form.const';
 
 export interface FormInstance<T extends object = object> {
   reset: (values?: PartialDeep<T>) => void;

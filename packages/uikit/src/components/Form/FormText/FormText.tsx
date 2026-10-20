@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import type { FC } from 'react';
+import { type FC } from 'react';
 
 import { Input } from '../../Input';
 import { FormController, type FormControllerProps } from '../FormController';
-import type { FormTextValidation } from './FormText.types';
+import { type FormTextValidation } from './FormText.types';
 
 import styles from '../Form.module.scss';
 

@@ -1,9 +1,9 @@
-import type {
-  FormControlValidationErrorFn,
-  FormControlValidationGenericError,
+import {
+  type FormControlValidationErrorFn,
+  type FormControlValidationGenericError,
 } from './Form.types';
 // import type { FormPasswordValidation } from "./FormPassword";
-import type { FormTextValidation } from './FormText';
+import { type FormTextValidation } from './FormText';
 
 // import { FormPasswordValidation } from './FormPassword';
 

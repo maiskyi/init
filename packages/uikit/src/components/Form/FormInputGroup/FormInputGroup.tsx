@@ -1,7 +1,7 @@
 import cn from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import { type FC, type PropsWithChildren } from 'react';
 
-import type { FormInputGroupSize } from './FormInputGroup.types';
+import { type FormInputGroupSize } from './FormInputGroup.types';
 
 import styles from '../Form.module.scss';
 

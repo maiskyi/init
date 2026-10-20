@@ -1,4 +1,4 @@
-import { StrapiInitOptions } from './api.types';
+import { type StrapiInitOptions } from './api.types';
 
 export class Api {
   public static get baseUrl() {

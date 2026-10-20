@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, FC } from 'react';
+import { type ChangeEventHandler, type FC } from 'react';
 
 import styles from './Toggle.module.scss';
 

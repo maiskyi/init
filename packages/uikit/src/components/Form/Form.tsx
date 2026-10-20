@@ -1,4 +1,4 @@
-import type { PropsWithChildren, ReactElement } from 'react';
+import { type PropsWithChildren, type ReactElement } from 'react';
 import { type FieldValues, FormProvider, useForm } from 'react-hook-form';
 
 import { FormContext } from './Form.context';

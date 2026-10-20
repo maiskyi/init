@@ -1,6 +1,6 @@
-import type {
-  FormControlBaseValidation,
-  FormControlRuleFunction,
+import {
+  type FormControlBaseValidation,
+  type FormControlRuleFunction,
 } from '../Form.types';
 
 export interface FormTextValidation extends FormControlBaseValidation {
