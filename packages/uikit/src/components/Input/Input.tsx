@@ -47,16 +47,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <input
-        type={type}
-        value={value}
-        //   defaultValue={defaultValue}
-        disabled={disabled}
-        id={id}
-        //   maxLength={maxLength}
-        //   minLength={minLength}
-        name={name}
-        placeholder={placeholder}
-        readOnly={readOnly}
         className={cn(
           styles.input,
           {
@@ -64,9 +54,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           },
           className,
         )}
-        onChange={handleOnChange}
-        ref={ref}
+        //   defaultValue={defaultValue}
+        disabled={disabled}
+        id={id}
+        //   maxLength={maxLength}
+        //   minLength={minLength}
+        name={name}
         onBlur={onBlur}
+        onChange={handleOnChange}
+        placeholder={placeholder}
+        readOnly={readOnly}
+        ref={ref}
+        type={type}
+        value={value}
         //   onFocus={onFocus}
         //   autoComplete={autoComplete}
         //   inputMode={inputMode}

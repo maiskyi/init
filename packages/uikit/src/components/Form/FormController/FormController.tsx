@@ -48,7 +48,6 @@ const FormController: FormControllerComponent = ({
   return (
     <Controller
       name={name}
-      rules={rules}
       render={({
         field: { onBlur, onChange, value },
         fieldState: { invalid },
@@ -67,6 +66,7 @@ const FormController: FormControllerComponent = ({
           </Fragment>
         );
       }}
+      rules={rules}
     />
   );
 };

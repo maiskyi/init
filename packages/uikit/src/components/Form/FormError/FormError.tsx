@@ -12,8 +12,8 @@ interface FormErrorProps {
 const FormError: FC<FormErrorProps> = ({ errors, name }) => {
   return (
     <ErrorMessage
-      name={name}
       errors={errors}
+      name={name}
       render={({ message }) => {
         return <FormHint invalid>{message}</FormHint>;
       }}

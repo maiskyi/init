@@ -27,7 +27,7 @@ export const Select: SelectComponent = ({
   };
 
   return (
-    <select value={value} onChange={handleOnChange}>
+    <select onChange={handleOnChange} value={value}>
       {options.map((option) => (
         <option key={getOptionValue(option)} value={getOptionValue(option)}>
           {getOptionLabel(option)}

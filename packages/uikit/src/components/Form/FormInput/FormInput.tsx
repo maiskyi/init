@@ -30,8 +30,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   ) => {
     return (
       <input
-        type={type}
-        value={value}
+        className={cn(styles.input, className)}
         //   defaultValue={defaultValue}
         disabled={disabled}
         id={id}
@@ -40,9 +39,10 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
         name={name}
         placeholder={placeholder}
         readOnly={readOnly}
-        className={cn(styles.input, className)}
         //   onChange={onChange}
         ref={ref}
+        type={type}
+        value={value}
         //   onBlur={onBlur}
         //   onFocus={onFocus}
         //   autoComplete={autoComplete}

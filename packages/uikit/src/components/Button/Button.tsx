@@ -36,8 +36,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        type={type}
-        onClick={handleOnClick}
         className={cn(
           styles.button,
           styles[size],
@@ -48,7 +46,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className,
         )}
         disabled={disabled}
+        onClick={handleOnClick}
         ref={ref}
+        type={type}
       >
         <span className={styles.content}>{children}</span>
       </button>

@@ -27,17 +27,13 @@ const FormText: FC<FormTextProps> = ({
 }) => {
   return (
     <FormController<string>
+      label={label}
       name={name}
       type="text"
       validation={validation}
-      label={label}
     >
       {({ id, value = '', invalid, onBlur, onChange }) => (
         <Input
-          id={id}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
           className={cn(
             styles.input,
             {
@@ -45,9 +41,13 @@ const FormText: FC<FormTextProps> = ({
             },
             className,
           )}
+          id={id}
           invalid={invalid}
+          onBlur={onBlur}
+          onChange={onChange}
           placeholder={placeholder}
           type={type}
+          value={value}
         />
       )}
     </FormController>
