@@ -25,13 +25,6 @@ export default defineConfig({
       mode: 'tags-split',
       override: {
         enumGenerationType: 'enum',
-        // header: () =>
-        //   [
-        //     '/* eslint-disable import-x/no-duplicates */',
-        //     '/* eslint-disable @typescript-eslint/ban-ts-comment */',
-        //     '// @ts-nocheck - generated file',
-        //     '',
-        //   ].join('\n'),
         mutator: {
           name: 'apiInstance',
           path: './src/_services/api/utils/api-instance/api-instance.utils.ts',
