@@ -1,0 +1,192 @@
+[data-theme="duckdice"] {
+  .toggle__arrow {
+    font-size: 16px;
+    color: var(--text-primary);
+    transition: transform 0.2s ease;
+    &_active {
+      transform: rotate(180deg);
+    }
+  }
+  .drawer {
+    position: relative;
+    z-index: 19;
+    &__screen {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      padding: 16px;
+      overflow: hidden;
+      background: #3a434b;
+      border-radius: 12px 12px 0 0;
+      animation: dropdownDrawerScreenOpen 400ms ease forwards;
+      &_hidden {
+        animation: dropdownDrawerScreenClose 400ms ease forwards;
+      }
+    }
+    &__overlay {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      animation: dropdownDrawerOverlayOpen 200ms ease forwards;
+      &_hidden {
+        animation: dropdownDrawerOverlayClose 200ms ease forwards;
+      }
+    }
+  }
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Open Sans", sans-serif;
+    &:has(.menu__item-content_active) {
+      .menu__item-content {
+        padding-right: 36px;
+      }
+    }
+    &__divider {
+      background: var(--Colors-Gray-700);
+      height: 1px;
+      margin: 5px 0;
+    }
+    &__item {
+      position: relative;
+      &-active-indicator {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: var(--Colors-Green-500);
+      }
+      &-content {
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        min-height: 44px;
+        border-radius: var(--Details-Radius-rounded-6);
+        cursor: pointer;
+        color: var(--text-primary);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        width: 100%;
+        box-sizing: border-box;
+        gap: var(--Details-Spacing-8);
+        border: none;
+        background: transparent;
+        font-family: inherit;
+        white-space: nowrap;
+        &:hover,
+        &_active {
+          color: var(--Colors-White-100);
+          background: var(--Colors-Gray-300A-10);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .header {
+    padding: 0 0 15px;
+    position: relative;
+    color: var(--Colors-White-100);
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    &__close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: transparent;
+      padding: 0;
+      margin: 0 0 0 auto;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #5c6b78;
+      font-size: 12px;
+      line-height: 12px;
+      z-index: 1;
+      &:hover {
+        color: rgba(var(--o), 1);
+      }
+    }
+  }
+  .dropdown {
+    position: fixed;
+    min-width: 115px;
+    padding: 15px;
+    width: auto;
+    background: #3a434b;
+    border: 1px solid #465059;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    pointer-events: auto;
+    white-space: nowrap;
+    z-index: 19;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    &:has(.menu) {
+      padding: 8px;
+    }
+    &_open {
+      opacity: 1;
+    }
+    &_top-center,
+    &_top-left,
+    &_top-right {
+      margin-top: -10px;
+    }
+    &_bottom-center,
+    &_bottom-left,
+    &_bottom-right {
+      margin-top: 10px;
+    }
+    &_right-bottom,
+    &_right-center,
+    &_top-right {
+      margin-left: 10px;
+    }
+  }
+  @keyframes dropdownDrawerScreenOpen {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes dropdownDrawerScreenClose {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes dropdownDrawerOverlayOpen {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes dropdownDrawerOverlayClose {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}

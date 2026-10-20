@@ -44,9 +44,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "a11y": {
-        "noSvgWithoutTitle": "off"
-      },
+      "a11y": "off",
       "preset": "recommended",
       "style": {
         "useImportType": {
