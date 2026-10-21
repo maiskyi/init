@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "{{ name }}";
+    src: url("./{{name}}.woff") format("woff"), url("./{{name}}.woff2") format("woff2");
+    font-display: swap;
+}
+
+:root {
+{{#each codepoints}}
+    --{{../prefix}}-{{@key}}: "\\{{codepoint this}}";
+{{/each}}
+}
+
+{{# if selector }}
+{{ selector }} {
+{{ else }}
+{{ tag }}[class^="{{prefix}}-"], {{ tag }}[class*=" {{prefix}}-"] {
+{{/ if }}
+    speak: never;
+    font-family: {{ name }} !important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+{{# each codepoints }}
+{{# if ../selector }}
+{{ ../selector }}.{{ ../prefix }}-{{ @key }}:before {
+{{ else }}
+.{{ ../prefix }}-{{ @key }}:before {
+{{/ if }}
+    content: "\\{{ codepoint this }}";
+}
+{{/ each }}

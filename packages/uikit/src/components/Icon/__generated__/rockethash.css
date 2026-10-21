@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "rockethash";
+    src: url("./rockethash.woff") format("woff"), url("./rockethash.woff2") format("woff2");
+    font-display: swap;
+}
+
+:root {
+    --icon-chevron-down: "\f101";
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    speak: never;
+    font-family: rockethash !important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-chevron-down:before {
+    content: "\f101";
+}

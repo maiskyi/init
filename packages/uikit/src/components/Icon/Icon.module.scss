@@ -1,0 +1,16 @@
+[data-theme="duckdice"] {
+  .icon {
+    &.xs {
+      font-size: 10px;
+    }
+    &.sm {
+      font-size: 12px;
+    }
+    &.md {
+      font-size: 16px;
+    }
+    &.lg {
+      font-size: 20px;
+    }
+  }
+}

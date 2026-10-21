@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { type FC, useContext } from 'react';
 
+import { Icon } from '../../Icon';
 import { DropdownContext } from '../Dropdown.context';
 
 import styles from '../Dropdown.module.scss';
@@ -15,15 +16,15 @@ export const DropdownToggleArrow: FC<DropdownToggleArrowProps> = ({
   const { isOpen } = useContext(DropdownContext);
 
   return (
-    <span
+    <Icon
       className={cn(
-        'icon-keyboard-arrow',
         styles.toggle__arrow,
         {
           [`${styles.toggle__arrow_active}`]: isOpen,
         },
         className,
       )}
+      name="chevron-down"
     />
   );
 };

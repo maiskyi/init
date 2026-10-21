@@ -1,7 +1,6 @@
 [data-theme="duckdice"] {
   .toggle__arrow {
     font-size: 16px;
-    color: var(--text-primary);
     transition: transform 0.2s ease;
     &_active {
       transform: rotate(180deg);
