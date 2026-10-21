@@ -12,7 +12,7 @@ import {
   type DropdownState,
 } from './Dropdown.types';
 
-interface DropdownContextProps {
+export interface DropdownContextProps {
   close: () => void;
   contentRef: RefObject<HTMLDivElement | null>;
   dropdownControllerRef: RefObject<DropdownController | null>;
