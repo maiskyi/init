@@ -4,7 +4,7 @@ import { type ReactElement, type ReactNode } from 'react';
 import { Dropdown } from '../Dropdown';
 import { SelectContext } from './Select.context';
 import { type SelectSize } from './Select.type';
-import { SelectHolder } from './SelectHolder/SelectHolder';
+import { SelectInput } from './SelectInput';
 
 import styles from './Select.module.scss';
 
@@ -13,8 +13,10 @@ export interface SelectProps<T extends object> {
   disabled?: boolean;
   getOptionLabel: (option: T) => ReactNode;
   getOptionValue: (option: T) => string | number;
+  invalid?: boolean;
   onChange?: (value: string | number) => void;
   options?: T[];
+  placeholder?: string;
   size?: SelectSize;
   value: string | number;
 }
@@ -32,16 +34,17 @@ export const Select: SelectComponent = ({
   disabled = false,
   size = 'medium',
   className,
+  placeholder,
+  invalid = false,
 }) => {
   const options = initialOptions.map((option) => ({
     label: getOptionLabel(option),
-    option,
     value: getOptionValue(option),
   }));
 
   const selectedOption = options.find(
     ({ value: optionValue }) => optionValue === value,
-  )?.option;
+  );
 
   const handleOnChange = (value: string | number) => {
     onChange?.(value);
@@ -51,9 +54,18 @@ export const Select: SelectComponent = ({
     <SelectContext.Provider value={{ value }}>
       <Dropdown placement="bottom-left">
         <Dropdown.Toggle>
-          <SelectHolder className={className} disabled={disabled} size={size}>
-            {selectedOption ? getOptionLabel(selectedOption) : ''}
-          </SelectHolder>
+          <SelectInput
+            className={className}
+            disabled={disabled}
+            invalid={invalid}
+            size={size}
+          >
+            {selectedOption ? (
+              selectedOption.label
+            ) : (
+              <span className={styles.placeholder}>{placeholder}</span>
+            )}
+          </SelectInput>
         </Dropdown.Toggle>
         <Dropdown.Content className={cn(styles.content, styles[size])}>
           <Dropdown.Menu>

@@ -33,8 +33,6 @@ export const DropdownContentDefault: FC<DropdownContentDefaultProps> = ({
     placement,
   } = useContext(DropdownContext);
 
-  console.log(OutsideClickHandler);
-
   const [isVisible, setIsVisible] = useState(false);
 
   const position = useDropdownContentPosition({

@@ -9,7 +9,7 @@ interface Option {
 }
 
 const options: Array<Option> = Array.from({ length: 10 }, (_, index) => ({
-  label: `Option ${index}`,
+  label: `Option ${index + 1}`,
   value: index,
 }));
 
@@ -18,8 +18,10 @@ const meta: Meta<typeof Select<Option>> = {
     disabled: false,
     getOptionLabel: ({ label }) => label,
     getOptionValue: ({ value }) => value,
+    invalid: false,
     onChange: fn(),
     options,
+    placeholder: 'Select an option...',
     size: 'medium',
     value: options[0]?.value,
   },

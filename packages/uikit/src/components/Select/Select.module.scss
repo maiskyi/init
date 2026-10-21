@@ -4,44 +4,50 @@
       margin-top: 5px;
     }
   }
-  .holder {
-    position: relative;
+  .input {
     width: 100%;
-    .value {
-      box-sizing: border-box;
-      padding: 5px 10px;
-      height: 44px;
-      width: 100%;
-      min-width: 110px;
-      border: var(--Details-borders-weight-border-weight-1) solid
-        var(--borders-border-light-20);
-      display: flex;
-      column-gap: 5px;
-      align-items: center;
-      background: var(--surface-inputs-default-bg);
-      border-radius: var(--Details-Radius-rounded-6);
-      color: var(--text-accent-white);
-      cursor: pointer;
-      font:
-        400 14px / 20px "Open Sans",
-        sans-serif;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    height: 44px;
+    width: 100%;
+    min-width: 110px;
+    border: var(--Details-borders-weight-border-weight-1) solid
+      var(--borders-border-light-20);
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    background: var(--surface-inputs-default-bg);
+    border-radius: var(--Details-Radius-rounded-6);
+    color: var(--text-accent-white);
+    cursor: pointer;
+    font:
+      400 14px / 20px "Open Sans",
+      sans-serif;
+    .arrow {
+      position: relative;
+      margin-left: auto;
+      color: var(--icon-primary);
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+    .placeholder {
+      color: var(--text-tertiary);
+    }
+    &.opened {
+      border-color: var(--borders-border-orange-50);
       .arrow {
-        position: relative;
-        margin-left: auto;
-        color: var(--icon-primary);
-        font-size: 16px;
-        transition: 0.3s ease;
+        color: var(--icon-orange);
       }
-      &.opened {
-        border-color: var(--borders-border-orange-50);
-        .arrow {
-          color: var(--icon-orange);
-        }
-      }
-      &.small {
-        height: 30px;
-        font-size: 13px;
-        line-height: 18px;
+    }
+    &.small {
+      height: 30px;
+      font-size: 13px;
+      line-height: 18px;
+    }
+    &.invalid {
+      border-color: var(--borders-border-red-50);
+      .arrow {
+        color: var(--icon-red);
       }
     }
   }
