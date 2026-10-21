@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { type FC, forwardRef, type PropsWithChildren } from 'react';
 
-import { useDropdown } from '../../Dropdown';
+import { Dropdown, useDropdown } from '../../Dropdown';
 import { type SelectSize } from '../Select.type';
 
 import styles from '../Select.module.scss';
@@ -27,6 +27,7 @@ const SelectHolder: FC<SelectHolderProps> = forwardRef<
         })}
       >
         {children}
+        <Dropdown.ToggleArrow className={styles.arrow} />
       </div>
     </div>
   );

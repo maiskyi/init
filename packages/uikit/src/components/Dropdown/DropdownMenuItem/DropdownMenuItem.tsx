@@ -1,16 +1,12 @@
 import cn from 'classnames';
 import noop from 'lodash.noop';
-import {
-  type Fragment,
-  type KeyboardEventHandler,
-  type ReactElement,
-  useContext,
-} from 'react';
+import { type Fragment, type ReactElement, useContext } from 'react';
 
 import {
   type PolymorphicElement,
   type PolymorphicProps,
 } from '../../../types/polymorphic.types';
+import { Icon } from '../../Icon';
 import { DropdownContext } from '../Dropdown.context';
 
 import styles from '../Dropdown.module.scss';
@@ -61,12 +57,9 @@ export const DropdownMenuItem: DropdownMenuItemComponent = ({
         {children}
       </Component>
       {active && (
-        <span
-          className={cn(
-            'icon',
-            'icon-check_circle',
-            styles['menu__item-active-indicator'],
-          )}
+        <Icon
+          className={cn(styles['menu__item-active-indicator'])}
+          name="check-circle"
         />
       )}
     </li>
