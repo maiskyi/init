@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
+import { Button } from '../../Button';
 import { Toggle } from '../../Toggle';
 import { Form } from '../Form';
 import { FormSelect } from './FormSelect';
@@ -56,7 +57,9 @@ export const Default: Story = {
               label="Select input with addons"
               name="addons"
             />
-            <Form.Addon position="after">After</Form.Addon>
+            <Form.Addon position="after">
+              <Button icon="check-circle" variant="secondary" />
+            </Form.Addon>
           </Form.InputGroup>
           <Form.Hint>Helper text goes here</Form.Hint>
         </Form.Group>

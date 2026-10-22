@@ -8,7 +8,8 @@
         color: var(--text-accent-orange);
       }
     }
-    &:has(.input.invalid) {
+    &:has(.input.invalid),
+    &:has(.select.invalid) {
       label.label,
       div.label label {
         color: var(--text-accent-red);

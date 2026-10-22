@@ -6,6 +6,14 @@ import { Toggle } from '../../Toggle';
 import { Form } from '../Form';
 import { FormText } from './FormText';
 
+const handleOnSubmit = () => {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+};
+
 const meta: Meta<typeof FormText> = {
   args: {
     className: '',
@@ -32,7 +40,7 @@ export default meta;
 
 export const Default: Story = {
   render: (args) => (
-    <Form onSubmit={fn()}>
+    <Form onSubmit={handleOnSubmit}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
         {/* Input with label */}
         <Form.Group>
@@ -48,7 +56,7 @@ export const Default: Story = {
             </Form.Addon>
             <Form.Text {...args} label="Text input with addons" name="addons" />
             <Form.Addon position="after">
-              <Button variant="secondary">1</Button>
+              <Button icon="check-circle" variant="secondary" />
             </Form.Addon>
           </Form.InputGroup>
           <Form.Hint>Helper text goes here</Form.Hint>
