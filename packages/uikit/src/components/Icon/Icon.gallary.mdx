@@ -1,0 +1,16 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+
+import { Icon } from './Icon';
+import { ICON_CODEPOINTS } from './__generated__/rockethash';
+
+<Meta title="Icons/Icon" />
+
+# Icons Gallery
+
+<IconGallery>
+  {Object.keys(ICON_CODEPOINTS).map((icon) => (
+    <IconItem name={icon} key={icon}>
+      <Icon name={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
