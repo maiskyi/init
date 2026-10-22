@@ -57,9 +57,11 @@ const Checkbox: FC<CheckboxProps> = ({
           type="checkbox"
         />
       </label>
-      <label className={styles.label} htmlFor={resolvedId}>
-        {children}
-      </label>
+      {children && (
+        <label className={styles.label} htmlFor={resolvedId}>
+          {children}
+        </label>
+      )}
     </div>
   );
 };
