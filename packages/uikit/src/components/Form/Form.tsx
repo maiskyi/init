@@ -15,6 +15,7 @@ import { FormLabel } from './FormLabel';
 import { FormSelect } from './FormSelect';
 import { FormSubmit } from './FormSubmit';
 import { FormText } from './FormText';
+import { FormToggle } from './FormToggle';
 
 type FormProps<T extends FieldValues> = PropsWithChildren<{
   onSubmit: (data: T) => void | Promise<void>;
@@ -30,6 +31,7 @@ interface FormCompoundedComponent {
   Select: typeof FormSelect;
   Submit: typeof FormSubmit;
   Text: typeof FormText;
+  Toggle: typeof FormToggle;
   <T extends FieldValues = FieldValues>(props: FormProps<T>): ReactElement;
 }
 
@@ -59,5 +61,6 @@ Form.InputGroup = FormInputGroup;
 Form.Addon = FormAddon;
 Form.Hint = FormHint;
 Form.Select = FormSelect;
+Form.Toggle = FormToggle;
 
 export { Form };

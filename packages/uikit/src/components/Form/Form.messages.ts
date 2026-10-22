@@ -4,6 +4,7 @@ import {
 } from './Form.types';
 import { type FormSelectValidation } from './FormSelect';
 import { type FormTextValidation } from './FormText';
+import { type FormToggleValidation } from './FormToggle';
 
 // import { FormPasswordValidation } from './FormPassword';
 
@@ -60,6 +61,10 @@ export interface FormControlValidationMessages {
     errors: Record<keyof FormTextValidation, FormControlValidationErrorFn> &
       FormControlValidationGenericError;
   };
+  toggle: {
+    errors: Record<keyof FormToggleValidation, FormControlValidationErrorFn> &
+      FormControlValidationGenericError;
+  };
 }
 
 export const VALIDATION_MESSAGES: FormControlValidationMessages = {
@@ -76,6 +81,12 @@ export const VALIDATION_MESSAGES: FormControlValidationMessages = {
       maxLength: maxLengthInputError,
       minLength: minLengthInputError,
       pattern: patternInputError,
+      required: requiredInputError,
+    },
+  },
+  toggle: {
+    errors: {
+      generic: genericError,
       required: requiredInputError,
     },
   },

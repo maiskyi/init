@@ -1,9 +1,23 @@
 [data-theme="duckdice"] {
+  .container {
+    display: flex;
+    gap: 8px;
+    overflow: hidden;
+    &.invalid {
+      .track {
+        background: var(--text-accent-red);
+      }
+      .label {
+        color: var(--text-accent-red);
+      }
+    }
+  }
   .toggle {
     margin: 0;
     display: inline-block;
     position: relative;
     cursor: pointer;
+    flex: 0 0 auto;
     .input {
       position: absolute;
       width: 1px;
@@ -59,5 +73,11 @@
       background: var(--icon-primary);
       transition: transform 0.25s ease;
     }
+  }
+  .label {
+    flex: 1 1 auto;
+    text-align: left;
+    font: 400 13px / 18px Open Sans;
+    color: var(--text-primary);
   }
 }
