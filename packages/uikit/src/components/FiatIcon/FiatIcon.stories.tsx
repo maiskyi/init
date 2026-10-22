@@ -6,7 +6,7 @@ const meta: Meta<typeof FiatIcon> = {
   args: {
     className: 'fiat-icon',
     name: 'AED',
-    size: 24,
+    size: 48,
   },
   component: FiatIcon,
   title: 'Icons/Fiat',

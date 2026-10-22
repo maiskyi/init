@@ -6,7 +6,7 @@ const meta: Meta<typeof CryptoIcon> = {
   args: {
     className: 'crypto-icon',
     name: 'AAVE',
-    size: 24,
+    size: 48,
   },
   component: CryptoIcon,
   title: 'Icons/Crypto',

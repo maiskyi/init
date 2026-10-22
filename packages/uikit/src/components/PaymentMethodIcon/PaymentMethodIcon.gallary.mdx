@@ -1,0 +1,16 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+
+import { PaymentMethodIcon } from './PaymentMethodIcon';
+import { PAYMENT_METHOD_ICONS } from './PaymentMethodIcon.const';
+
+<Meta title="Icons/Payment Method" />
+
+# Payment Method Icons Gallery
+
+<IconGallery>
+  {Object.keys(PAYMENT_METHOD_ICONS).map((icon) => (
+    <IconItem name={icon} key={icon}>
+      <PaymentMethodIcon name={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
