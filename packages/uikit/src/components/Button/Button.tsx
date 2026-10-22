@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { forwardRef, type PropsWithChildren } from 'react';
 
 import { Icon, type IconName } from '../Icon';
+import { Loader } from '../Loader';
 import {
   type ButtonSize,
   type ButtonType,
@@ -58,6 +59,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
       >
+        {isPending && <Loader className={styles.loader} />}
         <span className={styles.content}>
           {icon && <Icon name={icon} />}
           {children}

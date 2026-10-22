@@ -1,0 +1,48 @@
+@use "sass:math";
+
+[data-theme="duckdice"] {
+  $animation-speed-ms: 800;
+  $animation-delay: math.div($animation-speed-ms, 2);
+
+  .loader {
+    &.flashing-dots {
+      position: relative;
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: currentColor;
+      color: currentColor;
+      animation: dot-flashing #{$animation-speed-ms}ms infinite linear alternate;
+      animation-delay: #{$animation-delay}ms;
+      display: inline-block;
+      &::before,
+      &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        animation: dot-flashing #{$animation-speed-ms}ms infinite alternate;
+      }
+      &::before {
+        left: -15px;
+        animation-delay: 0s;
+      }
+      &::after {
+        left: 15px;
+        animation-delay: #{$animation-speed-ms}ms;
+      }
+    }
+  }
+  @keyframes dot-flashing {
+    0% {
+      background-color: currentColor;
+    }
+    50%,
+    100% {
+      background-color: rgb(from currentColor r g b / 0.2);
+    }
+  }
+}
