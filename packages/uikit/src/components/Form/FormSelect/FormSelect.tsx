@@ -27,9 +27,11 @@ const FormSelect: FormSelectComponent = ({
   getOptionLabel,
   getOptionValue,
   options,
+  errors,
 }) => {
   return (
     <FormController<string>
+      errors={errors}
       label={label}
       name={name}
       type="select"

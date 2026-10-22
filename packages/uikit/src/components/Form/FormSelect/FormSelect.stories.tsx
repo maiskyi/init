@@ -42,7 +42,7 @@ export const Default: Story = {
         {/* Input with label */}
         <Form.Group>
           <Form.Label>Select input</Form.Label>
-          <Form.Select {...args} label="Text input" name="simple" />
+          <Form.Select {...args} label="Select input" name="simple" />
         </Form.Group>
         {/* Input with label and addons */}
         <Form.Group>
@@ -62,7 +62,7 @@ export const Default: Story = {
         </Form.Group>
         {/* Input with helper text */}
         <Form.Group>
-          <Form.Label>Text input with hint</Form.Label>
+          <Form.Label>Select input with hint</Form.Label>
           <Form.Select {...args} label="Select input with hint" name="hint" />
           <Form.Hint>Helper text goes here</Form.Hint>
         </Form.Group>

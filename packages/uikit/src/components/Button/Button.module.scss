@@ -61,6 +61,10 @@
         color: var(--text-secondary);
       }
     }
+    &.icon-only {
+      padding: var(--Details-Spacing-6);
+      min-width: 44px;
+    }
     &.secondary {
       background: var(--buttons-layer-gray-default);
       box-shadow:
@@ -112,11 +116,8 @@
       padding: var(--Details-Spacing-6) var(--Details-Spacing-10);
       font-size: 13px;
       line-height: 18px;
-      &.button_square {
+      &.icon-only {
         padding: var(--Details-Spacing-6);
-        min-width: 30px;
-      }
-      &.button_mobile-icon-only {
         min-width: 30px;
       }
     }
@@ -130,7 +131,7 @@
       .button__icon {
         font-size: 12px;
       }
-      &.button_square {
+      &.icon-only {
         min-width: 24px;
         padding: var(--Details-Spacing-6);
       }

@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { forwardRef, type PropsWithChildren } from 'react';
 
+import { Icon, type IconName } from '../Icon';
 import {
   type ButtonSize,
   type ButtonType,
@@ -17,6 +18,7 @@ type ButtonProps = PropsWithChildren<{
   variant?: ButtonVariant;
   isPending?: boolean;
   type?: ButtonType;
+  icon?: IconName;
 }>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -30,6 +32,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       isPending = false,
       type,
       children,
+      icon,
     },
     ref,
   ) => {
@@ -46,6 +49,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           styles[variant],
           {
             [`${styles.pending}`]: isPending,
+            [`${styles['icon-only']}`]: icon && !children,
           },
           className,
         )}
@@ -54,7 +58,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
       >
-        <span className={styles.content}>{children}</span>
+        <span className={styles.content}>
+          {icon && <Icon name={icon} />}
+          {children}
+        </span>
       </button>
     );
   },

@@ -8,10 +8,10 @@ import { type FormTextValidation } from './FormText';
 // import { FormPasswordValidation } from './FormPassword';
 
 const genericError: FormControlValidationErrorFn = ({ label, name }) =>
-  `"${label || name}" is invalid`;
+  `${label || name} is invalid`;
 
 const requiredInputError: FormControlValidationErrorFn = ({ label, name }) =>
-  `"${label || name}" is required`;
+  `${label || name} is required`;
 
 // const patternUppercaseInputError: FormControlValidationErrorFn = ({
 //   name,
@@ -34,19 +34,19 @@ const requiredInputError: FormControlValidationErrorFn = ({ label, name }) =>
 // }) => `"${label || name}" must contain at least one special character`;
 
 const patternInputError: FormControlValidationErrorFn = ({ label, name }) =>
-  `"${label || name}" is invalid`;
+  `${label || name} is invalid`;
 
 const minLengthInputError: FormControlValidationErrorFn = ({
   label,
   name,
   value,
-}) => `"${label || name}" must be at least ${value} characters`;
+}) => `${label || name} must be at least ${value} characters`;
 
 const maxLengthInputError: FormControlValidationErrorFn = ({
   label,
   name,
   value,
-}) => `"${label || name}" must be not more then ${value} characters`;
+}) => `${label || name} must be not more then ${value} characters`;
 
 // const equalsToInputError: FormControlValidationErrorFn = ({ name, label }) =>
 //   `"${label || name}" must be equal to the password`;

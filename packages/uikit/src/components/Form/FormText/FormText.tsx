@@ -24,9 +24,11 @@ const FormText: FC<FormTextProps> = ({
   type = 'text',
   validation,
   label,
+  errors,
 }) => {
   return (
     <FormController<string>
+      errors={errors}
       label={label}
       name={name}
       type="text"

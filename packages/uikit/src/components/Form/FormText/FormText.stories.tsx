@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
+import { Button } from '../../Button';
 import { Toggle } from '../../Toggle';
 import { Form } from '../Form';
 import { FormText } from './FormText';
@@ -8,6 +9,9 @@ import { FormText } from './FormText';
 const meta: Meta<typeof FormText> = {
   args: {
     className: '',
+    errors: {
+      required: 'This field is required',
+    },
     name: 'text',
     placeholder: 'Enter text',
     type: 'text',
@@ -43,7 +47,9 @@ export const Default: Story = {
               <Toggle />
             </Form.Addon>
             <Form.Text {...args} label="Text input with addons" name="addons" />
-            <Form.Addon position="after">After</Form.Addon>
+            <Form.Addon position="after">
+              <Button variant="secondary">1</Button>
+            </Form.Addon>
           </Form.InputGroup>
           <Form.Hint>Helper text goes here</Form.Hint>
         </Form.Group>
