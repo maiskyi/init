@@ -25,6 +25,7 @@ const SelectInput: FC<SelectInputProps> = forwardRef<
         styles.input,
         styles[size],
         {
+          opened: isOpen,
           [`${styles.opened}`]: isOpen,
           [`${styles.disabled}`]: disabled,
           [`${styles.invalid}`]: invalid,

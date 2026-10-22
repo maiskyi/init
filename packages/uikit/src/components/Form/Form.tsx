@@ -12,6 +12,7 @@ import { FormGroup } from './FormGroup';
 import { FormHint } from './FormHint';
 import { FormInputGroup } from './FormInputGroup';
 import { FormLabel } from './FormLabel';
+import { FormSelect } from './FormSelect';
 import { FormSubmit } from './FormSubmit';
 import { FormText } from './FormText';
 
@@ -26,6 +27,7 @@ interface FormCompoundedComponent {
   Hint: typeof FormHint;
   InputGroup: typeof FormInputGroup;
   Label: typeof FormLabel;
+  Select: typeof FormSelect;
   Submit: typeof FormSubmit;
   Text: typeof FormText;
   <T extends FieldValues = FieldValues>(props: FormProps<T>): ReactElement;
@@ -56,5 +58,6 @@ Form.Group = FormGroup;
 Form.InputGroup = FormInputGroup;
 Form.Addon = FormAddon;
 Form.Hint = FormHint;
+Form.Select = FormSelect;
 
 export { Form };

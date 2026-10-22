@@ -2,7 +2,7 @@ import {
   type FormControlValidationErrorFn,
   type FormControlValidationGenericError,
 } from './Form.types';
-// import type { FormPasswordValidation } from "./FormPassword";
+import { type FormSelectValidation } from './FormSelect';
 import { type FormTextValidation } from './FormText';
 
 // import { FormPasswordValidation } from './FormPassword';
@@ -52,25 +52,23 @@ const maxLengthInputError: FormControlValidationErrorFn = ({
 //   `"${label || name}" must be equal to the password`;
 
 export interface FormControlValidationMessages {
+  select: {
+    errors: Record<keyof FormSelectValidation, FormControlValidationErrorFn> &
+      FormControlValidationGenericError;
+  };
   text: {
     errors: Record<keyof FormTextValidation, FormControlValidationErrorFn> &
       FormControlValidationGenericError;
   };
-  //   password: {
-  //     errors: Record<keyof FormPasswordValidation, FormControlValidationErrorFn> &
-  //       FormControlValidationGenericError;
-  //   };
 }
 
 export const VALIDATION_MESSAGES: FormControlValidationMessages = {
-  //   password: {
-  //     errors: {
-  //       generic: genericError,
-  //       maxLength: maxLengthInputError,
-  //       minLength: minLengthInputError,
-  //       required: requiredInputError,
-  //     },
-  //   },
+  select: {
+    errors: {
+      generic: genericError,
+      required: requiredInputError,
+    },
+  },
   text: {
     errors: {
       email: patternInputError,

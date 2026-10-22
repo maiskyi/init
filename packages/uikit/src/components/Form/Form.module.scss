@@ -53,10 +53,15 @@
     &:has(.input:focus) {
       border-color: var(--borders-border-orange-50);
     }
-    &:has(.input.invalid) {
+    &:has(.select:global(.opened)) {
+      border-color: var(--borders-border-orange-50);
+    }
+    &:has(.input.invalid),
+    &:has(.select.invalid) {
       border-color: var(--borders-border-red-50);
     }
-    .input {
+    .input,
+    .select {
       border: none;
       background: transparent;
     }
