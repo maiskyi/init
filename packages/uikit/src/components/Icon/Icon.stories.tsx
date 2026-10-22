@@ -18,7 +18,7 @@ const meta: Meta<typeof Icon> = {
       </div>
     </div>
   ),
-  title: 'Data display/Icon',
+  title: 'Icons/Icon',
 };
 
 export default meta;
