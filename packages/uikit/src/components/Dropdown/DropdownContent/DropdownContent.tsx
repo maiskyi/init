@@ -9,11 +9,13 @@ import styles from '../Dropdown.module.scss';
 
 type DropdownContentProps = PropsWithChildren<{
   className?: string;
+  matchToggleWidth?: boolean;
 }>;
 
 export const DropdownContent: FC<DropdownContentProps> = ({
   children,
   className,
+  matchToggleWidth = false,
 }) => {
   const { isBreakpoint, isOpen, setState } = useContext(DropdownContext);
 
@@ -35,7 +37,11 @@ export const DropdownContent: FC<DropdownContentProps> = ({
   }
 
   return createPortal(
-    <DropdownContentDefault className={className} onClosed={handleOnClosed}>
+    <DropdownContentDefault
+      className={className}
+      matchToggleWidth={matchToggleWidth}
+      onClosed={handleOnClosed}
+    >
       <div className={styles.dropdown__screen}>{children}</div>
     </DropdownContentDefault>,
     document.body,

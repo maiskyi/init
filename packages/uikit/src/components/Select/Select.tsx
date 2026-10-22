@@ -67,7 +67,10 @@ export const Select: SelectComponent = ({
             )}
           </SelectInput>
         </Dropdown.Toggle>
-        <Dropdown.Content className={cn(styles.content, styles[size])}>
+        <Dropdown.Content
+          className={cn(styles.content, styles[size])}
+          matchToggleWidth
+        >
           <Dropdown.Menu>
             {options.map(({ label, value: optionValue }) => {
               return (

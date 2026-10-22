@@ -18,12 +18,14 @@ import styles from '../../Dropdown.module.scss';
 type DropdownContentDefaultProps = PropsWithChildren<{
   className?: string;
   onClosed: () => void;
+  matchToggleWidth: boolean;
 }>;
 
 export const DropdownContentDefault: FC<DropdownContentDefaultProps> = ({
   children,
   className,
   onClosed,
+  matchToggleWidth,
 }) => {
   const {
     contentRef,
@@ -35,7 +37,7 @@ export const DropdownContentDefault: FC<DropdownContentDefaultProps> = ({
 
   const [isVisible, setIsVisible] = useState(false);
 
-  const position = useDropdownContentPosition({
+  const { width, ...position } = useDropdownContentPosition({
     placement,
   });
 
@@ -50,9 +52,8 @@ export const DropdownContentDefault: FC<DropdownContentDefaultProps> = ({
       event.target !== event.currentTarget ||
       event.propertyName !== 'opacity' ||
       isVisible
-    ) {
+    )
       return;
-    }
 
     onClosed();
   };
@@ -81,7 +82,7 @@ export const DropdownContentDefault: FC<DropdownContentDefaultProps> = ({
         )}
         onTransitionEnd={handleOnTransitionEnd}
         ref={contentRef}
-        style={position}
+        style={{ ...position, minWidth: matchToggleWidth ? width : undefined }}
       >
         <div className={styles.dropdown__screen}>{children}</div>
       </div>

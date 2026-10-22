@@ -131,6 +131,7 @@
     z-index: 19;
     opacity: 0;
     transition: opacity 300ms ease;
+    box-sizing: border-box;
     &:has(.menu) {
       padding: 8px;
     }

@@ -17,6 +17,7 @@ interface UseDropdownContentPositionReturnType {
   left: number;
   top: number;
   visibility: CSSProperties['visibility'];
+  width: number;
 }
 
 export const useDropdownContentPosition = ({
@@ -28,6 +29,7 @@ export const useDropdownContentPosition = ({
     left: 0,
     ready: false,
     top: 0,
+    width: 0,
   });
 
   const updatePosition = useCallback(() => {
@@ -40,6 +42,8 @@ export const useDropdownContentPosition = ({
 
     const toggleRect = toggle.getBoundingClientRect();
     const contentRect = content.getBoundingClientRect();
+
+    const width = toggleRect.width;
 
     let top = 0;
     let left = 0;
@@ -97,6 +101,7 @@ export const useDropdownContentPosition = ({
       left,
       ready: true,
       top,
+      width,
     });
   }, [placement, toggleRef.current, contentRef.current]);
 
@@ -136,5 +141,6 @@ export const useDropdownContentPosition = ({
     left: position.left,
     top: position.top,
     visibility: position.ready ? 'visible' : 'hidden',
+    width: position.width,
   };
 };
