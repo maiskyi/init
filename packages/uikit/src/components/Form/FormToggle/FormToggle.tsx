@@ -20,7 +20,7 @@ const FormToggle: FC<FormToggleProps> = ({
   validation,
   label,
   errors,
-  description,
+  children,
 }) => {
   return (
     <FormController<boolean>
@@ -39,12 +39,13 @@ const FormToggle: FC<FormToggleProps> = ({
             },
             className,
           )}
-          description={description}
           id={id}
           invalid={invalid}
           onChange={onChange}
           value={value}
-        />
+        >
+          {children}
+        </Toggle>
       )}
     </FormController>
   );

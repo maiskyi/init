@@ -15,10 +15,8 @@ const handleOnSubmit = () => {
 
 const meta: Meta<typeof FormToggle> = {
   args: {
+    children: 'Toggle description '.concat(Array(100).fill('long ').join('')),
     className: '',
-    description: 'Toggle description '.concat(
-      Array(100).fill('long ').join(''),
-    ),
     errors: {},
     name: 'toggle',
     validation: {

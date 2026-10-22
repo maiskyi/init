@@ -1,27 +1,35 @@
 import cn from 'classnames';
-import { type ChangeEventHandler, type FC } from 'react';
+import {
+  type ChangeEventHandler,
+  type FC,
+  type PropsWithChildren,
+  useId,
+} from 'react';
 
 import styles from './Toggle.module.scss';
 
-interface ToggleProps {
+type ToggleProps = PropsWithChildren<{
   className?: string;
-  description?: string;
   disabled?: boolean;
   id?: string;
   invalid?: boolean;
   onChange?: (value: boolean) => void;
   value?: boolean;
-}
+}>;
 
 const Toggle: FC<ToggleProps> = ({
   className,
   value,
   onChange,
   disabled = false,
-  id,
-  description,
+  id: initialId,
+  children,
   invalid = false,
 }) => {
+  const id = useId();
+
+  const resolvedId = initialId ?? id;
+
   const handleOnChange: ChangeEventHandler<
     HTMLInputElement,
     HTMLInputElement
@@ -44,7 +52,7 @@ const Toggle: FC<ToggleProps> = ({
           checked={value}
           className={styles.input}
           disabled={disabled}
-          id={id}
+          id={resolvedId}
           onChange={handleOnChange}
           type="checkbox"
         />
@@ -53,7 +61,11 @@ const Toggle: FC<ToggleProps> = ({
           <span className={styles.thumb} />
         </span>
       </label>
-      {description && <span className={styles.label}>{description}</span>}
+      {children && (
+        <label className={styles.label} htmlFor={resolvedId}>
+          {children}
+        </label>
+      )}
     </div>
   );
 };

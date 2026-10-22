@@ -5,9 +5,7 @@ import { Toggle } from './Toggle';
 
 const meta: Meta<typeof Toggle> = {
   args: {
-    description: 'Toggle description '.concat(
-      Array(100).fill('long ').join(''),
-    ),
+    children: 'Toggle description '.concat(Array(100).fill('long ').join('')),
     disabled: false,
     id: 'toggle',
     onChange: fn(),
