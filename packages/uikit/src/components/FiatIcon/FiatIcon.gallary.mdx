@@ -1,0 +1,16 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+
+import { FiatIcon } from './FiatIcon';
+import { FIAT_ICONS } from './FiatIcon.const';
+
+<Meta title="Icons/Fiat" />
+
+# Fiat Icons Gallery
+
+<IconGallery>
+  {Object.keys(FIAT_ICONS).map((icon) => (
+    <IconItem name={icon} key={icon}>
+      <FiatIcon name={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
