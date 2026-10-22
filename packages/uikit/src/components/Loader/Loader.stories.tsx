@@ -14,6 +14,7 @@ const meta: Meta<typeof Loader> = {
       </div>
     ),
   ],
+  title: 'Feedback/Loader',
 };
 
 type Story = StoryObj<typeof meta>;
