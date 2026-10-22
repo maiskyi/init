@@ -6,8 +6,10 @@ import { Checkbox } from './Checkbox';
 const meta: Meta<typeof Checkbox> = {
   args: {
     children: 'Toggle description '.concat(Array(100).fill('long ').join('')),
+    className: '',
     disabled: false,
-    id: 'toggle',
+    id: 'checkbox',
+    invalid: false,
     onChange: fn(),
     value: false,
   },

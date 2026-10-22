@@ -81,5 +81,12 @@
       font-family: "Open Sans", sans-serif;
       font-size: 12px;
     }
+    &.invalid {
+      .input {
+        &:before {
+          border-color: #f84447;
+        }
+      }
+    }
   }
 }

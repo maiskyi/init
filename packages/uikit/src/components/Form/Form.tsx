@@ -8,6 +8,7 @@ import {
 
 import { FormContext } from './Form.context';
 import { FormAddon } from './FormAddon';
+import { FormCheckbox } from './FormCheckbox';
 import { FormGroup } from './FormGroup';
 import { FormHint } from './FormHint';
 import { FormInputGroup } from './FormInputGroup';
@@ -24,6 +25,7 @@ type FormProps<T extends FieldValues> = PropsWithChildren<{
 
 interface FormCompoundedComponent {
   Addon: typeof FormAddon;
+  Checkbox: typeof FormCheckbox;
   Group: typeof FormGroup;
   Hint: typeof FormHint;
   InputGroup: typeof FormInputGroup;
@@ -62,5 +64,6 @@ Form.Addon = FormAddon;
 Form.Hint = FormHint;
 Form.Select = FormSelect;
 Form.Toggle = FormToggle;
+Form.Checkbox = FormCheckbox;
 
 export { Form };

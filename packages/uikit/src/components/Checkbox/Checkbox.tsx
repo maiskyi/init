@@ -1,5 +1,10 @@
 import cn from 'classnames';
-import { type FC, type PropsWithChildren, useId } from 'react';
+import {
+  type ChangeEventHandler,
+  type FC,
+  type PropsWithChildren,
+  useId,
+} from 'react';
 
 import styles from './Checkbox.module.scss';
 
@@ -18,12 +23,19 @@ const Checkbox: FC<CheckboxProps> = ({
   id: initialId,
   invalid = false,
   onChange,
-  value = false,
+  value,
   children,
 }) => {
   const id = useId();
 
   const resolvedId = initialId ?? id;
+
+  const handleOnChange: ChangeEventHandler<
+    HTMLInputElement,
+    HTMLInputElement
+  > = (event) => {
+    onChange?.(event.target.checked);
+  };
 
   return (
     <div
@@ -37,7 +49,13 @@ const Checkbox: FC<CheckboxProps> = ({
       )}
     >
       <label className={styles.input}>
-        <input disabled={disabled} id={resolvedId} type="checkbox" />
+        <input
+          checked={value}
+          disabled={disabled}
+          id={resolvedId}
+          onChange={handleOnChange}
+          type="checkbox"
+        />
       </label>
       <label className={styles.label} htmlFor={resolvedId}>
         {children}
