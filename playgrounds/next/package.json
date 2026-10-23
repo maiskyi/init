@@ -14,7 +14,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev",
+    "dev": "next dev --port 3002",
     "start": "next start"
   },
   "version": "0.1.0"
