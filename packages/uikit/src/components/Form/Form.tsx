@@ -13,6 +13,7 @@ import { FormGroup } from './FormGroup';
 import { FormHint } from './FormHint';
 import { FormInputGroup } from './FormInputGroup';
 import { FormLabel } from './FormLabel';
+import { FormNumber } from './FormNumber';
 import { FormSelect } from './FormSelect';
 import { FormSubmit } from './FormSubmit';
 import { FormText } from './FormText';
@@ -30,6 +31,7 @@ interface FormCompoundedComponent {
   Hint: typeof FormHint;
   InputGroup: typeof FormInputGroup;
   Label: typeof FormLabel;
+  Number: typeof FormNumber;
   Select: typeof FormSelect;
   Submit: typeof FormSubmit;
   Text: typeof FormText;
@@ -65,5 +67,6 @@ Form.Hint = FormHint;
 Form.Select = FormSelect;
 Form.Toggle = FormToggle;
 Form.Checkbox = FormCheckbox;
+Form.Number = FormNumber;
 
 export { Form };
