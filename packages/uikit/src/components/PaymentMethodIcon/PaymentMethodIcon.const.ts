@@ -52,7 +52,7 @@ import WEBMONEY from './duckdice/WEBMONEY.svg?react';
 import WORLWIDE from './duckdice/WORLWIDE.svg?react';
 import YANDEX from './duckdice/YANDEX.svg?react';
 
-export const PAYMENT_METHOD_ICONS = {
+export const PAYMENT_METHOD_ICONS: Record<string, typeof ADVANCED_CASH> = {
   ADVANCED_CASH,
   AGRIBANK,
   ASTRO_PAY,

@@ -16,6 +16,8 @@ const PaymentMethodIcon: FC<PaymentMethodIconProps> = ({
 }) => {
   const Icon = PAYMENT_METHOD_ICONS[name];
 
+  if (!Icon) return null;
+
   return <Icon className={className} height={size} width={size} />;
 };
 

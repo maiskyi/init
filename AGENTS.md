@@ -269,6 +269,20 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   — all its effect comes from the side-effect CSS import. It exists as a
   seam for future theme-switching logic, not as working theme-switching
   logic today.
+- **Built CSS is split per theme.** The library build (`vite build`, not
+  Storybook) runs `plugins/themeCssSplit/themeCssSplit.plugin.ts`, which
+  emits one `dist/themes/<theme>.css` for each `data-theme` value found in
+  selectors, exported as `@rockethash/uikit/themes/<theme>.css`. There is no
+  combined `dist/index.css`. In each file the `[data-theme="<theme>"]` part
+  is stripped (`:root[data-theme=x]` becomes `:root`), so the built CSS
+  applies without the attribute, and apps switch themes by swapping the
+  stylesheet; two theme files cannot be loaded together. CSS not scoped to a
+  theme (icon font, `@keyframes`) is duplicated into every file. The build
+  fails when `[data-theme]` is not the leading part of a selector (put it at
+  the top of the module, as existing SCSS does), and when two themes declare
+  same-named `@keyframes` in one module — give theme-specific keyframes
+  distinct names. Storybook keeps the unsplit, attribute-scoped CSS, so its
+  theme switcher still works.
 - Class names inside SCSS use BEM-ish flat naming scoped by nesting
   (`.button`, `.button.primary`, `.button.icon-only`) rather than strict
   `block__element--modifier` BEM; state/variant classes

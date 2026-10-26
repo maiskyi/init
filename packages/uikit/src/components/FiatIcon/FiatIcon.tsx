@@ -12,6 +12,8 @@ interface FiatIconProps {
 const FiatIcon: FC<FiatIconProps> = ({ className, name, size = 24 }) => {
   const Icon = FIAT_ICONS[name];
 
+  if (!Icon) return null;
+
   return <Icon className={className} height={size} width={size} />;
 };
 

@@ -5,7 +5,7 @@ export const FORM_SELECT_RULES: FormSelectRules = {
     required: ({ message, value }) => ({
       required: {
         message,
-        value: value,
+        value: value as boolean,
       },
     }),
   },

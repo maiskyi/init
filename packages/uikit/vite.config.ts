@@ -6,6 +6,8 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
+import { themeCssSplit } from './plugins/themeCssSplit/themeCssSplit.plugin.ts';
+
 const rootDir = fileURLToPath(new URL('.', import.meta.url));
 const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
 
@@ -35,5 +37,6 @@ export default defineConfig({
     babel({
       presets: [reactCompilerPreset()],
     }),
+    ...(isStorybook ? [] : [themeCssSplit()]),
   ],
 });

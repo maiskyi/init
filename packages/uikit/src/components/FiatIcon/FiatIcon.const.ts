@@ -53,7 +53,7 @@ import VND from './duckdice/VND.svg?react';
 import XOF from './duckdice/XOF.svg?react';
 import ZAR from './duckdice/ZAR.svg?react';
 
-export const FIAT_ICONS = {
+export const FIAT_ICONS: Record<string, typeof AED> = {
   AED,
   ARS,
   AUD,

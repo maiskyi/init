@@ -12,6 +12,8 @@ interface CryptoIconProps {
 const CryptoIcon: FC<CryptoIconProps> = ({ className, name, size = 24 }) => {
   const Icon = CRYPTO_ICONS[name];
 
+  if (!Icon) return null;
+
   return <Icon className={className} height={size} width={size} />;
 };
 

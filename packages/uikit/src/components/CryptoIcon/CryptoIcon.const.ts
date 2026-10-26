@@ -56,7 +56,7 @@ import XRP from './duckdice/XRP.svg?react';
 import ZEC from './duckdice/ZEC.svg?react';
 import ZEN from './duckdice/ZEN.svg?react';
 
-export const CRYPTO_ICONS = {
+export const CRYPTO_ICONS: Record<string, typeof AAVE> = {
   AAVE,
   ADA,
   Arbitrum,

@@ -162,3 +162,13 @@
     }
   }
 }
+
+[data-theme="tower"] {
+  .button {
+    &.pending {
+      .content {
+        opacity: 0;
+      }
+    }
+  }
+}
