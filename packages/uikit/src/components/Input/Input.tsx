@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import get from 'lodash.get';
 import {
   type ChangeEventHandler,
   forwardRef,
@@ -14,7 +15,8 @@ interface InputProps {
   invalid?: boolean;
   name?: string;
   onBlur?: () => void;
-  onChange?: (value: string) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+  onValueChange?: (value: string) => void;
   placeholder?: string;
   readOnly?: boolean;
   type?: HTMLInputTypeAttribute;
@@ -35,6 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onChange,
       onBlur,
       invalid,
+      onValueChange,
     },
     ref,
   ) => {
@@ -42,7 +45,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       HTMLInputElement,
       HTMLInputElement
     > = (event) => {
-      onChange?.(event.target.value);
+      onChange?.(event);
+      onValueChange?.(event.target.value);
     };
 
     return (
@@ -54,11 +58,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           },
           className,
         )}
-        //   defaultValue={defaultValue}
         disabled={disabled}
         id={id}
-        //   maxLength={maxLength}
-        //   minLength={minLength}
         name={name}
         onBlur={onBlur}
         onChange={handleOnChange}
@@ -67,10 +68,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         type={type}
         value={value}
-        //   onFocus={onFocus}
-        //   autoComplete={autoComplete}
-        //   inputMode={inputMode}
-        //   onKeyDown={onKeyDown}
       />
     );
   },

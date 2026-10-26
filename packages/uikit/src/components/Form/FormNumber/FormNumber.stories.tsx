@@ -16,9 +16,11 @@ const handleOnSubmit = () => {
 const meta: Meta<typeof FormNumber> = {
   args: {
     className: '',
+    dataType: 'number',
     errors: {
       required: 'This field is required',
     },
+    label: 'Number input',
     name: 'number',
     placeholder: 'Enter number',
     validation: {

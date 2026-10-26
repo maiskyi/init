@@ -1,9 +1,12 @@
 import cn from 'classnames';
 import { type FC } from 'react';
 
-import { Input } from '../../Input';
 import { FormController, type FormControllerProps } from '../FormController';
 import { type FormNumberValidation } from './FormNumber.types';
+import {
+  FormNumberInput,
+  type FormNumberInputDataType,
+} from './FormNumberInput';
 
 import styles from '../Form.module.scss';
 
@@ -13,6 +16,7 @@ interface FormNumberProps
     'children' | 'type'
   > {
   className?: string;
+  dataType?: FormNumberInputDataType;
   placeholder?: string;
 }
 
@@ -23,6 +27,7 @@ const FormNumber: FC<FormNumberProps> = ({
   validation,
   label,
   errors,
+  dataType = 'number',
 }) => {
   return (
     <FormController<string | number>
@@ -33,7 +38,7 @@ const FormNumber: FC<FormNumberProps> = ({
       validation={validation}
     >
       {({ id, value = '', invalid, onBlur, onChange }) => (
-        <Input
+        <FormNumberInput
           className={cn(
             styles.input,
             {
@@ -41,13 +46,13 @@ const FormNumber: FC<FormNumberProps> = ({
             },
             className,
           )}
+          dataType={dataType}
           id={id}
           invalid={invalid}
           onBlur={onBlur}
           onChange={onChange}
           placeholder={placeholder}
-          type="number"
-          value={value ? `${value}` : undefined}
+          value={value}
         />
       )}
     </FormController>

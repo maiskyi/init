@@ -32,14 +32,6 @@ const FormController: FormControllerComponent = ({
 }) => {
   const id = useId();
 
-  console.log({
-    errors,
-    label,
-    name,
-    type,
-    validation,
-  });
-
   const { rules } = useFormControlRules({
     errors,
     label,
