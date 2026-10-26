@@ -45,6 +45,9 @@
     "enabled": true,
     "rules": {
       "a11y": "off",
+      "correctness": {
+        "noUnusedVariables": "error"
+      },
       "preset": "recommended",
       "style": {
         "useImportType": {
