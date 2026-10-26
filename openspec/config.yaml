@@ -4,29 +4,66 @@ schema: spec-driven
 # Add only constraints that should guide OpenSpec artifacts and workflows.
 # Include constraints an agent cannot infer by reading the code.
 # Keep general project documentation and discoverable codebase facts out.
-# Example:
-#   context: |
-#     Designs and tasks must cover Windows, macOS, and Linux
-#     Write all artifacts in Spanish
+context: |
+  pnpm + Turborepo monorepo (apps/*, packages/*, playgrounds/*). Two real
+  products: apps/wallet (React 19 + Vite SPA) and packages/uikit (React
+  component library, Vite + Storybook, SCSS Modules, data-theme based
+  theming). packages/typescript-config holds shared tsconfig bases.
+  playgrounds/* are throwaway examples, not shipped product.
+
+  Read AGENTS.md at the repo root before writing any artifact — it documents
+  the actual naming, TypeScript/React, styling, import/export, and tooling
+  conventions, and explicitly separates what is enforced (Biome, commitlint,
+  per-package tsc) from what is merely observed in code (ESLint and
+  Prettier are configured as dependencies but not wired up; ignore them
+  unless asked to actually wire them in).
+
+  No automated tests exist anywhere in the repo yet. Do not assume a test
+  runner/config to extend; proposals that add tests must also introduce the
+  test setup itself.
+
+  apps/wallet does not depend on packages/uikit yet, and apps/wallet's
+  App.tsx/main.tsx are still unmodified create-vite scaffold — do not treat
+  them as representative of this repo's conventions.
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always state what is out of scope
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+rules:
+  proposal:
+    - Identify which package(s) (apps/wallet, packages/uikit,
+      packages/typescript-config) the change touches, and whether it
+      crosses the apps/wallet <-> packages/uikit boundary (they are not
+      currently wired together).
+    - Follow AGENTS.md naming/structure conventions for any new
+      files or folders proposed (file suffix scheme, barrel exports,
+      compound-component pattern, etc.).
+  design:
+    - Call out explicitly whenever a design would rely on ESLint, Prettier,
+      or a turbo `lint`/`test` script actually running — per AGENTS.md
+      section 8, none of these currently execute in this repo.
+  tasks:
+    - If the change adds UI in packages/uikit, include a task for the
+      SCSS Module + data-theme styling and, where the existing pattern
+      has one, a Storybook story — per AGENTS.md sections 6-7.
+    - If the change needs test coverage, include an explicit task to
+      introduce the test runner/config itself, since none exists yet.
 
 # Per-operation guidance (optional)
 # Add advisory guidance for how apply and archive work should be conducted.
 # This is separate from artifact rules above.
-# Example:
-#   operations:
-#     apply:
-#       guidance:
-#         - Keep test summaries concise
-#     archive:
-#       guidance:
-#         - Summarize the archive outcome before finishing
+operations:
+  apply:
+    guidance:
+      - Match the file/folder, import-export, and component conventions in
+        AGENTS.md rather than introducing new patterns; when a convention
+        is ambiguous or inconsistent in the existing code (AGENTS.md
+        section 9), say which precedent was followed and why.
+      - Do not rely on `pnpm lint`/`turbo run lint` or Prettier to catch
+        issues — they are not wired up. Use `pnpm biome check --write` and
+        each package's `tsc -b`/build script instead.
+  archive:
+    guidance:
+      - Note in the archive summary if the change touched an area
+        flagged as inconsistent/incomplete in AGENTS.md (e.g. empty
+        barrels, missing wallet<->uikit dependency), since that may be a
+        candidate for a dedicated follow-up change.
