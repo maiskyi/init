@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import get from 'lodash.get';
 import {
   type ChangeEventHandler,
   forwardRef,
