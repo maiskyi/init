@@ -6,5 +6,10 @@
     color: var(--text-title);
     font: 500 var(--fonts-size-16) / 22px var(--fonts-family-marketing);
     gap: var(--Details-Spacing-12);
+    &.cash {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

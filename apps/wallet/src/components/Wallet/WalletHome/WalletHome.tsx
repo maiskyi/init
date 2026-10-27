@@ -1,4 +1,5 @@
 import { Card } from '@rockethash/uikit';
+import cn from 'classnames';
 import { type FC } from 'react';
 
 import styles from './WalletHome.module.scss';
@@ -21,7 +22,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
         onClick={handleOnClick}
         outline
       >
-        WalletHome
+        Deposit Crypto
       </Card>
       <Card
         as="button"
@@ -30,7 +31,15 @@ const WalletHome: FC<WalletHomeProps> = () => {
         onClick={handleOnClick}
         outline
       >
-        WalletHome
+        Buy Crypto
+      </Card>
+      <Card
+        as="button"
+        className={cn(styles.button, styles.cash)}
+        onClick={handleOnClick}
+        outline
+      >
+        Deposit Cash
       </Card>
     </div>
   );
