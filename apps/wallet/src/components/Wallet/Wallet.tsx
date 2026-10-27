@@ -2,6 +2,7 @@ import { type FC, forwardRef, useImperativeHandle } from 'react';
 
 import { WalletContext } from './Wallet.context';
 import { type WalletRef, WalletScreen } from './Wallet.types';
+import { WalletHome } from './WalletHome';
 
 export interface WalletProps {
   initialScreen?: WalletScreen;
@@ -17,7 +18,7 @@ export const Wallet: FC<WalletProps> = forwardRef<WalletRef, WalletProps>(
 
     return (
       <WalletContext.Provider value={{ screen: initialScreen }}>
-        <div>Wallet</div>
+        <WalletHome />
       </WalletContext.Provider>
     );
   },

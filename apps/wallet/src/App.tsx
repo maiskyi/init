@@ -8,6 +8,7 @@ import styles from './App.module.scss';
 export const App = () => {
   return (
     <div className={styles.root}>
+      <div className={styles.header}></div>
       <ThemeProvider>
         <WalletProvider>
           <Wallet />

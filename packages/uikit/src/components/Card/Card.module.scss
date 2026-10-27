@@ -5,6 +5,7 @@
   );
 
   .card {
+    border: none;
     transition: all 0.3s;
     padding: var(--Details-Spacing-14);
     background: var(--surface-panels-panel-bg-light-10);
