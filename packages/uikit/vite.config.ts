@@ -1,5 +1,4 @@
 import { resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 import { themeCssSplit } from '@repo/vite';
 import babel from '@rolldown/plugin-babel';
@@ -7,20 +6,16 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
-const rootDir = fileURLToPath(new URL('.', import.meta.url));
-
-export default defineConfig(({ command }) => {
-  const isBuild = command === 'build';
-
-  const plugins = isBuild ? [] : [themeCssSplit()];
+export default defineConfig(({ command: _ }) => {
+  const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
 
   return {
-    build: isBuild
+    build: isStorybook
       ? undefined
       : {
           emptyOutDir: false,
           lib: {
-            entry: resolve(rootDir, 'src/index.ts'),
+            entry: resolve(import.meta.dirname, 'src/index.ts'),
             fileName: 'index',
             formats: ['es'],
           },
@@ -40,7 +35,7 @@ export default defineConfig(({ command }) => {
       babel({
         presets: [reactCompilerPreset()],
       }),
-      ...plugins,
+      ...(isStorybook ? [] : [themeCssSplit()]),
     ],
   };
 });

@@ -5,6 +5,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@eslint/js": "^10.0.1",
+    "@rockethash/uikit": "workspace:*",
     "@rolldown/plugin-babel": "^0.2.4",
     "@tanstack/react-query": "^5.104.4",
     "@types/babel__core": "^7.20.5",
