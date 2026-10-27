@@ -32,7 +32,7 @@
         backdrop-filter: blur(calc(var(--Details-Effects-Background-Blur) / 2));
       }
       &:checked + .track .thumb {
-        background: var(--Colors-White-100);
+        background: var(--colors-white-100);
         transform: translateX(14px);
       }
       &:disabled {
@@ -60,7 +60,7 @@
       height: 18px;
       padding: 0;
       border-radius: 16px;
-      background: var(--Colors-Gray-600);
+      background: var(--colors-gray-600);
       transition: background-color 0.2s ease;
     }
     .thumb {

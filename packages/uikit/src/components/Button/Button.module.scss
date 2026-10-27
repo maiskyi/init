@@ -20,12 +20,12 @@
     background: var(--buttons-layer-orange-default);
     border-radius: var(--Details-Radius-rounded-6);
     box-shadow:
-      0 var(--Details-Effects-Inner-Shadow-Y1) 0 0 var(--Colors-White-100A-50)
+      0 var(--Details-Effects-Inner-Shadow-Y1) 0 0 var(--colors-white-100a-50)
         inset,
       0 var(--Details-Effects-Inner-Shadow-Y8) var(--Details-Effects-Blur) 0
-        var(--Colors-White-100A-20) inset,
+        var(--colors-white-100a-20) inset,
       0 var(--Details-Effects-Inner-Shadow-Y-2-Dark) 0 0
-        var(--Colors-Black-blackA-25) inset;
+        var(--colors-black-blacka-25) inset;
     color: var(--text-accent-white);
     font:
       600 14px / 20px "Open Sans",
@@ -35,12 +35,12 @@
     &:hover {
       background: var(--buttons-layer-orange-hover);
       box-shadow:
-        0 var(--Details-Effects-Inner-Shadow-Y1) 0 0 var(--Colors-White-100A-50)
+        0 var(--Details-Effects-Inner-Shadow-Y1) 0 0 var(--colors-white-100a-50)
           inset,
         0 var(--Details-Effects-Inner-Shadow-Y8) var(--Details-Effects-Blur) 0
-          var(--Colors-White-100A-20) inset,
+          var(--colors-white-100a-20) inset,
         0 var(--Details-Effects-Inner-Shadow-Y-2-Dark) 0 0
-          var(--Colors-Black-blackA-25) inset;
+          var(--colors-black-blacka-25) inset;
       color: var(--text-accent-white);
       text-decoration: none;
     }
@@ -106,7 +106,7 @@
       }
       &.active,
       &:active {
-        background: var(--Colors-Gray-300A-10);
+        background: var(--colors-gray-300a-10);
       }
     }
     &.medium {

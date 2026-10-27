@@ -23,7 +23,7 @@
       &:hover {
         &:before {
           background: #3a434b;
-          border-color: var(--Colors-Orange-500);
+          border-color: var(--colors-orange-500);
         }
       }
       &:before {
@@ -37,12 +37,12 @@
         width: 16px;
         height: 16px;
         border-radius: 2px;
-        border: 1px solid var(--Colors-Gray-500);
+        border: 1px solid var(--colors-gray-500);
         color: var(--text-tertiary);
         background: var(--surface-inputs-default-bg);
         box-sizing: border-box;
         &:hover {
-          border-color: var(--Colors-Gray-600);
+          border-color: var(--colors-gray-600);
         }
       }
       &:after {
@@ -66,8 +66,8 @@
       }
       &:has(input:checked) {
         &:before {
-          background: var(--Colors-Orange-500);
-          border-color: var(--Colors-Orange-500);
+          background: var(--colors-orange-500);
+          border-color: var(--colors-orange-500);
         }
         &:after {
           opacity: 1;
