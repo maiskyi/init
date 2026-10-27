@@ -45,6 +45,7 @@
     "vite-plugin-svgr": "^5.2.0"
   },
   "exports": {
+    ".": "./src/index.ts",
     "./*": "./src/*.tsx",
     "./themes/*.css": "./dist/themes/*.css"
   },
