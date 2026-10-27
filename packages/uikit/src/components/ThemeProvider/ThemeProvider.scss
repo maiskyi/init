@@ -1,3 +1,10 @@
+[data-theme="duckdice"] {
+  body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #222325;
+  }
+}
+
 :root {
   &[data-theme="duckdice"] {
     --color-levels-0-lvl: rgb(201 229 251);

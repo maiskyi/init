@@ -1,5 +1,6 @@
 // Components
 export { Button, type ButtonProps } from './components/Button';
+export { Card, type CardProps } from './components/Card';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
 export { CryptoIcon, type CryptoIconProps } from './components/CryptoIcon';
 export { Dropdown, type DropdownProps } from './components/Dropdown';
