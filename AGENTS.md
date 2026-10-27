@@ -21,6 +21,7 @@ packages/        shared, publishable/workspace-internal packages
   uikit/         React component library (@rockethash/uikit), built with
                  Vite + Storybook
   typescript-config/  shared tsconfig bases (@repo/typescript-config)
+  vite/          shared Vite plugins (@repo/vite)
 playgrounds/     throwaway/example apps, not part of the product
   next/          Next.js playground
   vike/          Vike (vite-plugin-ssr successor) playground
@@ -38,8 +39,22 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   practice today (see §9).
 - Package naming: product packages/apps use the `@rockethash/*` scope
   (`@rockethash/wallet`, `@rockethash/uikit`); shared tooling packages use
-  `@repo/*` (`@repo/typescript-config`). Workspace-internal deps are
-  referenced as `workspace:*`.
+  `@repo/*` (`@repo/typescript-config`, `@repo/vite`). Workspace-internal
+  deps are referenced as `workspace:*`.
+- `packages/vite` (`@repo/vite`) holds shared Vite plugins, one folder per
+  plugin (`src/<pluginName>/<pluginName>.plugin.ts` plus a folder barrel
+  `index.ts`), all re-exported from a single root barrel `src/index.ts`
+  (`"exports": { ".": "./src/index.ts" }`, so consumers write
+  `import { themeCssSplit } from '@repo/vite'`). It ships TypeScript source
+  with no JS build: Vite 8 externalizes bare imports in `vite.config.ts`, so
+  Node 24 loads the `.ts` files directly through native type stripping. Its
+  source therefore uses **explicit `.ts` relative import paths and no
+  directory imports** (`'./themeCssSplit/index.ts'`, not
+  `'./themeCssSplit'`; tsc does not catch this, Node fails with
+  `ERR_UNSUPPORTED_DIR_IMPORT` at config load) and **erasable syntax only**
+  (enforced by `erasableSyntaxOnly`). Consumers type-check it through a
+  tsconfig project reference (`references: [{ "path": "../vite" }]`), as
+  `packages/uikit/tsconfig.node.json` does.
 - `apps/wallet` consumes generated API types/hooks (`orval`, react-query) but
   does **not** currently depend on `@rockethash/uikit` — the two packages are
   not yet wired together.
@@ -270,7 +285,8 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   seam for future theme-switching logic, not as working theme-switching
   logic today.
 - **Built CSS is split per theme.** The library build (`vite build`, not
-  Storybook) runs `plugins/themeCssSplit/themeCssSplit.plugin.ts`, which
+  Storybook) runs the `themeCssSplit` plugin from `@repo/vite`
+  (`packages/vite/src/themeCssSplit/themeCssSplit.plugin.ts`), which
   emits one `dist/themes/<theme>.css` for each `data-theme` value found in
   selectors, exported as `@rockethash/uikit/themes/<theme>.css`. There is no
   combined `dist/index.css`. In each file the `[data-theme="<theme>"]` part

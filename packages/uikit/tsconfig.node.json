@@ -10,5 +10,6 @@
     "types": ["node"]
   },
   "extends": "@repo/typescript-config/base.json",
-  "include": ["plugins"]
+  "include": ["vite.config.ts"],
+  "references": [{ "path": "../vite" }]
 }

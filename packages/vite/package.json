@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "lightningcss": "^1.33.0",
+    "postcss": "^8.5.31",
+    "postcss-selector-parser": "^7.1.7"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "name": "@repo/vite",
+  "peerDependencies": {
+    "vite": "^8.3.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}
