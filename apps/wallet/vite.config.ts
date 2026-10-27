@@ -4,7 +4,7 @@ import babel from '@rolldown/plugin-babel';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     babel({
@@ -16,4 +16,4 @@ export default defineConfig({
       '@services': path.resolve(__dirname, './src/_services'),
     },
   },
-});
+}));

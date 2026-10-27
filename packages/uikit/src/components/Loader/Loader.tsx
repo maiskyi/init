@@ -14,5 +14,5 @@ const Loader: FC<LoaderProps> = ({ className, variant = 'flashing-dots' }) => {
   return <div className={cn(styles.loader, styles[variant], className)} />;
 };
 
-export type { LoaderVariant };
+export type { LoaderProps };
 export { Loader };
