@@ -1,0 +1,46 @@
+[data-theme="duckdice"] {
+  $glows: (
+    green: var(--colors-others-dark-green),
+    blue: var(--colors-others-dark-blue),
+  );
+
+  .card {
+    transition: all 0.3s;
+    padding: var(--Details-Spacing-14);
+    background: var(--surface-panels-panel-bg-light-10);
+    border-radius: 6px;
+    &.outline {
+      box-shadow: 0 0 0 2px inset var(--borders-border-light-8);
+    }
+    &.clickable {
+      cursor: pointer;
+      &:hover {
+        background: var(--surface-panels-panel-bg-light-20);
+      }
+    }
+    &.glow {
+      @each $glow, $color in $glows {
+        &.#{$glow} {
+          background:
+            radial-gradient(
+              151.98% 100% at 50% 0%,
+              $color 0%,
+              rgba(50, 58, 66, 0) 100%
+            ),
+            var(--surface-panels-panel-bg-light-10);
+          &.clickable {
+            &:hover {
+              background:
+                radial-gradient(
+                  151.98% 100% at 50% 0%,
+                  $color 0%,
+                  rgba(50, 58, 66, 0) 100%
+                ),
+                var(--surface-panels-panel-bg-light-20);
+            }
+          }
+        }
+      }
+    }
+  }
+}

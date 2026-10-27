@@ -1,20 +1,18 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 
 import { Card } from './Card';
 
 const meta: Meta<typeof Card> = {
   args: {
+    children: <div style={{ height: 100 }} />,
     className: 'card',
+    glow: 'none',
+    onClick: fn(),
+    outline: false,
   },
   component: Card,
-  decorators: [
-    (Story) => (
-      <div style={{ color: 'white' }}>
-        <Story />
-      </div>
-    ),
-  ],
-  title: 'Cards/Card',
+  title: 'Surfaces/Card',
 };
 
 export default meta;
