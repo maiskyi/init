@@ -4,7 +4,9 @@ import {
   Divider,
   FiatIcon,
   Grid,
+  Icon,
   ImgIcon,
+  Menu,
 } from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
@@ -82,6 +84,28 @@ const WalletHome: FC<WalletHomeProps> = () => {
       </Grid.Cell>
       <Grid.Cell xs={12}>
         <Divider thickness={2} />
+      </Grid.Cell>
+      <Grid.Cell xs={12}>
+        <Menu>
+          <Menu.Item
+            prefix={<Icon name="arrow-up" />}
+            suffix={<Icon name="chevron-right" />}
+          >
+            Withdraw
+          </Menu.Item>
+          <Menu.Item
+            prefix={<Icon name="exchange" />}
+            suffix={<Icon name="chevron-right" />}
+          >
+            Swap
+          </Menu.Item>
+          <Menu.Item
+            prefix={<Icon name="safe" />}
+            suffix={<Icon name="chevron-right" />}
+          >
+            Vault
+          </Menu.Item>
+        </Menu>
       </Grid.Cell>
     </Grid>
   );
