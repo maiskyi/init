@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { type ReactElement } from 'react';
+import { type Fragment, type ReactElement } from 'react';
 
 import {
   type PolymorphicElement,
@@ -22,7 +22,9 @@ type GridCellProps<C extends PolymorphicElement> = PolymorphicProps<
 >;
 
 interface GridCellComponent {
-  <C extends PolymorphicElement = 'div'>(props: GridCellProps<C>): ReactElement;
+  <C extends PolymorphicElement = typeof Fragment>(
+    props: GridCellProps<C>,
+  ): ReactElement;
 }
 
 const GridCell: GridCellComponent = ({

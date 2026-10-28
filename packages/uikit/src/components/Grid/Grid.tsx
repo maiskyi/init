@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { type CSSProperties, type ReactElement } from 'react';
+import { type CSSProperties, type Fragment, type ReactElement } from 'react';
 
 import {
   type PolymorphicElement,
@@ -23,7 +23,9 @@ type GridProps<C extends PolymorphicElement> = PolymorphicProps<
 
 interface GridComponent {
   Cell: typeof GridCell;
-  <C extends PolymorphicElement = 'div'>(props: GridProps<C>): ReactElement;
+  <C extends PolymorphicElement = typeof Fragment>(
+    props: GridProps<C>,
+  ): ReactElement;
 }
 
 const Grid: GridComponent = ({

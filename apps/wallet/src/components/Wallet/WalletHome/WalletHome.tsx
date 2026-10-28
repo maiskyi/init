@@ -1,4 +1,11 @@
-import { Card, CryptoIcon, FiatIcon, Grid, ImgIcon } from '@rockethash/uikit';
+import {
+  Card,
+  CryptoIcon,
+  Divider,
+  FiatIcon,
+  Grid,
+  ImgIcon,
+} from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
 
@@ -72,6 +79,9 @@ const WalletHome: FC<WalletHomeProps> = () => {
           </span>
           Deposit Cash
         </Card>
+      </Grid.Cell>
+      <Grid.Cell xs={12}>
+        <Divider thickness={2} />
       </Grid.Cell>
     </Grid>
   );
