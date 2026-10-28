@@ -1,8 +1,6 @@
 import { type FC } from 'react';
 
-interface WalletWithdrawProps {
-  className?: string;
-}
+import { type WalletWithdrawProps } from './WalletWithdraw.types';
 
 const WalletWithdraw: FC<WalletWithdrawProps> = ({ className }) => {
   return <div className={className}>WalletWithdraw</div>;

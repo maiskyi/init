@@ -14,12 +14,9 @@ import { type FC } from 'react';
 import { useWallet } from '../Wallet.hooks';
 import { WalletScreen } from '../Wallet.types';
 import { CRYPTO_ICONS, FIAT_ICONS } from './WalletHome.const';
+import { type WalletHomeProps } from './WalletHome.types';
 
 import styles from './WalletHome.module.scss';
-
-interface WalletHomeProps {
-  temp?: number;
-}
 
 const WalletHome: FC<WalletHomeProps> = () => {
   const { setActiveScreen } = useWallet();

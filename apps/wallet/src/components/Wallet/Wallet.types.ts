@@ -1,10 +1,10 @@
-import { type WalletBuyCryptoProps } from './WalletBuyCrypto/WalletBuyCrypto';
-import { type WalletDepositCashProps } from './WalletDepositCash';
-import { type WalletDepositCryptoProps } from './WalletDepositCrypto';
-import { type WalletHomeProps } from './WalletHome';
-import { type WalletSwapProps } from './WalletSwap';
-import { type WalletVaultProps } from './WalletVault';
-import { type WalletWithdrawProps } from './WalletWithdraw';
+import { type WalletBuyCryptoProps } from './WalletBuyCrypto/WalletBuyCrypto.types';
+import { type WalletDepositCashProps } from './WalletDepositCash/WalletDepositCash.types';
+import { type WalletDepositCryptoProps } from './WalletDepositCrypto/WalletDepositCrypto.types';
+import { type WalletHomeProps } from './WalletHome/WalletHome.types';
+import { type WalletSwapProps } from './WalletSwap/WalletSwap.types';
+import { type WalletVaultProps } from './WalletVault/WalletVault.types';
+import { type WalletWithdrawProps } from './WalletWithdraw/WalletWithdraw.types';
 
 export enum WalletScreen {
   Home = 'home',

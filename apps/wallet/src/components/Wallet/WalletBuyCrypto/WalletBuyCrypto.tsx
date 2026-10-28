@@ -1,8 +1,6 @@
 import { type FC } from 'react';
 
-interface WalletBuyCryptoProps {
-  className?: string;
-}
+import { type WalletBuyCryptoProps } from './WalletBuyCrypto.types';
 
 const WalletBuyCrypto: FC<WalletBuyCryptoProps> = ({ className }) => {
   return <div className={className}>WalletBuyCrypto</div>;

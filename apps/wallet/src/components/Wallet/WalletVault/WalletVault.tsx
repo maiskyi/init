@@ -1,8 +1,6 @@
 import { type FC } from 'react';
 
-interface WalletVaultProps {
-  className?: string;
-}
+import { type WalletVaultProps } from './WalletVault.types';
 
 const WalletVault: FC<WalletVaultProps> = ({ className }) => {
   return <div className={className}>WalletVault</div>;

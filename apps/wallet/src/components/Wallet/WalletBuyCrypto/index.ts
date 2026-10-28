@@ -1,3 +1,2 @@
 export { WalletBuyCrypto } from './WalletBuyCrypto';
-
-import { type WalletBuyCryptoProps } from './WalletBuyCrypto';
+export type { WalletBuyCryptoProps } from './WalletBuyCrypto.types';

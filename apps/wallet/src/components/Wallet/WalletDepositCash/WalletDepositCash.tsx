@@ -1,8 +1,6 @@
 import { type FC } from 'react';
 
-interface WalletDepositCashProps {
-  className?: string;
-}
+import { type WalletDepositCashProps } from './WalletDepositCash.types';
 
 const WalletDepositCash: FC<WalletDepositCashProps> = ({ className }) => {
   return <div className={className}>WalletDepositCash</div>;
