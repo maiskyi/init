@@ -2,7 +2,7 @@ import { Card, CryptoIcon, FiatIcon, Grid } from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
 
-import { CRYPTO_ICONS } from './WalletHome.const';
+import { CRYPTO_ICONS, FIAT_ICONS } from './WalletHome.const';
 
 import styles from './WalletHome.module.scss';
 
@@ -48,7 +48,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
           onClick={handleOnClick}
           outline
         >
-          <FiatIcon name="FIAT" size={30} />
+          <FiatIcon name="CARD" size={30} />
           Buy Crypto
         </Card>
       </Grid.Cell>
@@ -59,6 +59,11 @@ const WalletHome: FC<WalletHomeProps> = () => {
           onClick={handleOnClick}
           outline
         >
+          <span className={styles.currencies}>
+            {FIAT_ICONS.map((icon) => (
+              <FiatIcon key={icon} name={icon} size={14} />
+            ))}
+          </span>
           Deposit Cash
         </Card>
       </Grid.Cell>

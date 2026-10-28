@@ -6,6 +6,7 @@ import BDT from './duckdice/BDT.svg?react';
 import BOB from './duckdice/BOB.svg?react';
 import BRL from './duckdice/BRL.svg?react';
 import CAD from './duckdice/CAD.svg?react';
+import CARD from './duckdice/CARD.svg?react';
 import CHF from './duckdice/CHF.svg?react';
 import CLP from './duckdice/CLP.svg?react';
 import COP from './duckdice/COP.svg?react';
@@ -15,7 +16,7 @@ import DOP from './duckdice/DOP.svg?react';
 import DZD from './duckdice/DZD.svg?react';
 import EGP from './duckdice/EGP.svg?react';
 import ETB from './duckdice/ETB.svg?react';
-import FIAT from './duckdice/FIAT.svg?react';
+import EUR from './duckdice/EUR.svg?react';
 import GBP from './duckdice/GBP.svg?react';
 import GHC from './duckdice/GH₵.svg?react';
 import GTQ from './duckdice/GTQ.svg?react';
@@ -49,6 +50,7 @@ import SEK from './duckdice/SEK.svg?react';
 import SGD from './duckdice/SGD.svg?react';
 import THB from './duckdice/THB.svg?react';
 import TRY from './duckdice/TRY.svg?react';
+import USD from './duckdice/USD.svg?react';
 import UZS from './duckdice/UZS.svg?react';
 import VND from './duckdice/VND.svg?react';
 import XOF from './duckdice/XOF.svg?react';
@@ -64,6 +66,7 @@ export const FIAT_ICONS: Record<FiatIconName, typeof AED> = {
   BOB,
   BRL,
   CAD,
+  CARD,
   CHF,
   CLP,
   COP,
@@ -73,7 +76,7 @@ export const FIAT_ICONS: Record<FiatIconName, typeof AED> = {
   DZD,
   EGP,
   ETB,
-  FIAT,
+  EUR,
   GBP,
   GHC,
   GTQ,
@@ -107,6 +110,7 @@ export const FIAT_ICONS: Record<FiatIconName, typeof AED> = {
   SGD,
   THB,
   TRY,
+  USD,
   UZS,
   VND,
   XOF,

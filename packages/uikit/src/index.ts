@@ -8,7 +8,11 @@ export {
   type CryptoIconProps,
 } from './components/CryptoIcon';
 export { Dropdown, type DropdownProps } from './components/Dropdown';
-export { FiatIcon, type FiatIconProps } from './components/FiatIcon';
+export {
+  FiatIcon,
+  type FiatIconName,
+  type FiatIconProps,
+} from './components/FiatIcon';
 export { Form } from './components/Form';
 export { Grid, type GridProps, type GridSpacing } from './components/Grid';
 export {

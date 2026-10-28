@@ -1,4 +1,4 @@
-import { type CryptoIconName } from '@rockethash/uikit';
+import { type CryptoIconName, type FiatIconName } from '@rockethash/uikit';
 
 export const CRYPTO_ICONS: CryptoIconName[] = [
   'BTC',
@@ -7,3 +7,5 @@ export const CRYPTO_ICONS: CryptoIconName[] = [
   'LTC',
   'SOL',
 ];
+
+export const FIAT_ICONS: FiatIconName[] = ['USD', 'TRY', 'BDT', 'EUR'];

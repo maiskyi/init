@@ -1,6 +1,7 @@
 import { type BreakpointToken } from '../../../types/breakpointToken.types';
 
 export type GridCellSpan =
+  | 0.5
   | 1
   | 2
   | 3
