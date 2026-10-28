@@ -55,9 +55,11 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   (enforced by `erasableSyntaxOnly`). Consumers type-check it through a
   tsconfig project reference (`references: [{ "path": "../vite" }]`), as
   `packages/uikit/tsconfig.node.json` does.
-- `apps/wallet` consumes generated API types/hooks (`orval`, react-query) but
-  does **not** currently depend on `@rockethash/uikit` — the two packages are
-  not yet wired together.
+- `apps/wallet` consumes generated API types/hooks (`orval`, react-query) and
+  depends on `@rockethash/uikit` (`workspace:*`). It imports uikit **source**
+  through the root barrel (`"exports": { ".": "./src/index.ts" }`), so the
+  wallet's own Vite build compiles uikit components and bundles their
+  unsplit, `data-theme`-scoped CSS — not the split `dist/themes/*.css`.
 - `packages/uikit` exports its public surface via a single root
   `src/index.ts` barrel, and additionally via a package-level wildcard
   export map (`"exports": { "./*": "./src/*.tsx" }`), allowing deep imports
@@ -224,9 +226,9 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   named (`export { Button }`, `export type { ButtonProps }`). The only
   `export default` usages in the repo are: (a) Storybook `.stories.*`
   files' `meta` object, which is required by Storybook's CSF format, and
-  (b) `apps/wallet/src/App.tsx` / default Vite-scaffold files, which still
-  carry the unmodified `create-vite` template and have not yet been adapted
-  to this repo's conventions (see §10).
+  (b) tool config files whose loaders expect a default export
+  (`vite.config.ts`, `apps/wallet/orval.config.ts`,
+  `packages/uikit/.storybook/main.ts`/`preview.tsx`).
 
 ## 5. Imports & exports
 
@@ -293,7 +295,10 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   is stripped (`:root[data-theme=x]` becomes `:root`), so the built CSS
   applies without the attribute, and apps switch themes by swapping the
   stylesheet; two theme files cannot be loaded together. CSS not scoped to a
-  theme (icon font, `@keyframes`) is duplicated into every file. The build
+  theme (`@keyframes`, untagged `@font-face`) is duplicated into every file,
+  except a `@font-face` whose `font-family` ends in `-<theme>`: CSS cannot
+  nest `@font-face` under `[data-theme]`, so the family name carries the
+  theme and the rule goes only into that theme's file. The build
   fails when `[data-theme]` is not the leading part of a selector (put it at
   the top of the module, as existing SCSS does), and when two themes declare
   same-named `@keyframes` in one module — give theme-specific keyframes
@@ -304,10 +309,19 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
   `block__element--modifier` BEM; state/variant classes
   (`.pending`, `.disabled`, `.active`) are applied as additional classes
   computed by `cn(...)` in the component, not as data-attributes.
-- Icons: SVGs under `components/Icon/svg/` are compiled to an icon font by
-  `fantasticon` (`fantasticonrc.cjs`, run via `pnpm gen:icons`), emitting a
-  generated `IconName` union + codepoint map + webfont + CSS into
-  `components/Icon/__generated__/`. `CryptoIcon`/`FiatIcon`/
+- Icons: each theme has its own icon font. SVGs live in one folder per
+  theme, `components/Icon/svg/<theme>/`, and every theme folder must hold
+  the same file names (generation fails otherwise). `pnpm gen:icons` runs
+  `scripts/genIcons.ts`, which reads the single config `icons.config.ts`
+  (theme list + shared `fantasticon` options) and calls fantasticon's
+  `generateFonts` once per theme. It emits into `components/Icon/__generated__/`
+  a `rockethash-<theme>` webfont + CSS per theme, one shared `rockethash.ts`
+  (`IconName` union + `ICON_CODEPOINTS`, same codepoint for a name in every
+  font), and `rockethash.css`, which `@import`s each theme's CSS. The icon
+  CSS template is `Icon.hbs`; its rules are scoped as
+  `[data-theme="<theme>"] .icon`, so an `Icon` outside any `data-theme`
+  element gets no icon font. Adding a theme means adding it to
+  `icons.config.ts` and adding its SVG folder. `CryptoIcon`/`FiatIcon`/
   `PaymentMethodIcon` instead inline per-currency SVGs via `vite-plugin-svgr`
   and a generated-by-hand `*.const.ts` map from name to component.
 
@@ -393,12 +407,13 @@ these do anything without checking first:
   `Button`/`Toggle`, which do export their props type).
   Don't assume a type is part of the public surface just because a sibling
   component exports its equivalent.
-- `apps/wallet` does not depend on `@rockethash/uikit` yet, and
-  `apps/wallet/src/App.tsx`/`main.tsx` are still the unmodified
-  `create-vite` + React template (default export, demo counter, template
-  copy) rather than app code following this repo's conventions (§4). Don't
-  use `App.tsx` as a reference for conventions; use `packages/uikit`
-  instead.
+- `apps/wallet` type-checks uikit source as part of its own `tsc -b` (it
+  imports uikit source, see §1), but its tsconfig does not load the
+  `vite-plugin-svgr` client types that uikit relies on. As a result,
+  `pnpm build` in `apps/wallet` currently fails with `TS2307` on every
+  `*.svg?react` import in the uikit `CryptoIcon`/`FiatIcon`/`ImgIcon`/
+  `PaymentMethodIcon` `*.const.ts` files, while `vite build` alone
+  succeeds.
 - `packages/uikit` targets `typescript: "~6.0.2"` (devDependency) while the
   rest of the repo (`apps/wallet`, root) targets `typescript: "~7.0.2"`/
   `"7.0.2"` — a real version split across the workspace, not a typo to

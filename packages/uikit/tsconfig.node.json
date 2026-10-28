@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "composite": true,
     "emitDeclarationOnly": true,
     "incremental": true,
@@ -10,6 +11,6 @@
     "types": ["node"]
   },
   "extends": "@repo/typescript-config/base.json",
-  "include": ["vite.config.ts"],
+  "include": ["icons.config.ts", "scripts", "vite.config.ts"],
   "references": [{ "path": "../vite" }]
 }

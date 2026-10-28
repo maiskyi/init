@@ -4,17 +4,7 @@
     font-display: swap;
 }
 
-:root {
-{{#each codepoints}}
-    --{{../prefix}}-{{@key}}: "\\{{codepoint this}}";
-{{/each}}
-}
-
-{{# if selector }}
-{{ selector }} {
-{{ else }}
-{{ tag }}[class^="{{prefix}}-"], {{ tag }}[class*=" {{prefix}}-"] {
-{{/ if }}
+{{{ selector }}} {
     speak: never;
     font-family: {{ name }} !important;
     font-style: normal;
@@ -27,11 +17,7 @@
 }
 
 {{# each codepoints }}
-{{# if ../selector }}
-{{ ../selector }}.{{ ../prefix }}-{{ @key }}:before {
-{{ else }}
-.{{ ../prefix }}-{{ @key }}:before {
-{{/ if }}
+{{{ ../selector }}}.{{ ../prefix }}-{{ @key }}:before {
     content: "\\{{ codepoint this }}";
 }
 {{/ each }}

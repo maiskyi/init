@@ -61,7 +61,7 @@
   "scripts": {
     "build": "tsc -b && vite build && storybook build",
     "dev": "storybook dev -p 5001",
-    "gen:icons": "fantasticon --config fantasticonrc.cjs"
+    "gen:icons": "node scripts/genIcons.ts"
   },
   "type": "module",
   "version": "0.1.0"

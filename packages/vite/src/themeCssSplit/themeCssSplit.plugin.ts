@@ -140,9 +140,29 @@ const classifyRules = (root: Root) => {
   return { classified, themes };
 };
 
+// `@font-face { font-family: "icons-tower" }` belongs to theme `tower`.
+// The longest matching theme wins, so `icons-big-tower` goes to `big-tower`.
+const getFontFaceTheme = (atRule: AtRule, themes: Set<string>) => {
+  const declaration = atRule.nodes?.find(
+    (child) =>
+      child.type === 'decl' && child.prop.toLowerCase() === 'font-family',
+  );
+  if (declaration?.type !== 'decl') return null;
+
+  const family = declaration.value.trim().replace(/^(['"])(.*)\1$/, '$2');
+  let match: string | null = null;
+  for (const theme of themes) {
+    if (family.endsWith(`-${theme}`) && theme.length > (match?.length ?? 0)) {
+      match = theme;
+    }
+  }
+  return match;
+};
+
 const buildThemeNodes = (
   nodes: ChildNode[],
   theme: string,
+  themes: Set<string>,
   classified: Map<Rule, ClassifiedSelector[]>,
 ): ChildNode[] =>
   nodes.flatMap((node): ChildNode[] => {
@@ -155,12 +175,17 @@ const buildThemeNodes = (
     }
 
     if (node.type === 'atrule' && GROUP_AT_RULES.has(node.name) && node.nodes) {
-      const children = buildThemeNodes(node.nodes, theme, classified);
+      const children = buildThemeNodes(node.nodes, theme, themes, classified);
       if (children.length === 0) return [];
 
       const wrapper = node.clone({ nodes: [] });
       wrapper.append(children);
       return [wrapper];
+    }
+
+    if (node.type === 'atrule' && node.name === 'font-face') {
+      const fontTheme = getFontFaceTheme(node, themes);
+      if (fontTheme !== null && fontTheme !== theme) return [];
     }
 
     return [node.clone()];
@@ -183,7 +208,10 @@ const assertUniqueKeyframes = (root: Root, theme: string) => {
 /**
  * Replaces the bundled CSS with one stylesheet per `data-theme` value,
  * emitted as `themes/<theme>.css` with the theme attribute stripped from
- * selectors. CSS not scoped to a theme is copied into every theme file.
+ * selectors. CSS not scoped to a theme is copied into every theme file,
+ * except `@font-face` rules whose `font-family` ends in `-<theme>`: CSS
+ * cannot nest `@font-face` under `[data-theme]`, so the family name
+ * carries the theme and the rule goes only into that theme's file.
  *
  * Vite's own CSS minification is turned off: it runs before
  * `generateBundle` and silently drops all but the last same-named
@@ -230,7 +258,9 @@ export const themeCssSplit = (): Plugin => {
           for (const theme of [...themes].sort()) {
             const fileName = `themes/${theme}.css`;
             const themeRoot = postcss.root();
-            themeRoot.append(buildThemeNodes(root.nodes, theme, classified));
+            themeRoot.append(
+              buildThemeNodes(root.nodes, theme, themes, classified),
+            );
             assertUniqueKeyframes(themeRoot, theme);
 
             const css = themeRoot.toString();

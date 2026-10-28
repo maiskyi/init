@@ -1,6 +1,8 @@
-export type IconName = 'chevron-down' | 'check-circle';
+export type IconName =
+  | 'chevron-down'
+  | 'check-circle';
 
 export const ICON_CODEPOINTS: { [key in IconName]: string } = {
-  'check-circle': '61698',
-  'chevron-down': '61697',
+  'chevron-down': '61698',
+  'check-circle': '61697',
 };
