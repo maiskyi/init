@@ -2,6 +2,8 @@ import { Card, CryptoIcon, FiatIcon } from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
 
+import { CRYPTO_ICONS } from './WalletHome.const';
+
 import styles from './WalletHome.module.scss';
 
 interface WalletHomeProps {
@@ -24,6 +26,17 @@ const WalletHome: FC<WalletHomeProps> = () => {
       >
         <CryptoIcon name="USDT" size={30} />
         Deposit Crypto
+        <span className={styles.currencies}>
+          {CRYPTO_ICONS.map((icon) => (
+            <CryptoIcon
+              className={styles.icon}
+              key={icon}
+              name={icon}
+              size={14}
+            />
+          ))}
+          <span className={styles.counter}>39</span>
+        </span>
       </Card>
       <Card
         as="button"

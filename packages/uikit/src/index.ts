@@ -2,7 +2,11 @@
 export { Button, type ButtonProps } from './components/Button';
 export { Card, type CardProps } from './components/Card';
 export { Checkbox, type CheckboxProps } from './components/Checkbox';
-export { CryptoIcon, type CryptoIconProps } from './components/CryptoIcon';
+export {
+  CryptoIcon,
+  type CryptoIconName,
+  type CryptoIconProps,
+} from './components/CryptoIcon';
 export { Dropdown, type DropdownProps } from './components/Dropdown';
 export { FiatIcon, type FiatIconProps } from './components/FiatIcon';
 export { Form } from './components/Form';

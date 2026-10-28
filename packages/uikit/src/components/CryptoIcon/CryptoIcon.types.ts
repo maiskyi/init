@@ -35,7 +35,7 @@ export type CryptoIconName =
   | 'PUMP'
   | 'RVN'
   | 'SHIBA'
-  | 'Solana'
+  | 'SOL'
   | 'TON'
   | 'TRX'
   | 'Trump'

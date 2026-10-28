@@ -35,7 +35,7 @@ import PEPE from './duckdice/PEPE.svg?react';
 import PUMP from './duckdice/PUMP.svg?react';
 import RVN from './duckdice/RVN.svg?react';
 import SHIBA from './duckdice/SHIBA.svg?react';
-import Solana from './duckdice/Solana.svg?react';
+import SOL from './duckdice/SOL.svg?react';
 import TON from './duckdice/TON.svg?react';
 import TRX from './duckdice/TRX.svg?react';
 import Trump from './duckdice/Trump.svg?react';
@@ -94,7 +94,7 @@ export const CRYPTO_ICONS: Record<CryptoIconName, typeof AAVE> = {
   PUMP,
   RVN,
   SHIBA,
-  Solana,
+  SOL,
   TON,
   TRX,
   Trump,
