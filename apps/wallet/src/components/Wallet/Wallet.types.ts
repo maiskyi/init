@@ -17,41 +17,45 @@ export enum WalletScreen {
 }
 
 export interface WalletRef {
-  back: () => void;
+  setScreen: (screen: WalletScreenState) => void;
 }
 
-export type OnScreenChangeParams = WalletScreenState;
+export type OnScreenChangeHandlerParams = WalletScreenState;
 
 export type WalletScreenState =
   | {
       name: WalletScreen.Home;
-      props: WalletHomeProps;
+      props?: WalletHomeProps;
     }
   | {
       name: WalletScreen.Swap;
-      props: WalletSwapProps;
+      props?: WalletSwapProps;
     }
   | {
       name: WalletScreen.Vault;
-      props: WalletVaultProps;
+      props?: WalletVaultProps;
     }
   | {
       name: WalletScreen.DepositCrypto;
-      props: WalletDepositCryptoProps;
+      props?: WalletDepositCryptoProps;
     }
   | {
       name: WalletScreen.BuyCrypto;
-      props: WalletBuyCryptoProps;
+      props?: WalletBuyCryptoProps;
     }
   | {
       name: WalletScreen.DepositCash;
-      props: WalletDepositCashProps;
+      props?: WalletDepositCashProps;
     }
   | {
       name: WalletScreen.Withdraw;
-      props: WalletWithdrawProps;
+      props?: WalletWithdrawProps;
     };
 
 export interface WalletState {
   screen: WalletScreenState;
 }
+
+export type OnScreenChangeHandler = (
+  params: OnScreenChangeHandlerParams,
+) => void;

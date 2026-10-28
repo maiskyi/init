@@ -31,18 +31,21 @@
 [data-theme="tower"] .icon.icon-chevron-down:before {
     content: "\f105";
 }
-[data-theme="tower"] .icon.icon-chevron-right:before {
+[data-theme="tower"] .icon.icon-chevron-left:before {
     content: "\f106";
 }
-[data-theme="tower"] .icon.icon-exchange:before {
+[data-theme="tower"] .icon.icon-chevron-right:before {
     content: "\f107";
 }
-[data-theme="tower"] .icon.icon-face:before {
+[data-theme="tower"] .icon.icon-exchange:before {
     content: "\f108";
 }
-[data-theme="tower"] .icon.icon-safe:before {
+[data-theme="tower"] .icon.icon-face:before {
     content: "\f109";
 }
-[data-theme="tower"] .icon.icon-support:before {
+[data-theme="tower"] .icon.icon-safe:before {
     content: "\f10a";
+}
+[data-theme="tower"] .icon.icon-support:before {
+    content: "\f10b";
 }

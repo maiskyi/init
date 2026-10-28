@@ -1,3 +1,4 @@
+import { Alert, Grid } from '@rockethash/uikit';
 import {
   forwardRef,
   useCallback,
@@ -9,7 +10,7 @@ import {
 import { WALLET_SCREENS } from './Wallet.const';
 import { WalletContext } from './Wallet.context';
 import {
-  type OnScreenChangeParams,
+  type OnScreenChangeHandler,
   type WalletRef,
   WalletScreen,
   type WalletScreenState,
@@ -18,11 +19,15 @@ import {
 
 export interface WalletProps {
   initialScreen?: WalletScreen;
-  onScreenChange?: (params: OnScreenChangeParams) => void;
+  onScreenChange?: OnScreenChangeHandler;
+  onSupportClick?: () => void;
 }
 
 export const Wallet = forwardRef<WalletRef, WalletProps>(
-  ({ initialScreen = WalletScreen.Home, onScreenChange }, ref) => {
+  (
+    { initialScreen = WalletScreen.Home, onScreenChange, onSupportClick },
+    ref,
+  ) => {
     const [{ screen }, setState] = useState<WalletState>({
       screen: {
         name: initialScreen,
@@ -49,14 +54,23 @@ export const Wallet = forwardRef<WalletRef, WalletProps>(
     );
 
     useImperativeHandle(ref, () => ({
-      back: () => {
-        console.log('back');
-      },
+      setScreen: setActiveScreen,
     }));
 
     return (
       <WalletContext.Provider value={contextValue}>
-        <Screen {...screen.props} />
+        <Grid spacing={3}>
+          <Grid.Cell>
+            <Screen {...screen.props} />
+          </Grid.Cell>
+          {onSupportClick && (
+            <Grid.Cell>
+              <Alert onClick={onSupportClick} variant="info">
+                Have questions? Feel free to write us any time
+              </Alert>
+            </Grid.Cell>
+          )}
+        </Grid>
       </WalletContext.Provider>
     );
   },
