@@ -10,6 +10,7 @@ export {
 export { Dropdown, type DropdownProps } from './components/Dropdown';
 export { FiatIcon, type FiatIconProps } from './components/FiatIcon';
 export { Form } from './components/Form';
+export { Grid, type GridProps } from './components/Grid';
 export { Icon, type IconProps } from './components/Icon';
 export { Input, type InputProps } from './components/Input';
 export { Loader, type LoaderProps } from './components/Loader';
