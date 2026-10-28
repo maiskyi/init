@@ -9,6 +9,7 @@
     font-family: "Open Sans", sans-serif;
     &__item {
       display: flex;
+      transition: all 0.3s;
       &-content {
         display: flex;
         align-items: center;
@@ -37,14 +38,12 @@
           text-decoration: none;
         }
       }
-      &-icon {
+      &-prefix,
+      &-suffix {
         display: inline-flex;
         flex-shrink: 0;
         align-items: center;
         justify-content: center;
-        width: 16px;
-        height: 16px;
-        font-size: 16px;
         color: currentColor;
       }
       &-label {

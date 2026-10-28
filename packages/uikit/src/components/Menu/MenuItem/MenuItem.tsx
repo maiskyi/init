@@ -55,11 +55,11 @@ export const MenuItem: MenuItemComponent = ({
         {...props}
       >
         {prefix && (
-          <span className={cn(styles['menu__item-icon'])}>{prefix}</span>
+          <span className={cn(styles['menu__item-prefix'])}>{prefix}</span>
         )}
         <span className={cn(styles['menu__item-label'])}>{children}</span>
         {suffix && (
-          <span className={cn(styles['menu__item-icon'])}>{suffix}</span>
+          <span className={cn(styles['menu__item-suffix'])}>{suffix}</span>
         )}
       </Component>
     </li>
