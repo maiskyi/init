@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@rockethash/uikit';
+import { Button, ThemeProvider } from '@rockethash/uikit';
 import { useRef, useState } from 'react';
 
 import { Wallet, type WalletRef, WalletScreen } from './components/Wallet';
@@ -15,7 +15,13 @@ export const App = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.header}></div>
+      <div className={styles.header}>
+        <Button
+          icon="chevron-right"
+          onClick={() => wallet.current?.back()}
+          variant="secondary"
+        />
+      </div>
       <ThemeProvider>
         <WalletProvider>
           <Wallet initialScreen={screen} ref={wallet} />
