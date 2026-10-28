@@ -30,6 +30,12 @@ export { ImgIcon, type ImgIconProps } from './components/ImgIcon';
 export { Input, type InputProps } from './components/Input';
 export { Loader, type LoaderProps } from './components/Loader';
 export {
+  Menu,
+  MenuItem,
+  type MenuItemProps,
+  type MenuProps,
+} from './components/Menu';
+export {
   OutsideClickHandler,
   type OutsideClickHandlerProps,
 } from './components/OutsideClickHandler';

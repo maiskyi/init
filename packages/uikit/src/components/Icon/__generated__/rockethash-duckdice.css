@@ -16,9 +16,21 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-[data-theme="duckdice"] .icon.icon-check-circle:before {
+[data-theme="duckdice"] .icon.icon-arrow-up:before {
     content: "\f101";
 }
-[data-theme="duckdice"] .icon.icon-chevron-down:before {
+[data-theme="duckdice"] .icon.icon-check-circle:before {
     content: "\f102";
+}
+[data-theme="duckdice"] .icon.icon-chevron-down:before {
+    content: "\f103";
+}
+[data-theme="duckdice"] .icon.icon-chevron-right:before {
+    content: "\f104";
+}
+[data-theme="duckdice"] .icon.icon-exchange:before {
+    content: "\f105";
+}
+[data-theme="duckdice"] .icon.icon-safe:before {
+    content: "\f106";
 }
