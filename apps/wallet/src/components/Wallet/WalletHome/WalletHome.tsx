@@ -1,4 +1,4 @@
-import { Card, CryptoIcon, FiatIcon, Grid } from '@rockethash/uikit';
+import { Card, CryptoIcon, FiatIcon, Grid, ImgIcon } from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
 
@@ -50,6 +50,12 @@ const WalletHome: FC<WalletHomeProps> = () => {
         >
           <FiatIcon name="CARD" size={30} />
           Buy Crypto
+          <span className={styles.payments}>
+            <ImgIcon height={12} name="google-pay" />
+            <ImgIcon height={12} name="apple-pay" />
+            <ImgIcon height={12} name="visa" />
+            <ImgIcon height={12} name="mastercard" />
+          </span>
         </Card>
       </Grid.Cell>
       <Grid.Cell xs={12}>
