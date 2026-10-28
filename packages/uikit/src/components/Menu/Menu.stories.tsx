@@ -12,25 +12,23 @@ const meta: Meta<typeof Menu> = {
   },
   component: Menu,
   render: ({ ...args }) => (
-    <div style={{ width: 468 }}>
-      <Menu {...args}>
-        {ITEMS.map((label, index) => (
-          <Menu.Item
-            active={index === 1}
-            key={label}
-            onClick={fn()}
-            prefix={<Icon name="check-circle" />}
-            suffix={<Icon name="chevron-right" />}
-            {...(index === 2 && {
-              as: 'a',
-              href: `#${label.toLowerCase()}`,
-            })}
-          >
-            {label}
-          </Menu.Item>
-        ))}
-      </Menu>
-    </div>
+    <Menu {...args}>
+      {ITEMS.map((label, index) => (
+        <Menu.Item
+          active={index === 1}
+          key={label}
+          onClick={fn()}
+          prefix={<Icon name="check-circle" />}
+          suffix={<Icon name="chevron-right" />}
+          {...(index === 2 && {
+            as: 'a',
+            href: `#${label.toLowerCase()}`,
+          })}
+        >
+          {label}
+        </Menu.Item>
+      ))}
+    </Menu>
   ),
   title: 'Navigation/Menu',
 };

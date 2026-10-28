@@ -1,0 +1,117 @@
+@use "sass:map";
+
+@use "../../assets/scss/variables" as vars;
+
+// Figma "Info Section": Alert, Success, Error, Announcement, Information.
+// Only warning, success and error have a border.
+$variants: (
+  warning: (
+    background: var(--surface-panels-panel-bg-orange-10),
+    background-hover: var(--surface-panels-panel-bg-orange-20),
+    border: var(--borders-border-orange-20),
+    color: var(--text-accent-orange),
+    icon: var(--icon-orange),
+  ),
+  success: (
+    background: var(--surface-panels-panel-bg-green400-10),
+    background-hover: var(--surface-panels-panel-bg-green400-20),
+    border: var(--borders-border-green400-20),
+    color: var(--text-accent-green),
+    icon: var(--icon-green),
+  ),
+  error: (
+    background: var(--surface-panels-panel-bg-red-10),
+    background-hover: var(--surface-panels-panel-bg-red-20),
+    border: var(--borders-border-red-20),
+    color: var(--text-accent-red),
+    icon: var(--icon-red),
+  ),
+  default: (
+    background: var(--surface-panels-panel-bg-light-10),
+    background-hover: var(--surface-panels-panel-bg-light-20),
+    border: null,
+    color: var(--text-primary),
+    icon: var(--icon-primary),
+  ),
+  info: (
+    background: var(--surface-panels-panel-bg-blue-10),
+    background-hover: var(--surface-panels-panel-bg-blue-20),
+    border: null,
+    color: var(--text-accent-blue300),
+    icon: var(--icon-blue-300),
+  ),
+);
+
+@each $theme, $config in vars.$themes {
+  [data-theme="#{$theme}"] {
+    .alert {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      margin: 0;
+      padding: var(--Details-Spacing-12);
+      box-sizing: border-box;
+      border: none;
+      border-radius: var(--Details-Radius-rounded-6);
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+
+      @each $variant, $tokens in $variants {
+        &.#{$variant} {
+          background: map.get($tokens, background);
+          color: map.get($tokens, color);
+          // Inset shadow instead of border, so bordered and borderless
+          // variants keep the same size.
+          @if map.get($tokens, border) {
+            box-shadow: 0 0 0 1px inset map.get($tokens, border);
+          }
+
+          .leading-icon {
+            color: map.get($tokens, icon);
+          }
+
+          &.clickable:hover {
+            background: map.get($tokens, background-hover);
+          }
+        }
+      }
+
+      &.clickable {
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:focus-visible {
+          outline: 2px solid var(--borders-border-light-8);
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    // 20px tall to center the 16px icon on the first 20px line of text.
+    .leading-icon {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      height: 20px;
+      margin-right: var(--Details-Spacing-10);
+    }
+
+    .message {
+      flex: 1 0 0;
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .chevron {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-self: center;
+      margin-left: var(--Details-Spacing-8);
+      color: var(--icon-primary);
+    }
+  }
+}

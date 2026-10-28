@@ -16,21 +16,33 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-[data-theme="tower"] .icon.icon-arrow-up:before {
+[data-theme="tower"] .icon.icon-alert:before {
     content: "\f101";
 }
-[data-theme="tower"] .icon.icon-check-circle:before {
+[data-theme="tower"] .icon.icon-arrow-up:before {
     content: "\f102";
 }
-[data-theme="tower"] .icon.icon-chevron-down:before {
+[data-theme="tower"] .icon.icon-cancel:before {
     content: "\f103";
 }
-[data-theme="tower"] .icon.icon-chevron-right:before {
+[data-theme="tower"] .icon.icon-check-circle:before {
     content: "\f104";
 }
-[data-theme="tower"] .icon.icon-exchange:before {
+[data-theme="tower"] .icon.icon-chevron-down:before {
     content: "\f105";
 }
-[data-theme="tower"] .icon.icon-safe:before {
+[data-theme="tower"] .icon.icon-chevron-right:before {
     content: "\f106";
+}
+[data-theme="tower"] .icon.icon-exchange:before {
+    content: "\f107";
+}
+[data-theme="tower"] .icon.icon-face:before {
+    content: "\f108";
+}
+[data-theme="tower"] .icon.icon-safe:before {
+    content: "\f109";
+}
+[data-theme="tower"] .icon.icon-support:before {
+    content: "\f10a";
 }
