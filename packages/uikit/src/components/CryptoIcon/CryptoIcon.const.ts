@@ -1,3 +1,4 @@
+import { type CryptoIconName } from './CryptoIcon.types';
 import AAVE from './duckdice/AAVE.svg?react';
 import ADA from './duckdice/ADA.svg?react';
 import Arbitrum from './duckdice/Arbitrum.svg?react';
@@ -56,7 +57,7 @@ import XRP from './duckdice/XRP.svg?react';
 import ZEC from './duckdice/ZEC.svg?react';
 import ZEN from './duckdice/ZEN.svg?react';
 
-export const CRYPTO_ICONS: Record<string, typeof AAVE> = {
+export const CRYPTO_ICONS: Record<CryptoIconName, typeof AAVE> = {
   AAVE,
   ADA,
   Arbitrum,

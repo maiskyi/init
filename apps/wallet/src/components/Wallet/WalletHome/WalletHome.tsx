@@ -1,4 +1,4 @@
-import { Card } from '@rockethash/uikit';
+import { Card, CryptoIcon, FiatIcon } from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
 
@@ -22,6 +22,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
         onClick={handleOnClick}
         outline
       >
+        <CryptoIcon name="USDT" size={30} />
         Deposit Crypto
       </Card>
       <Card
@@ -31,6 +32,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
         onClick={handleOnClick}
         outline
       >
+        <FiatIcon name="FIAT" size={30} />
         Buy Crypto
       </Card>
       <Card

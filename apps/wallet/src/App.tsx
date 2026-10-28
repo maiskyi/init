@@ -1,17 +1,24 @@
 import { ThemeProvider } from '@rockethash/uikit';
+import { useRef, useState } from 'react';
 
-import { Wallet } from './components/Wallet';
+import { Wallet, type WalletRef, WalletScreen } from './components/Wallet';
 import { WalletProvider } from './components/WalletProvider';
 
 import styles from './App.module.scss';
 
 export const App = () => {
+  const wallet = useRef<WalletRef>(null);
+
+  const [{ screen }] = useState({
+    screen: WalletScreen.Home,
+  });
+
   return (
     <div className={styles.root}>
       <div className={styles.header}></div>
       <ThemeProvider>
         <WalletProvider>
-          <Wallet />
+          <Wallet initialScreen={screen} ref={wallet} />
         </WalletProvider>
       </ThemeProvider>
     </div>

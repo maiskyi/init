@@ -1,4 +1,4 @@
-import { type FC, forwardRef, useImperativeHandle } from 'react';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
 import { WalletContext } from './Wallet.context';
 import { type WalletRef, WalletScreen } from './Wallet.types';
@@ -8,8 +8,12 @@ export interface WalletProps {
   initialScreen?: WalletScreen;
 }
 
-export const Wallet: FC<WalletProps> = forwardRef<WalletRef, WalletProps>(
+export const Wallet = forwardRef<WalletRef, WalletProps>(
   ({ initialScreen = WalletScreen.Home }, ref) => {
+    const [{ screen }] = useState({
+      screen: initialScreen,
+    });
+
     useImperativeHandle(ref, () => ({
       back: () => {
         console.log('back');
@@ -17,7 +21,7 @@ export const Wallet: FC<WalletProps> = forwardRef<WalletRef, WalletProps>(
     }));
 
     return (
-      <WalletContext.Provider value={{ screen: initialScreen }}>
+      <WalletContext.Provider value={{ screen }}>
         <WalletHome />
       </WalletContext.Provider>
     );

@@ -15,6 +15,7 @@ import DOP from './duckdice/DOP.svg?react';
 import DZD from './duckdice/DZD.svg?react';
 import EGP from './duckdice/EGP.svg?react';
 import ETB from './duckdice/ETB.svg?react';
+import FIAT from './duckdice/FIAT.svg?react';
 import GBP from './duckdice/GBP.svg?react';
 import GHC from './duckdice/GH₵.svg?react';
 import GTQ from './duckdice/GTQ.svg?react';
@@ -52,8 +53,9 @@ import UZS from './duckdice/UZS.svg?react';
 import VND from './duckdice/VND.svg?react';
 import XOF from './duckdice/XOF.svg?react';
 import ZAR from './duckdice/ZAR.svg?react';
+import { type FiatIconName } from './FiatIcon.types';
 
-export const FIAT_ICONS: Record<string, typeof AED> = {
+export const FIAT_ICONS: Record<FiatIconName, typeof AED> = {
   AED,
   ARS,
   AUD,
@@ -71,6 +73,7 @@ export const FIAT_ICONS: Record<string, typeof AED> = {
   DZD,
   EGP,
   ETB,
+  FIAT,
   GBP,
   GHC,
   GTQ,
