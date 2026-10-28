@@ -30,7 +30,8 @@
     "enabled": true
   },
   "files": {
-    "ignoreUnknown": false
+    "ignoreUnknown": false,
+    "includes": ["**", "!!**/__generated__"]
   },
   "formatter": {
     "enabled": true,

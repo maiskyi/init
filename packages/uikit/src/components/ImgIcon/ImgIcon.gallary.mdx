@@ -1,0 +1,16 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
+
+import { ImgIcon } from './ImgIcon';
+import { IMG_ICONS } from './ImgIcon.const';
+
+<Meta title="Icons/Img" />
+
+# Img Icons Gallery
+
+<IconGallery>
+  {Object.keys(IMG_ICONS).map((icon) => (
+    <IconItem name={icon} key={icon}>
+      <ImgIcon name={icon} />
+    </IconItem>
+  ))}
+</IconGallery>

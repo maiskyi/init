@@ -20,6 +20,7 @@ export {
   type GridCellProps,
 } from './components/Grid/GridCell';
 export { Icon, type IconProps } from './components/Icon';
+export { ImgIcon, type ImgIconProps } from './components/ImgIcon';
 export { Input, type InputProps } from './components/Input';
 export { Loader, type LoaderProps } from './components/Loader';
 export {

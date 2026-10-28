@@ -1,7 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Button } from '../../Button';
-import { Toggle } from '../../Toggle';
 import { Form } from '../Form';
 import { FormToggle } from './FormToggle';
 
