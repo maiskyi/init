@@ -1,4 +1,5 @@
 $duckdice: (
+  spacing: 4px,
   breakpoints: (
     ld: 1250px,
     ld_max: 1360px,
@@ -12,4 +13,8 @@ $duckdice: (
     xs: 480px,
     xss: 374px,
   ),
+);
+
+$themes: (
+  duckdice: $duckdice,
 );

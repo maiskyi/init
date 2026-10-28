@@ -1,0 +1,67 @@
+@use "sass:map";
+@use "../../assets/scss/mixins" as mx;
+@use "../../assets/scss/variables" as vars;
+
+$columns: 12;
+
+@mixin cell-span($span) {
+  @if $span == hidden {
+    display: none;
+  } @else {
+    $width: calc(
+      (100% - #{$columns - 1} * var(--grid-col-gap)) / #{$columns} * #{$span} +
+        #{$span - 1} * var(--grid-col-gap)
+    );
+
+    display: block;
+    flex: 0 0 $width;
+    max-width: $width;
+  }
+}
+
+@each $theme, $config in vars.$themes {
+  $spacing: map.get($config, spacing);
+  $breakpoints: map.get($config, breakpoints);
+
+  [data-theme="#{$theme}"] {
+    .grid {
+      --grid-col-gap: calc(var(--grid-col-spacing, 0) * #{$spacing});
+      --grid-row-gap: calc(var(--grid-row-spacing, 0) * #{$spacing});
+
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: var(--grid-col-gap);
+      row-gap: var(--grid-row-gap);
+    }
+
+    .cell {
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    @for $span from 1 through $columns {
+      .span-#{$span} {
+        @include cell-span($span);
+      }
+    }
+
+    .span-hidden {
+      @include cell-span(hidden);
+    }
+
+    @each $token in mx.sort-by-value($breakpoints) {
+      @include mx.breakpoint-up($token, $breakpoints) {
+        @for $span from 1 through $columns {
+          .#{$token}-#{$span} {
+            @include cell-span($span);
+          }
+        }
+
+        .#{$token}-hidden {
+          @include cell-span(hidden);
+        }
+      }
+    }
+  }
+}

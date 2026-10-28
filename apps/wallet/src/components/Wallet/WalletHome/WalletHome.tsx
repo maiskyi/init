@@ -1,4 +1,4 @@
-import { Card, CryptoIcon, FiatIcon } from '@rockethash/uikit';
+import { Card, CryptoIcon, FiatIcon, Grid } from '@rockethash/uikit';
 import cn from 'classnames';
 import { type FC } from 'react';
 
@@ -16,47 +16,53 @@ const WalletHome: FC<WalletHomeProps> = () => {
   };
 
   return (
-    <div>
-      <Card
-        as="button"
-        className={styles.button}
-        glow="green"
-        onClick={handleOnClick}
-        outline
-      >
-        <CryptoIcon name="USDT" size={30} />
-        Deposit Crypto
-        <span className={styles.currencies}>
-          {CRYPTO_ICONS.map((icon) => (
-            <CryptoIcon
-              className={styles.icon}
-              key={icon}
-              name={icon}
-              size={14}
-            />
-          ))}
-          <span className={styles.counter}>39</span>
-        </span>
-      </Card>
-      <Card
-        as="button"
-        className={styles.button}
-        glow="blue"
-        onClick={handleOnClick}
-        outline
-      >
-        <FiatIcon name="FIAT" size={30} />
-        Buy Crypto
-      </Card>
-      <Card
-        as="button"
-        className={cn(styles.button, styles.cash)}
-        onClick={handleOnClick}
-        outline
-      >
-        Deposit Cash
-      </Card>
-    </div>
+    <Grid spacing={3}>
+      <Grid.Cell md={6} xs={12}>
+        <Card
+          as="button"
+          className={styles.button}
+          glow="green"
+          onClick={handleOnClick}
+          outline
+        >
+          <CryptoIcon name="USDT" size={30} />
+          Deposit Crypto
+          <span className={styles.currencies}>
+            {CRYPTO_ICONS.map((icon) => (
+              <CryptoIcon
+                className={styles.icon}
+                key={icon}
+                name={icon}
+                size={14}
+              />
+            ))}
+            <span className={styles.counter}>39</span>
+          </span>
+        </Card>
+      </Grid.Cell>
+      <Grid.Cell md={6} xs={12}>
+        <Card
+          as="button"
+          className={styles.button}
+          glow="blue"
+          onClick={handleOnClick}
+          outline
+        >
+          <FiatIcon name="FIAT" size={30} />
+          Buy Crypto
+        </Card>
+      </Grid.Cell>
+      <Grid.Cell xs={12}>
+        <Card
+          as="button"
+          className={cn(styles.button, styles.cash)}
+          onClick={handleOnClick}
+          outline
+        >
+          Deposit Cash
+        </Card>
+      </Grid.Cell>
+    </Grid>
   );
 };
 

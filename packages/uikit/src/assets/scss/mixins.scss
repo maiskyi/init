@@ -1,0 +1,39 @@
+@use "sass:list";
+@use "sass:map";
+
+// Returns the keys of `$map` ordered by ascending value.
+@function sort-by-value($map) {
+  $keys: map.keys($map);
+  $sorted: ();
+
+  @while list.length($keys) > 0 {
+    $min-key: list.nth($keys, 1);
+
+    @each $key in $keys {
+      @if map.get($map, $key) < map.get($map, $min-key) {
+        $min-key: $key;
+      }
+    }
+
+    $sorted: list.append($sorted, $min-key);
+    $index: list.index($keys, $min-key);
+    $remaining: ();
+
+    @for $i from 1 through list.length($keys) {
+      @if $i != $index {
+        $remaining: list.append($remaining, list.nth($keys, $i));
+      }
+    }
+
+    $keys: $remaining;
+  }
+
+  @return $sorted;
+}
+
+// Mobile-first media query: applies from the `$name` breakpoint upward.
+@mixin breakpoint-up($name, $breakpoints) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
