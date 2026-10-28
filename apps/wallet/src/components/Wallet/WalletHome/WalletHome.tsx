@@ -11,6 +11,8 @@ import {
 import cn from 'classnames';
 import { type FC } from 'react';
 
+import { useWallet } from '../Wallet.hooks';
+import { WalletScreen } from '../Wallet.types';
 import { CRYPTO_ICONS, FIAT_ICONS } from './WalletHome.const';
 
 import styles from './WalletHome.module.scss';
@@ -20,8 +22,48 @@ interface WalletHomeProps {
 }
 
 const WalletHome: FC<WalletHomeProps> = () => {
-  const handleOnClick = () => {
-    console.log('click');
+  const { setActiveScreen } = useWallet();
+
+  const handleOnDepositCryptoClick = () => {
+    setActiveScreen({
+      name: WalletScreen.DepositCrypto,
+      props: {},
+    });
+  };
+
+  const handleOnBuyCryptoClick = () => {
+    setActiveScreen({
+      name: WalletScreen.BuyCrypto,
+      props: {},
+    });
+  };
+
+  const handleOnDepositCashClick = () => {
+    setActiveScreen({
+      name: WalletScreen.DepositCash,
+      props: {},
+    });
+  };
+
+  const handleOnWithdrawClick = () => {
+    setActiveScreen({
+      name: WalletScreen.Withdraw,
+      props: {},
+    });
+  };
+
+  const handleOnSwapClick = () => {
+    setActiveScreen({
+      name: WalletScreen.Swap,
+      props: {},
+    });
+  };
+
+  const handleOnVaultClick = () => {
+    setActiveScreen({
+      name: WalletScreen.Vault,
+      props: {},
+    });
   };
 
   return (
@@ -31,7 +73,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
           as="button"
           className={styles.button}
           glow="green"
-          onClick={handleOnClick}
+          onClick={handleOnDepositCryptoClick}
           outline
         >
           <CryptoIcon name="USDT" size={30} />
@@ -54,7 +96,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
           as="button"
           className={styles.button}
           glow="blue"
-          onClick={handleOnClick}
+          onClick={handleOnBuyCryptoClick}
           outline
         >
           <FiatIcon name="CARD" size={30} />
@@ -71,7 +113,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
         <Card
           as="button"
           className={cn(styles.button, styles.cash)}
-          onClick={handleOnClick}
+          onClick={handleOnDepositCashClick}
           outline
         >
           <span className={styles.currencies}>
@@ -88,18 +130,21 @@ const WalletHome: FC<WalletHomeProps> = () => {
       <Grid.Cell xs={12}>
         <Menu>
           <Menu.Item
+            onClick={handleOnWithdrawClick}
             prefix={<Icon name="arrow-up" />}
             suffix={<Icon name="chevron-right" />}
           >
             Withdraw
           </Menu.Item>
           <Menu.Item
+            onClick={handleOnSwapClick}
             prefix={<Icon name="exchange" />}
             suffix={<Icon name="chevron-right" />}
           >
             Swap
           </Menu.Item>
           <Menu.Item
+            onClick={handleOnVaultClick}
             prefix={<Icon name="safe" />}
             suffix={<Icon name="chevron-right" />}
           >
@@ -111,4 +156,5 @@ const WalletHome: FC<WalletHomeProps> = () => {
   );
 };
 
+export type { WalletHomeProps };
 export { WalletHome };
