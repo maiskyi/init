@@ -3,7 +3,7 @@ import { type FC } from 'react';
 
 import { type WalletDepositCryptoProps } from './WalletDepositCrypto.types';
 
-const WalletDepositCrypto: FC<WalletDepositCryptoProps> = ({ className }) => {
+const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const handleOnSubmit = (data: unknown) => {
     console.log(data);
   };
@@ -14,11 +14,29 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = ({ className }) => {
         <Grid.Cell>
           <Form.Group>
             <Form.Label>Your balance</Form.Label>
+            <Form.Select
+              getOptionLabel={() => ''}
+              getOptionValue={() => ''}
+              name="balance"
+              options={[]}
+              validation={{
+                required: true,
+              }}
+            />
           </Form.Group>
         </Grid.Cell>
         <Grid.Cell>
           <Form.Group>
             <Form.Label>Payment method</Form.Label>
+            <Form.Select
+              getOptionLabel={() => ''}
+              getOptionValue={() => ''}
+              name="balance"
+              options={[]}
+              validation={{
+                required: true,
+              }}
+            />
           </Form.Group>
         </Grid.Cell>
       </Grid>

@@ -1,9 +1,11 @@
-import { type FC, Fragment, type PropsWithChildren } from 'react';
+import { ApiProvider, type ApiProviderProps } from '@services/api';
+import { type FC } from 'react';
 
-export type WalletProviderProps = PropsWithChildren<{
-  children: React.ReactNode;
-}>;
+interface WalletProviderProps extends ApiProviderProps {}
 
-export const WalletProvider: FC<WalletProviderProps> = ({ children }) => {
-  return <Fragment>{children}</Fragment>;
+const WalletProvider: FC<WalletProviderProps> = ({ children, apiBaseUrl }) => {
+  return <ApiProvider apiBaseUrl={apiBaseUrl}>{children}</ApiProvider>;
 };
+
+export type { WalletProviderProps };
+export { WalletProvider };

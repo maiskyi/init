@@ -8,7 +8,7 @@ import { type FormSelectValidation } from './FormSelect.types';
 import styles from '../Form.module.scss';
 
 interface FormSelectProps<T extends object>
-  extends SelectProps<T>,
+  extends Omit<SelectProps<T>, 'value'>,
     Omit<
       FormControllerProps<string, FormSelectValidation>,
       'children' | 'type'
