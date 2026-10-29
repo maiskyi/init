@@ -16,10 +16,10 @@ import DASH from './duckdice/DASH.svg?react';
 import DDG from './duckdice/DDG.svg?react';
 import DOGE from './duckdice/DOGE.svg?react';
 import DOT from './duckdice/DOT.svg?react';
+import ENA from './duckdice/ENA.svg?react';
 import EOS from './duckdice/EOS.svg?react';
 import ETC from './duckdice/ETC.svg?react';
 import ETH from './duckdice/ETH.svg?react';
-import Ethena from './duckdice/Ethena.svg?react';
 import EUR from './duckdice/EUR.svg?react';
 import FDUSD from './duckdice/FDUSD.svg?react';
 import FTM from './duckdice/FTM.svg?react';
@@ -34,11 +34,11 @@ import ORDI from './duckdice/ORDI.svg?react';
 import PEPE from './duckdice/PEPE.svg?react';
 import PUMP from './duckdice/PUMP.svg?react';
 import RVN from './duckdice/RVN.svg?react';
-import SHIBA from './duckdice/SHIBA.svg?react';
+import SHIB from './duckdice/SHIB.svg?react';
 import SOL from './duckdice/SOL.svg?react';
 import TON from './duckdice/TON.svg?react';
+import TRUMP from './duckdice/TRUMP.svg?react';
 import TRX from './duckdice/TRX.svg?react';
-import Trump from './duckdice/Trump.svg?react';
 import TUSD from './duckdice/TUSD.svg?react';
 import UNI from './duckdice/UNI.svg?react';
 import USD from './duckdice/USD.svg?react';
@@ -75,10 +75,10 @@ export const CRYPTO_ICONS: Record<CryptoIconName, typeof AAVE> = {
   DDG,
   DOGE,
   DOT,
+  ENA,
   EOS,
   ETC,
   ETH,
-  Ethena,
   EUR,
   FDUSD,
   FTM,
@@ -93,11 +93,11 @@ export const CRYPTO_ICONS: Record<CryptoIconName, typeof AAVE> = {
   PEPE,
   PUMP,
   RVN,
-  SHIBA,
+  SHIB,
   SOL,
   TON,
+  TRUMP,
   TRX,
-  Trump,
   TUSD,
   UNI,
   USD,

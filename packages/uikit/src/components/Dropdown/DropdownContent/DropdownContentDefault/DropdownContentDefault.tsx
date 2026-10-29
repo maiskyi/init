@@ -82,7 +82,11 @@ export const DropdownContentDefault: FC<DropdownContentDefaultProps> = ({
         )}
         onTransitionEnd={handleOnTransitionEnd}
         ref={contentRef}
-        style={{ ...position, minWidth: matchToggleWidth ? width : undefined }}
+        style={{
+          ...position,
+          maxWidth: matchToggleWidth ? width : undefined,
+          minWidth: matchToggleWidth ? width : undefined,
+        }}
       >
         <div className={styles.dropdown__screen}>{children}</div>
       </div>
