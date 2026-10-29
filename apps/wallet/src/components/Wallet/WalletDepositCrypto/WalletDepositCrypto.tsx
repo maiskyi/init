@@ -3,7 +3,10 @@ import { Form, Grid } from '@rockethash/uikit';
 import { type FC } from 'react';
 
 import { useWalletData } from '../../WalletProvider';
-import { type WalletDepositCryptoProps } from './WalletDepositCrypto.types';
+import {
+  WalletDepositCryptoFormFields,
+  type WalletDepositCryptoProps,
+} from './WalletDepositCrypto.types';
 
 const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const { cryptoCurrencies } = useWalletData();
@@ -21,7 +24,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
             <Form.Select
               getOptionLabel={(params) => <WalletBalanceOption {...params} />}
               getOptionValue={({ option }) => option.symbol}
-              name="balance"
+              name={WalletDepositCryptoFormFields.Balance}
               options={cryptoCurrencies}
               validation={{
                 required: true,
@@ -35,7 +38,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
             <Form.Select
               getOptionLabel={() => ''}
               getOptionValue={() => ''}
-              name="balance"
+              name={WalletDepositCryptoFormFields.PaymentMethod}
               options={[]}
               validation={{
                 required: true,

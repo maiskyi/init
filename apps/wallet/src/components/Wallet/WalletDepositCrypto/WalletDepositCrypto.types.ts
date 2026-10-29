@@ -1,5 +1,8 @@
-interface WalletDepositCryptoProps {
+export interface WalletDepositCryptoProps {
   className?: string;
 }
 
-export type { WalletDepositCryptoProps };
+export enum WalletDepositCryptoFormFields {
+  Balance = 'balance',
+  PaymentMethod = 'paymentMethod',
+}
