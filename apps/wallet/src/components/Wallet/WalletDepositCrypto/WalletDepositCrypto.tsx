@@ -19,10 +19,8 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
           <Form.Group>
             <Form.Label>Your balance</Form.Label>
             <Form.Select
-              getOptionLabel={(currency) => (
-                <WalletBalanceOption {...currency} />
-              )}
-              getOptionValue={({ symbol }) => symbol}
+              getOptionLabel={(params) => <WalletBalanceOption {...params} />}
+              getOptionValue={({ option }) => option.symbol}
               name="balance"
               options={cryptoCurrencies}
               validation={{

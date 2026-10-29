@@ -1,7 +1,16 @@
 import { type DTO } from '@services/api';
 import { type FC } from 'react';
 
-const WalletBalanceOption: FC<DTO.Currency> = ({ name, symbol }) => {
+interface WalletBalanceOptionProps {
+  isActive: boolean;
+  option: DTO.Currency;
+}
+
+const WalletBalanceOption: FC<WalletBalanceOptionProps> = ({
+  isActive,
+  option,
+}) => {
+  const { name } = option;
   return <div>{name}</div>;
 };
 
