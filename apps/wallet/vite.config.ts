@@ -11,14 +11,12 @@ export default defineConfig(({ command: _ }) => {
       svgr(),
       react(),
       babel({
-        presets: [reactCompilerPreset()],
+        presets: [reactCompilerPreset({ target: '18' })],
       }),
     ],
     resolve: {
       alias: {
         '@services': path.resolve(__dirname, './src/_services'),
-        react: path.resolve(__dirname, './node_modules/react'),
-        'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
       },
       dedupe: ['react', 'react-dom'],
     },

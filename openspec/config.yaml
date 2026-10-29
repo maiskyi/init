@@ -6,10 +6,16 @@ schema: spec-driven
 # Keep general project documentation and discoverable codebase facts out.
 context: |
   pnpm + Turborepo monorepo (apps/*, packages/*, playgrounds/*). Two real
-  products: apps/wallet (React 19 + Vite SPA) and packages/uikit (React
+  products: apps/wallet (React 18 + Vite SPA) and packages/uikit (React
   component library, Vite + Storybook, SCSS Modules, data-theme based
   theming). packages/typescript-config holds shared tsconfig bases.
   playgrounds/* are throwaway examples, not shipped product.
+
+  The whole workspace develops against React 18 because packages/uikit ships
+  to two external products, one on React 18 and one on React 19. Treat 18 as
+  a floor to build against, not a preference: uikit's peers span
+  ^18.3.1 || ^19.0.0, and the React Compiler runs at target '18' in both
+  uikit and wallet so one build serves both majors. See AGENTS.md section 4.
 
   Read AGENTS.md at the repo root before writing any artifact — it documents
   the actual naming, TypeScript/React, styling, import/export, and tooling
@@ -22,9 +28,18 @@ context: |
   runner/config to extend; proposals that add tests must also introduce the
   test setup itself.
 
-  apps/wallet does not depend on packages/uikit yet, and apps/wallet's
-  App.tsx/main.tsx are still unmodified create-vite scaffold — do not treat
-  them as representative of this repo's conventions.
+  apps/wallet depends on packages/uikit (workspace:*) and imports it through
+  uikit's source barrel (exports "." -> ./src/index.ts), so uikit's .tsx
+  source is type-checked inside the wallet's own tsc -b program. That is why
+  the two packages must stay on the same @types/react major: a split would
+  put two incompatible copies of the React types in one program.
+
+  apps/wallet's build currently fails with ~171 TS2307 errors on uikit's
+  *.svg?react imports (its tsconfig does not load vite-plugin-svgr's client
+  types) plus one TS6133. These are pre-existing and unrelated to whatever
+  you are changing — diff against them rather than reading them as a
+  regression, and do not fix them as a side effect. vite build and vite dev
+  both succeed.
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.

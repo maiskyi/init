@@ -14,8 +14,8 @@ import {
 
 export interface DropdownContextProps {
   close: () => void;
-  contentRef: RefObject<HTMLDivElement | null>;
-  dropdownControllerRef: RefObject<DropdownController | null>;
+  contentRef: RefObject<HTMLDivElement>;
+  dropdownControllerRef: RefObject<DropdownController>;
   isBreakpoint: boolean;
   isOpen: boolean;
   onClosed: () => void;
@@ -23,7 +23,7 @@ export interface DropdownContextProps {
   open: () => void;
   placement: DropdownPlacement;
   setState: Dispatch<SetStateAction<DropdownState>>;
-  toggleRef: RefObject<HTMLElement | null>;
+  toggleRef: RefObject<HTMLElement>;
 }
 
 export const DropdownContext = createContext<DropdownContextProps>({

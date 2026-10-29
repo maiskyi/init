@@ -195,11 +195,27 @@ openspec/        OpenSpec spec-driven workflow artifacts (changes, specs,
 
 ## 4. React patterns
 
-- React 19, function components only — no class components anywhere in
-  `src/`.
+- React 18, function components only — no class components anywhere in
+  `src/`. Every workspace package that declares React develops against the
+  same version, `^18.3.1`, with `@types/react@^18.3.31` /
+  `@types/react-dom@^18.3.7`. `packages/uikit` is consumed by products on
+  both majors, so it declares `react`/`react-dom` peers as
+  `^18.3.1 || ^19.0.0`, and 18 is the development floor precisely so a
+  React 19-only API fails `tsc -b` here rather than in the React 18 product.
+  This bites on **types**, not just runtime: `ChangeEventHandler` takes a
+  second type argument only in `@types/react@19`, and `RefObject<T>` already
+  includes `| null` in `current` under 18, so write
+  `ChangeEventHandler<HTMLInputElement>` and `RefObject<HTMLDivElement>`,
+  not the two-argument / `| null` React 19 spellings.
 - React Compiler is enabled in both `packages/uikit` and `apps/wallet` via
   `babel-plugin-react-compiler` + `@rolldown/plugin-babel`
-  (`reactCompilerPreset()`) wired into each package's `vite.config.ts`.
+  (`reactCompilerPreset({ target: '18' })`) wired into each package's
+  `vite.config.ts`. The explicit `target` matters: left at its default the
+  compiler emits `react/compiler-runtime`, which exists only in React 19.
+  At `target: '18'` it emits `react-compiler-runtime` instead — a real
+  `dependency` of `packages/uikit` and in its Vite `external` list, so
+  consumers of `dist/` resolve one external copy. That package's peers span
+  React 17–19, which is what lets a single uikit build serve both products.
   Because the compiler handles memoization, manual `useMemo`/`useCallback`
   appears only where needed for referential stability across a context
   value or an imperative handle (e.g. `Dropdown.tsx`'s `contextValue`,

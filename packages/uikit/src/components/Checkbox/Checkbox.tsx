@@ -30,10 +30,7 @@ const Checkbox: FC<CheckboxProps> = ({
 
   const resolvedId = initialId ?? id;
 
-  const handleOnChange: ChangeEventHandler<
-    HTMLInputElement,
-    HTMLInputElement
-  > = (event) => {
+  const handleOnChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     onChange?.(event.target.checked);
   };
 

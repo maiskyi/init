@@ -23,8 +23,8 @@ export default defineConfig(({ command: _ }) => {
             external: [
               'classnames',
               'react',
+              'react-compiler-runtime',
               'react-dom',
-              'react/compiler-runtime',
               'react/jsx-runtime',
             ],
           },
@@ -33,7 +33,7 @@ export default defineConfig(({ command: _ }) => {
       svgr(),
       react(),
       babel({
-        presets: [reactCompilerPreset()],
+        presets: [reactCompilerPreset({ target: '18' })],
       }),
       ...(isStorybook ? [] : [themeCssSplit()]),
     ],

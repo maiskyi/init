@@ -14,7 +14,7 @@ interface InputProps {
   invalid?: boolean;
   name?: string;
   onBlur?: () => void;
-  onChange?: ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   onValueChange?: (value: string) => void;
   placeholder?: string;
   readOnly?: boolean;
@@ -40,10 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const handleOnChange: ChangeEventHandler<
-      HTMLInputElement,
-      HTMLInputElement
-    > = (event) => {
+    const handleOnChange: ChangeEventHandler<HTMLInputElement> = (event) => {
       onChange?.(event);
       onValueChange?.(event.target.value);
     };
