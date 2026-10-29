@@ -106,13 +106,31 @@ incompatible copies of the React types; aligning both on `@types/react@18` is
 what prevents it. (Repo context describing the two packages as not yet wired
 together is out of date.)
 
-**No source changes expected.** A scan of `packages/uikit/src` and
-`apps/wallet/src` found no React-19-only APIs: zero uses of `useActionState`,
-`useFormStatus`, `useOptimistic`, `use()`, or ref-as-plain-prop; five files use
-`forwardRef`; `createRoot` and `createPortal` are both React 18 APIs. Every
-React-consuming dependency already spans both majors (`react-hook-form`,
-`react-number-format`, `react-outside-click-handler`, `react-responsive`,
-`@hookform/error-message`, `@tanstack/react-query`, `@storybook/react-vite`).
+**Source changes: none at runtime, four files at the type level.** A scan of
+`packages/uikit/src` and `apps/wallet/src` found no React-19-only *runtime*
+APIs: zero uses of `useActionState`, `useFormStatus`, `useOptimistic`, `use()`,
+or ref-as-plain-prop; five files use `forwardRef`; `createRoot` and
+`createPortal` are both React 18 APIs. Every React-consuming dependency already
+spans both majors (`react-hook-form`, `react-number-format`,
+`react-outside-click-handler`, `react-responsive`, `@hookform/error-message`,
+`@tanstack/react-query`, `@storybook/react-vite`).
+
+That scan looked only for runtime APIs, and missed React 19 **types-only**
+APIs. `tsc -b` against `@types/react@18` reported 8 errors across 4 files, in
+two shapes:
+
+- `ChangeEventHandler` takes a second type argument only in `@types/react@19`
+  (`<CurrentTarget, Target>` vs `<T>` in 18). `Checkbox.tsx`, `Input.tsx`
+  (twice) and `Toggle.tsx` used the two-argument form.
+- `RefObject<T>` already includes `| null` in `current` under 18, so the React
+  19 idiom `RefObject<HTMLDivElement | null>` double-nulls and fails variance
+  when passed to a `ref` prop. `Dropdown.context.ts` used it for `contentRef`,
+  `dropdownControllerRef` and `toggleRef`.
+
+Both were fixed at the call sites, never by loosening `tsconfig`. This is the
+change working as intended rather than a complication: the point of developing
+on the floor is that the type checker catches this here instead of in the React
+18 product. The compatible spellings are now recorded in AGENTS.md §4.
 
 **Known risks**
 
