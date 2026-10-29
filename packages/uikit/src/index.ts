@@ -26,10 +26,6 @@ export {
 } from './components/FiatIcon';
 export { Form } from './components/Form';
 export { Grid, type GridProps, type GridSpacing } from './components/Grid';
-export {
-  GridCell,
-  type GridCellProps,
-} from './components/Grid/GridCell';
 export { Icon, type IconName, type IconProps } from './components/Icon';
 export { ImgIcon, type ImgIconProps } from './components/ImgIcon';
 export { Input, type InputProps } from './components/Input';

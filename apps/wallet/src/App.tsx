@@ -15,7 +15,7 @@ export const App = () => {
   const wallet = useRef<WalletRef>(null);
 
   const [{ screen }, setScreen] = useState({
-    screen: WalletScreen.Home,
+    screen: WalletScreen.DepositCrypto,
   });
 
   const handleOnScreenChange: OnScreenChangeHandler = ({ name }) => {
