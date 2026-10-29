@@ -75,7 +75,7 @@ export const Select: SelectComponent = ({
             {options.map(({ label, value: optionValue }) => {
               return (
                 <Dropdown.MenuItem
-                  active={value === optionValue}
+                  active={!!value && value === optionValue}
                   key={optionValue}
                   onClick={() => handleOnChange(optionValue)}
                 >
