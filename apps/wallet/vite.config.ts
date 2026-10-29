@@ -17,7 +17,10 @@ export default defineConfig(({ command: _ }) => {
     resolve: {
       alias: {
         '@services': path.resolve(__dirname, './src/_services'),
+        react: path.resolve(__dirname, './node_modules/react'),
+        'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
       },
+      dedupe: ['react', 'react-dom'],
     },
   };
 });
