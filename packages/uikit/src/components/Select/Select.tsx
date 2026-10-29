@@ -3,7 +3,11 @@ import { type ReactElement, type ReactNode } from 'react';
 
 import { Dropdown } from '../Dropdown';
 import { SelectContext } from './Select.context';
-import { type SelectSize } from './Select.type';
+import {
+  type SelectGetOptionLabelFunction,
+  type SelectGetOptionValueFunction,
+  type SelectSize,
+} from './Select.type';
 import { SelectInput } from './SelectInput';
 
 import styles from './Select.module.scss';
@@ -11,8 +15,8 @@ import styles from './Select.module.scss';
 export interface SelectProps<T extends object> {
   className?: string;
   disabled?: boolean;
-  getOptionLabel: (option: T) => ReactNode;
-  getOptionValue: (option: T) => string | number;
+  getOptionLabel: SelectGetOptionLabelFunction<T>;
+  getOptionValue: SelectGetOptionValueFunction<T>;
   invalid?: boolean;
   onChange?: (value: string | number) => void;
   options?: T[];
@@ -37,10 +41,16 @@ export const Select: SelectComponent = ({
   placeholder,
   invalid = false,
 }) => {
-  const options = initialOptions.map((option) => ({
-    label: getOptionLabel(option),
-    value: getOptionValue(option),
-  }));
+  const options = initialOptions.map((option) => {
+    const optionValue = getOptionValue({ option });
+    const isActive = !!value && optionValue === value;
+    const optionLabel = getOptionLabel({ isActive, option });
+    return {
+      isActive,
+      label: optionLabel,
+      value: optionValue,
+    };
+  });
 
   const selectedOption = options.find(
     ({ value: optionValue }) => optionValue === value,
@@ -72,10 +82,10 @@ export const Select: SelectComponent = ({
           matchToggleWidth
         >
           <Dropdown.Menu>
-            {options.map(({ label, value: optionValue }) => {
+            {options.map(({ label, value: optionValue, isActive }) => {
               return (
                 <Dropdown.MenuItem
-                  active={!!value && value === optionValue}
+                  active={isActive}
                   key={optionValue}
                   onClick={() => handleOnChange(optionValue)}
                 >

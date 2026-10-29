@@ -16,6 +16,7 @@ export default defineConfig(({ command: _ }) => {
     ],
     resolve: {
       alias: {
+        '@common': path.resolve(__dirname, './src/_common'),
         '@services': path.resolve(__dirname, './src/_services'),
       },
     },

@@ -17,6 +17,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
+      "@common/*": ["./src/_common/*"],
       "@services/*": ["./src/_services/*"]
     },
     "skipLibCheck": true,

@@ -1,3 +1,4 @@
+import { WalletBalanceOption } from '@common/components';
 import { Form, Grid } from '@rockethash/uikit';
 import { type FC } from 'react';
 
@@ -18,7 +19,9 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
           <Form.Group>
             <Form.Label>Your balance</Form.Label>
             <Form.Select
-              getOptionLabel={({ name }) => name}
+              getOptionLabel={(currency) => (
+                <WalletBalanceOption {...currency} />
+              )}
               getOptionValue={({ symbol }) => symbol}
               name="balance"
               options={cryptoCurrencies}
