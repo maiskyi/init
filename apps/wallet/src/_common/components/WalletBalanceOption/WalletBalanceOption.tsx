@@ -6,16 +6,17 @@ import { type FC } from 'react';
 import styles from './WalletBalanceOption.module.scss';
 
 interface WalletBalanceOptionProps {
+  balance?: string;
   isActive: boolean;
   option: DTO.Currency;
 }
 
-const BALANCE_PLACEHOLDER = '0.00';
 const FIAT_BALANCE_PLACEHOLDER = '$0.00';
 
 const WalletBalanceOption: FC<WalletBalanceOptionProps> = ({
   isActive,
   option,
+  balance = '0',
 }) => {
   const { name, symbol } = option;
 
@@ -35,9 +36,7 @@ const WalletBalanceOption: FC<WalletBalanceOptionProps> = ({
         <span className={styles['balance-option__name']}>{name}</span>
       </span>
       <span className={styles['balance-option__balance']}>
-        <span className={styles['balance-option__amount']}>
-          {BALANCE_PLACEHOLDER}
-        </span>
+        <span className={styles['balance-option__amount']}>{balance}</span>
         <span className={styles['balance-option__fiat']}>
           {FIAT_BALANCE_PLACEHOLDER}
         </span>

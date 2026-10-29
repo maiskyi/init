@@ -69,7 +69,7 @@ export const DropdownContentDrawer: FC<DropdownContentDrawerProps> = ({
         )}
         onAnimationEnd={handleOnAnimationEnd}
       >
-        <div className="drawer__content">{children}</div>
+        {children}
       </div>
     </div>,
     document.body,

@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { type FC, type PropsWithChildren, useContext } from 'react';
 
+import { Icon } from '../../Icon';
 import { DropdownContext } from '../Dropdown.context';
 
 import styles from '../Dropdown.module.scss';
@@ -26,7 +27,7 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
         onClick={close}
         type="button"
       >
-        <span className="icon-close" />
+        <Icon name="close" size="md" />
       </button>
     </div>
   );

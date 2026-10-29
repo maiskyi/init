@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { type ReactElement, type ReactNode } from 'react';
+import { Fragment, type ReactElement } from 'react';
 
 import { Dropdown } from '../Dropdown';
 import { SelectContext } from './Select.context';
@@ -18,6 +18,7 @@ export interface SelectProps<T extends object> {
   getOptionLabel: SelectGetOptionLabelFunction<T>;
   getOptionValue: SelectGetOptionValueFunction<T>;
   invalid?: boolean;
+  label?: string;
   onChange?: (value: string | number) => void;
   options?: T[];
   placeholder?: string;
@@ -40,6 +41,7 @@ export const Select: SelectComponent = ({
   className,
   placeholder,
   invalid = false,
+  label,
 }) => {
   const options = initialOptions.map((option) => {
     const optionValue = getOptionValue({ option });
@@ -81,6 +83,9 @@ export const Select: SelectComponent = ({
           className={cn(styles.content, styles[size])}
           matchToggleWidth
         >
+          <Dropdown.Header>
+            {label || <Fragment>&nbsp;</Fragment>}
+          </Dropdown.Header>
           <Dropdown.Menu>
             {options.map(({ label, value: optionValue, isActive }) => {
               return (

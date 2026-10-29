@@ -31,7 +31,7 @@ export const DropdownContent: FC<DropdownContentProps> = ({
   if (!isBreakpoint) {
     return (
       <DropdownContentDrawer className={className} onClosed={handleOnClosed}>
-        <div className="drawer__content">{children}</div>
+        {children}
       </DropdownContentDrawer>
     );
   }

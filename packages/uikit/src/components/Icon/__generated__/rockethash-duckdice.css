@@ -37,15 +37,18 @@
 [data-theme="duckdice"] .icon.icon-chevron-right:before {
     content: "\f107";
 }
-[data-theme="duckdice"] .icon.icon-exchange:before {
+[data-theme="duckdice"] .icon.icon-close:before {
     content: "\f108";
 }
-[data-theme="duckdice"] .icon.icon-face:before {
+[data-theme="duckdice"] .icon.icon-exchange:before {
     content: "\f109";
 }
-[data-theme="duckdice"] .icon.icon-safe:before {
+[data-theme="duckdice"] .icon.icon-face:before {
     content: "\f10a";
 }
-[data-theme="duckdice"] .icon.icon-support:before {
+[data-theme="duckdice"] .icon.icon-safe:before {
     content: "\f10b";
+}
+[data-theme="duckdice"] .icon.icon-support:before {
+    content: "\f10c";
 }

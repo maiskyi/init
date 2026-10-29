@@ -10,7 +10,7 @@ import {
 } from './WalletDepositCrypto.types';
 
 const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
-  const { cryptoCurrencies } = useWalletData();
+  const { userBalances, cryptoCurrencies } = useWalletData();
 
   const handleOnSubmit = (data: WalletDepositCryptoForm) => {
     console.log(data);
@@ -29,7 +29,13 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
           <Form.Group>
             <Form.Label>Your balance</Form.Label>
             <Form.Select
-              getOptionLabel={(params) => <WalletBalanceOption {...params} />}
+              getOptionLabel={(params) => (
+                <WalletBalanceOption
+                  {...params}
+                  // @ts-expect-error
+                  balance={userBalances.main?.[params.option.symbol]}
+                />
+              )}
               getOptionValue={({ option }) => option.symbol}
               name={WalletDepositCryptoFormFields.Balance}
               options={cryptoCurrencies}
