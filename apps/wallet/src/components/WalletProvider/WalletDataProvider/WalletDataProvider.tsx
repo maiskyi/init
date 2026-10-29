@@ -1,6 +1,6 @@
+import { COMMON_DATA, COMMON_USER_DATA } from '@services/api';
 import { type FC, type PropsWithChildren } from 'react';
 
-import { COMMON_DATA } from './WalletDataProvider.const';
 import { WalletDataProviderContext } from './WalletDataProvider.context';
 
 type WalletDataProviderProps = PropsWithChildren<{
@@ -16,11 +16,11 @@ const WalletDataProvider: FC<PropsWithChildren> = ({ children }) => {
     (currency) => currency.isFiat && !currency.isInternal,
   );
 
-  console.log(cryptoCurrencies, fiatCurrencies);
+  const userBalances = COMMON_USER_DATA.userBalances;
 
   return (
     <WalletDataProviderContext.Provider
-      value={{ cryptoCurrencies, fiatCurrencies }}
+      value={{ cryptoCurrencies, fiatCurrencies, userBalances }}
     >
       {children}
     </WalletDataProviderContext.Provider>

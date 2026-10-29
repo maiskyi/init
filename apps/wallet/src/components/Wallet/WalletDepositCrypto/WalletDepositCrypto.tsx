@@ -4,6 +4,7 @@ import { type FC } from 'react';
 
 import { useWalletData } from '../../WalletProvider';
 import {
+  type WalletDepositCryptoForm,
   WalletDepositCryptoFormFields,
   type WalletDepositCryptoProps,
 } from './WalletDepositCrypto.types';
@@ -11,12 +12,18 @@ import {
 const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const { cryptoCurrencies } = useWalletData();
 
-  const handleOnSubmit = (data: unknown) => {
+  const handleOnSubmit = (data: WalletDepositCryptoForm) => {
     console.log(data);
   };
 
   return (
-    <Form onSubmit={handleOnSubmit}>
+    <Form<WalletDepositCryptoForm>
+      defaultValues={{
+        [WalletDepositCryptoFormFields.Balance]: cryptoCurrencies[0].symbol,
+        [WalletDepositCryptoFormFields.PaymentMethod]: '',
+      }}
+      onSubmit={handleOnSubmit}
+    >
       <Grid spacing={3}>
         <Grid.Cell>
           <Form.Group>
