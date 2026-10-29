@@ -1,4 +1,4 @@
-import { Button, Form, Grid } from '@rockethash/uikit';
+import { Form, Grid } from '@rockethash/uikit';
 import { type FC } from 'react';
 
 import { type WalletDepositCryptoProps } from './WalletDepositCrypto.types';
