@@ -10,9 +10,17 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = ({ className }) => {
 
   return (
     <Form onSubmit={handleOnSubmit}>
-      <Grid>
-        <Grid.Cell></Grid.Cell>
-        <Grid.Cell></Grid.Cell>
+      <Grid spacing={3}>
+        <Grid.Cell>
+          <Form.Group>
+            <Form.Label>Your balance</Form.Label>
+          </Form.Group>
+        </Grid.Cell>
+        <Grid.Cell>
+          <Form.Group>
+            <Form.Label>Payment method</Form.Label>
+          </Form.Group>
+        </Grid.Cell>
       </Grid>
     </Form>
   );
