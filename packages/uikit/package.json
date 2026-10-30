@@ -7,7 +7,8 @@
     "lodash.noop": "^3.0.1",
     "react-compiler-runtime": "^1.0.0",
     "react-hook-form": "^7.90.0",
-    "react-number-format": "^5.4.5"
+    "react-number-format": "^5.4.5",
+    "vite-plugin-externalize-deps": "^0.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",

@@ -4,10 +4,22 @@ import { themeCssSplit } from '@repo/vite';
 import babel from '@rolldown/plugin-babel';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { externalizeDeps } from 'vite-plugin-externalize-deps';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig(({ command: _ }) => {
   const isStorybook = process.argv.some((arg) => arg.includes('storybook'));
+
+  const plugins = isStorybook
+    ? []
+    : [
+        themeCssSplit(),
+        externalizeDeps({
+          deps: true,
+          devDeps: true,
+          peerDeps: true,
+        }),
+      ];
 
   return {
     build: isStorybook
@@ -19,15 +31,6 @@ export default defineConfig(({ command: _ }) => {
             fileName: 'index',
             formats: ['es'],
           },
-          rolldownOptions: {
-            external: [
-              'classnames',
-              'react',
-              'react-compiler-runtime',
-              'react-dom',
-              'react/jsx-runtime',
-            ],
-          },
         },
     plugins: [
       svgr(),
@@ -35,7 +38,7 @@ export default defineConfig(({ command: _ }) => {
       babel({
         presets: [reactCompilerPreset({ target: '18' })],
       }),
-      ...(isStorybook ? [] : [themeCssSplit()]),
+      ...plugins,
     ],
   };
 });

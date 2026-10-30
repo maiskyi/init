@@ -19,8 +19,8 @@ const OPTIONS: Option[] = Array.from({ length: 10 }, (_, index) => ({
 const meta: Meta<typeof FormSelect<Option>> = {
   args: {
     className: '',
-    getOptionLabel: (option) => option.label,
-    getOptionValue: (option) => option.value,
+    getOptionLabel: ({ option }) => option.label,
+    getOptionValue: ({ option }) => option.value,
     name: 'select',
     options: OPTIONS,
     placeholder: 'Select an option...',

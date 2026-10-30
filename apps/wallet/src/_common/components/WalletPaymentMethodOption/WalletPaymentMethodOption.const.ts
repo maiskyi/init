@@ -7,10 +7,10 @@ import { type PaymentMethodIconName } from '@rockethash/uikit';
 // has a label, but only those with a confident icon match appear below. A slug
 // is deliberately left out rather than pointed at a similarly-named asset --
 // `vietcombank` is not Viet A Bank (`VIETA_BANK`) and `o_pay` is not PayOp
-// (`PAY_OP`). Values are not type-checked against the icon set: uikit types
-// `PAYMENT_METHOD_ICONS` as `Record<string, ...>` and exports it from no barrel,
-// so a membership type would mean copying its 53 names into the wallet, where
-// they would drift. An unmatched name renders the blank icon slot.
+// (`PAY_OP`). Values are checked against the icon set: `PaymentMethodIconName`
+// is a union of the published icon names, so a misspelling fails `tsc` rather
+// than silently rendering the blank icon slot. Keys stay `string` because they
+// are runtime API slugs. A slug with no entry renders the blank icon slot.
 export const PAYMENT_METHOD_ICONS_BY_NAME: Record<
   string,
   PaymentMethodIconName

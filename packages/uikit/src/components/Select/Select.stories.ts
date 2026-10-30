@@ -16,8 +16,8 @@ const options: Array<Option> = Array.from({ length: 10 }, (_, index) => ({
 const meta: Meta<typeof Select<Option>> = {
   args: {
     disabled: false,
-    getOptionLabel: ({ label }) => label,
-    getOptionValue: ({ value }) => value,
+    getOptionLabel: ({ option }) => option.label,
+    getOptionValue: ({ option }) => option.value,
     invalid: false,
     onChange: fn(),
     options,
