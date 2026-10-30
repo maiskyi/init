@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import ADVANCED_CASH from './duckdice/ADVANCED_CASH.svg?react';
 import AGRIBANK from './duckdice/AGRIBANK.svg?react';
 import ASTRO_PAY from './duckdice/ASTRO_PAY.svg?react';

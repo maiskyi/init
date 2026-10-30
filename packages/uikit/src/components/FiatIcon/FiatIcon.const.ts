@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import AED from './duckdice/AED.svg?react';
 import ARS from './duckdice/ARS.svg?react';
 import AUD from './duckdice/AUD.svg?react';

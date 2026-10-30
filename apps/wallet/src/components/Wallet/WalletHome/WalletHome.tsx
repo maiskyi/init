@@ -65,7 +65,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
 
   return (
     <Grid spacing={3}>
-      <Grid.Cell xs={6}>
+      <Grid.Cell xss={6}>
         <Card
           as="button"
           className={styles.button}
@@ -88,7 +88,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
           </span>
         </Card>
       </Grid.Cell>
-      <Grid.Cell xs={6}>
+      <Grid.Cell xss={6}>
         <Card
           as="button"
           className={styles.button}
@@ -106,7 +106,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
           </span>
         </Card>
       </Grid.Cell>
-      <Grid.Cell xs={12}>
+      <Grid.Cell xss={12}>
         <Card
           as="button"
           className={cn(styles.button, styles.cash)}
@@ -121,10 +121,10 @@ const WalletHome: FC<WalletHomeProps> = () => {
           Deposit Cash
         </Card>
       </Grid.Cell>
-      <Grid.Cell xs={12}>
+      <Grid.Cell xss={12}>
         <Divider thickness={2} />
       </Grid.Cell>
-      <Grid.Cell xs={12}>
+      <Grid.Cell xss={12}>
         <Menu>
           <Menu.Item
             onClick={handleOnWithdrawClick}

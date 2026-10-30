@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import { type CryptoIconName } from './CryptoIcon.types';
 import AAVE from './duckdice/AAVE.svg?react';
 import ADA from './duckdice/ADA.svg?react';

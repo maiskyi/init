@@ -423,13 +423,6 @@ these do anything without checking first:
   `Button`/`Toggle`, which do export their props type).
   Don't assume a type is part of the public surface just because a sibling
   component exports its equivalent.
-- `apps/wallet` type-checks uikit source as part of its own `tsc -b` (it
-  imports uikit source, see §1), but its tsconfig does not load the
-  `vite-plugin-svgr` client types that uikit relies on. As a result,
-  `pnpm build` in `apps/wallet` currently fails with `TS2307` on every
-  `*.svg?react` import in the uikit `CryptoIcon`/`FiatIcon`/`ImgIcon`/
-  `PaymentMethodIcon` `*.const.ts` files, while `vite build` alone
-  succeeds.
 - `packages/uikit` targets `typescript: "~6.0.2"` (devDependency) while the
   rest of the repo (`apps/wallet`, root) targets `typescript: "~7.0.2"`/
   `"7.0.2"` — a real version split across the workspace, not a typo to

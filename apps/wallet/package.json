@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-hook-form": "^7.90.0",
     "react-use": "^17.6.1"
   },
   "devDependencies": {

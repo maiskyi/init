@@ -68,8 +68,11 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
           <Form.Group>
             <Form.Label>Payment method</Form.Label>
             <Form.Select
-              getOptionLabel={(params) => (
-                <WalletPaymentMethodOption {...params} />
+              getOptionLabel={({ option, isActive }) => (
+                <WalletPaymentMethodOption
+                  isActive={isActive}
+                  name={option.name}
+                />
               )}
               getOptionValue={({ option }) => option.name}
               name={WalletDepositCryptoFormFields.PaymentMethod}

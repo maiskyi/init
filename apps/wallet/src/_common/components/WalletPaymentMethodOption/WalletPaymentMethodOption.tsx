@@ -1,5 +1,4 @@
 import { PaymentMethodIcon } from '@rockethash/uikit';
-import { type DTO } from '@services/api';
 import cn from 'classnames';
 import { type FC } from 'react';
 
@@ -12,15 +11,13 @@ import styles from './WalletPaymentMethodOption.module.scss';
 
 interface WalletPaymentMethodOptionProps {
   isActive: boolean;
-  option: DTO.PaymentMethod;
+  name: string;
 }
 
 const WalletPaymentMethodOption: FC<WalletPaymentMethodOptionProps> = ({
   isActive,
-  option,
+  name,
 }) => {
-  const { name } = option;
-
   const iconName = PAYMENT_METHOD_ICONS_BY_NAME[name];
 
   return (

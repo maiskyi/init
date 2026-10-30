@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import ApplePay from './duckdice/apple-pay.svg?react';
 import GooglePay from './duckdice/google-pay.svg?react';
 import Mastercard from './duckdice/mastercard.svg?react';
