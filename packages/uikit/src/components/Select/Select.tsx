@@ -18,7 +18,6 @@ export interface SelectProps<T extends object> {
   getOptionLabel: SelectGetOptionLabelFunction<T>;
   getOptionValue: SelectGetOptionValueFunction<T>;
   invalid?: boolean;
-  label?: string;
   onChange?: (value: string | number) => void;
   options?: T[];
   placeholder?: string;
@@ -41,7 +40,6 @@ export const Select: SelectComponent = ({
   className,
   placeholder,
   invalid = false,
-  label,
 }) => {
   const options = initialOptions.map((option) => {
     const optionValue = getOptionValue({ option });
@@ -84,7 +82,7 @@ export const Select: SelectComponent = ({
           matchToggleWidth
         >
           <Dropdown.Header>
-            {label || <Fragment>&nbsp;</Fragment>}
+            {placeholder || <Fragment>&nbsp;</Fragment>}
           </Dropdown.Header>
           <Dropdown.Menu>
             {options.map(({ label, value: optionValue, isActive }) => {

@@ -39,6 +39,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
               getOptionValue={({ option }) => option.symbol}
               name={WalletDepositCryptoFormFields.Balance}
               options={cryptoCurrencies}
+              placeholder="Select balance"
               validation={{
                 required: true,
               }}

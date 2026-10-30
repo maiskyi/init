@@ -1,6 +1,7 @@
 import { COMMON_DATA, COMMON_USER_DATA } from '@services/api';
 import { type FC, type PropsWithChildren } from 'react';
 
+import { EXCLUDED_FIAT_CURRENCIES } from './WalletDataProvider.const';
 import { WalletDataProviderContext } from './WalletDataProvider.context';
 
 type WalletDataProviderProps = PropsWithChildren<{
@@ -9,11 +10,14 @@ type WalletDataProviderProps = PropsWithChildren<{
 
 const WalletDataProvider: FC<PropsWithChildren> = ({ children }) => {
   const cryptoCurrencies = COMMON_DATA.currencies.filter(
-    (currency) => !currency.isFiat && !currency.isInternal,
+    (currency) => !currency.isFiat && currency.hasDeposit,
   );
 
   const fiatCurrencies = COMMON_DATA.currencies.filter(
-    (currency) => currency.isFiat && !currency.isInternal,
+    (currency) =>
+      currency.isFiat &&
+      currency.hasDeposit &&
+      !(currency.symbol in EXCLUDED_FIAT_CURRENCIES),
   );
 
   const userBalances = COMMON_USER_DATA.userBalances;

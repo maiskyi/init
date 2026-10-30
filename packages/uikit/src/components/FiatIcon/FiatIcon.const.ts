@@ -18,7 +18,7 @@ import EGP from './duckdice/EGP.svg?react';
 import ETB from './duckdice/ETB.svg?react';
 import EUR from './duckdice/EUR.svg?react';
 import GBP from './duckdice/GBP.svg?react';
-import GHC from './duckdice/GH₵.svg?react';
+import GHS from './duckdice/GHS.svg?react';
 import GTQ from './duckdice/GTQ.svg?react';
 import HKD from './duckdice/HKD.svg?react';
 import HNL from './duckdice/HNL.svg?react';
@@ -78,7 +78,7 @@ export const FIAT_ICONS: Record<FiatIconName, typeof AED> = {
   ETB,
   EUR,
   GBP,
-  GHC,
+  GHS,
   GTQ,
   HKD,
   HNL,

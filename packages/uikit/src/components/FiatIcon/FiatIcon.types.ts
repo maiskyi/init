@@ -24,7 +24,7 @@ export type FiatIconName =
   | 'ETB'
   | 'CARD'
   | 'GBP'
-  | 'GHC'
+  | 'GHS'
   | 'GTQ'
   | 'HKD'
   | 'HNL'

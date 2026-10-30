@@ -1,4 +1,9 @@
-import { CryptoIcon, type CryptoIconName } from '@rockethash/uikit';
+import {
+  CryptoIcon,
+  type CryptoIconName,
+  FiatIcon,
+  type FiatIconName,
+} from '@rockethash/uikit';
 import { type DTO } from '@services/api';
 import cn from 'classnames';
 import { type FC } from 'react';
@@ -18,12 +23,16 @@ const WalletBalanceOption: FC<WalletBalanceOptionProps> = ({
   option,
   balance = '0',
 }) => {
-  const { name, symbol } = option;
+  const { name, symbol, isFiat } = option;
 
   return (
     <span className={styles['balance-option']}>
       <span className={styles['balance-option__icon']}>
-        <CryptoIcon name={symbol as CryptoIconName} size={20} />
+        {isFiat ? (
+          <FiatIcon name={symbol as FiatIconName} size={20} />
+        ) : (
+          <CryptoIcon name={symbol as CryptoIconName} size={20} />
+        )}
       </span>
       <span className={styles['balance-option__label']}>
         <span
