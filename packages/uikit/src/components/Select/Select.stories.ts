@@ -13,7 +13,7 @@ const options: Array<Option> = Array.from({ length: 10 }, (_, index) => ({
   value: index,
 }));
 
-const meta: Meta<typeof Select<Option>> = {
+const meta: Meta<typeof Select<Option, number>> = {
   args: {
     disabled: false,
     getOptionLabel: ({ option }) => option.label,

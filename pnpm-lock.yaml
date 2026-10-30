@@ -128,6 +128,9 @@ importers:
       lodash.invoke:
         specifier: ^4.5.2
         version: 4.5.2
+      lodash.isequal:
+        specifier: ^4.5.0
+        version: 4.5.0
       lodash.merge:
         specifier: ^4.6.2
         version: 4.6.2
@@ -186,6 +189,9 @@ importers:
       '@types/lodash.invoke':
         specifier: ^4.5.9
         version: 4.5.9
+      '@types/lodash.isequal':
+        specifier: ^4.5.8
+        version: 4.5.8
       '@types/lodash.merge':
         specifier: ^4.6.9
         version: 4.6.9
@@ -2125,6 +2131,9 @@ packages:
   '@types/lodash.invoke@4.5.9':
     resolution: {integrity: sha512-tixPuUq1NTaw22OHE6LgUqXm19owxzbfls5M/TqHJg2I/LV08Un1/SN7Y95OYNfHphZxP56lDSQrnxMydfaGaQ==}
 
+  '@types/lodash.isequal@4.5.8':
+    resolution: {integrity: sha512-uput6pg4E/tj2LGxCZo9+y27JNyB2OZuuI/T5F+ylVDYuqICLG2/ktjxx0v6GvVntAf8TvEzeQLcV0ffRirXuA==}
+
   '@types/lodash.merge@4.6.9':
     resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
 
@@ -3966,6 +3975,10 @@ packages:
 
   lodash.isempty@4.4.0:
     resolution: {integrity: sha512-oKMuF3xEeqDltrGMfDxAPGIVMSSRv8tbRSODbrs4KGsRRLEhrW8N8Rd4DRgB2+621hY8A8XwwrTVhXWpxFvMzg==}
+
+  lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -7394,6 +7407,10 @@ snapshots:
     dependencies:
       '@types/lodash': 4.17.26
 
+  '@types/lodash.isequal@4.5.8':
+    dependencies:
+      '@types/lodash': 4.17.26
+
   '@types/lodash.merge@4.6.9':
     dependencies:
       '@types/lodash': 4.17.26
@@ -9390,6 +9407,8 @@ snapshots:
   lodash.invoke@4.5.2: {}
 
   lodash.isempty@4.4.0: {}
+
+  lodash.isequal@4.5.0: {}
 
   lodash.merge@4.6.2: {}
 

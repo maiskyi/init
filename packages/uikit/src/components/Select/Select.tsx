@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import isEqual from 'lodash.isequal';
 import { Fragment, type ReactElement } from 'react';
 
 import { Dropdown } from '../Dropdown';
@@ -12,7 +13,7 @@ import { SelectInput } from './SelectInput';
 
 import styles from './Select.module.scss';
 
-export interface SelectProps<T extends object, V> {
+export interface SelectProps<T extends object, V = string> {
   className?: string;
   disabled?: boolean;
   getOptionLabel: SelectGetOptionLabelFunction<T>;
@@ -22,11 +23,11 @@ export interface SelectProps<T extends object, V> {
   options?: T[];
   placeholder?: string;
   size?: SelectSize;
-  value?: NoInfer<V>;
+  value?: V;
 }
 
 interface SelectComponent {
-  <T extends object, V>(props: SelectProps<T, V>): ReactElement;
+  <T extends object, V = string>(props: SelectProps<T, V>): ReactElement;
 }
 
 export const Select: SelectComponent = ({
@@ -43,7 +44,7 @@ export const Select: SelectComponent = ({
 }) => {
   const options = initialOptions.map((option) => {
     const optionValue = getOptionValue({ option });
-    const isActive = !!value && optionValue === value;
+    const isActive = !!value && isEqual(optionValue, value);
     const optionLabel = getOptionLabel({ isActive, option });
     return {
       isActive,
@@ -52,11 +53,9 @@ export const Select: SelectComponent = ({
     };
   });
 
-  const selectedOption = options.find(
-    ({ value: optionValue }) => optionValue === value,
-  );
+  const selectedOption = options.find(({ isActive }) => isActive);
 
-  const handleOnChange = (value: string | number) => {
+  const handleOnChange: NonNullable<typeof onChange> = (value) => {
     onChange?.(value);
   };
 
@@ -85,11 +84,16 @@ export const Select: SelectComponent = ({
             {placeholder || <Fragment>&nbsp;</Fragment>}
           </Dropdown.Header>
           <Dropdown.Menu>
-            {options.map(({ label, value: optionValue, isActive }) => {
+            {options.map(({ label, value: optionValue, isActive }, index) => {
               return (
                 <Dropdown.MenuItem
                   active={isActive}
-                  key={optionValue}
+                  // Option values are unconstrained, so no value-derived key
+                  // is reliably unique: an object value stringifies to
+                  // "[object Object]" for every option. Menu items hold no
+                  // state, so keying by position is safe here.
+                  // biome-ignore lint/suspicious/noArrayIndexKey: explained above
+                  key={index}
                   onClick={() => handleOnChange(optionValue)}
                 >
                   {label}

@@ -26,7 +26,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const paymentMethod =
     settings?.depositCrypto.paymentMethod || paymentMethodOptions[0].name;
 
-  const handleOnBalanceChange = (balance: string | number) => {
+  const handleOnBalanceChange = (balance: string) => {
     const methods = paymentMethods.filter(
       (paymentMethod) => paymentMethod.currencies[balance],
     );
@@ -41,8 +41,14 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
     );
   };
 
-  const handleOnPaymentMethodChange = (paymentMethod: string | number) => {
-    setSettings((prev) => merge(prev, { depositCrypto: { paymentMethod } }));
+  const handleOnPaymentMethodChange = (paymentMethod: string) => {
+    setSettings((prev) =>
+      merge(prev, {
+        depositCrypto: {
+          paymentMethod,
+        },
+      }),
+    );
   };
 
   const MethodComponent =
@@ -88,7 +94,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
         </Form.Group>
       </Grid.Cell>
       <Grid.Cell>
-        <MethodComponent />
+        <MethodComponent key={balance} />
       </Grid.Cell>
     </Grid>
   );

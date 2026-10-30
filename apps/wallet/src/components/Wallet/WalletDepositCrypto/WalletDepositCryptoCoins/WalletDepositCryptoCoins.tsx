@@ -12,12 +12,12 @@ const WalletDepositCryptoCoins: FC = () => {
     transport: transports[0].name,
   });
 
-  const handleOnTransportChange = (transport: string | number) => {
-    setState(() => ({ transport: transport as string }));
+  const handleOnTransportChange = (transport: string) => {
+    setState(() => ({ transport }));
   };
 
   return (
-    <Grid spacing={3}>
+    <Grid spacing={2}>
       <Grid.Cell>
         <Form.Group>
           <Form.Label>Network</Form.Label>
