@@ -15,9 +15,9 @@ type SelectGetOptionLabelFunction<T extends object> = (
   params: SelectGetOptionLabelFunctionParams<T>,
 ) => ReactNode;
 
-type SelectGetOptionValueFunction<T extends object> = (
+type SelectGetOptionValueFunction<T extends object, V> = (
   params: SelectGetOptionValueFunctionParams<T>,
-) => string | number;
+) => V;
 
 export type {
   SelectGetOptionLabelFunction,

@@ -12,21 +12,21 @@ import { SelectInput } from './SelectInput';
 
 import styles from './Select.module.scss';
 
-export interface SelectProps<T extends object> {
+export interface SelectProps<T extends object, V> {
   className?: string;
   disabled?: boolean;
   getOptionLabel: SelectGetOptionLabelFunction<T>;
-  getOptionValue: SelectGetOptionValueFunction<T>;
+  getOptionValue: SelectGetOptionValueFunction<T, V>;
   invalid?: boolean;
-  onChange?: (value: string | number) => void;
+  onChange?: (value: NoInfer<V>) => void;
   options?: T[];
   placeholder?: string;
   size?: SelectSize;
-  value: string | number;
+  value?: NoInfer<V>;
 }
 
 interface SelectComponent {
-  <T extends object>(props: SelectProps<T>): ReactElement;
+  <T extends object, V>(props: SelectProps<T, V>): ReactElement;
 }
 
 export const Select: SelectComponent = ({
