@@ -1,6 +1,7 @@
 import { Button, ThemeProvider } from '@rockethash/uikit';
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 
+import { WALLET_SCREENS_TITLES } from './App.const';
 import {
   type OnScreenChangeHandler,
   Wallet,
@@ -34,15 +35,18 @@ export const App = () => {
     <div className={styles.root}>
       <div className={styles.header}>
         {screen !== WalletScreen.Home && (
-          <Button
-            icon="chevron-left"
-            onClick={handleOnBackClick}
-            variant="secondary"
-          />
+          <Fragment>
+            <Button
+              icon="chevron-left"
+              onClick={handleOnBackClick}
+              variant="secondary"
+            />
+            <h3>{WALLET_SCREENS_TITLES[screen]}</h3>
+          </Fragment>
         )}
       </div>
       <ThemeProvider>
-        <WalletProvider>
+        <WalletProvider apiBaseUrl="">
           <Wallet
             initialScreen={screen}
             onScreenChange={handleOnScreenChange}

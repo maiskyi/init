@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "../../assets/scss/mixins" as mx;
+@use "../../assets/scss/variables" as vars;
+
+@each $theme, $config in vars.$themes {
+  $breakpoints: map.get($config, breakpoints);
+
+  [data-theme="#{$theme}"] {
+    .heading {
+      margin: 0;
+      padding: 0;
+      color: var(--text-title);
+      font-family: "Open Sans", sans-serif;
+      &_h1 {
+        font-size: 24px;
+        line-height: 28px;
+        @include mx.breakpoint-up(md, $breakpoints) {
+          font-size: 28px;
+          line-height: 38px;
+        }
+      }
+      &_h2 {
+        font-size: 20px;
+        line-height: 28px;
+      }
+      &_h3 {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      &_h4 {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      &_regular {
+        font-weight: 400;
+      }
+      &_medium {
+        font-weight: 500;
+      }
+      &_semibold {
+        font-weight: 600;
+      }
+      &_bold {
+        font-weight: 700;
+      }
+    }
+  }
+}
