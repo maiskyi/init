@@ -1,17 +1,24 @@
-import { type ControllerProps, type FieldValues } from 'react-hook-form';
-import { type Paths } from 'type-fest';
+import {
+  type ControllerProps,
+  type FieldPath,
+  type FieldPathValue,
+  type FieldValues,
+} from 'react-hook-form';
 
 import { type FORM_CONTROL_RULES } from './Form.const';
 
 export interface FormRefSetValueMethodParams<
-  T extends FieldValues = FieldValues,
+  T extends FieldValues,
+  N extends FieldPath<T>,
 > {
-  name: Paths<T>;
-  value: unknown;
+  name: N;
+  value: FieldPathValue<T, N>;
 }
 
-export type FormRefSetValueMethod<T extends FieldValues = FieldValues> = (
-  params: FormRefSetValueMethodParams<T>,
+export type FormRefSetValueMethod<T extends FieldValues = FieldValues> = <
+  N extends FieldPath<T>,
+>(
+  params: FormRefSetValueMethodParams<T, N>,
 ) => void;
 
 export interface FormRef<T extends FieldValues = FieldValues> {

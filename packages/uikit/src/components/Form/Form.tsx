@@ -1,4 +1,5 @@
 import {
+  type ForwardedRef,
   forwardRef,
   type PropsWithChildren,
   type ReactElement,
@@ -28,6 +29,7 @@ import { FormToggle } from './FormToggle';
 type FormProps<T extends FieldValues = FieldValues> = PropsWithChildren<{
   onSubmit: (data: T) => void | Promise<void>;
   defaultValues?: T;
+  ref?: ForwardedRef<FormRef<T>>;
 }>;
 
 interface FormCompoundedComponent {
@@ -49,13 +51,15 @@ const Form = forwardRef<FormRef, FormProps>(function Form(
   { children, onSubmit, defaultValues },
   ref,
 ) {
-  const methods = useForm({
-    defaultValues: defaultValues as DefaultValues<typeof defaultValues>,
+  const methods = useForm<NonNullable<typeof defaultValues>>({
+    defaultValues: defaultValues as DefaultValues<
+      NonNullable<typeof defaultValues>
+    >,
   });
 
   const submit = methods.handleSubmit(onSubmit);
 
-  const setValue: FormRefSetValueMethod<typeof defaultValues> = ({
+  const setValue: FormRefSetValueMethod<NonNullable<typeof defaultValues>> = ({
     name,
     value,
   }) => {
@@ -64,6 +68,7 @@ const Form = forwardRef<FormRef, FormProps>(function Form(
 
   useImperativeHandle(ref, () => ({
     setValue,
+    submit,
   }));
 
   return (

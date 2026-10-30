@@ -2,9 +2,9 @@ import {
   WalletBalanceOption,
   WalletPaymentMethodOption,
 } from '@common/components';
-import { Form, Grid } from '@rockethash/uikit';
+import { Form, type FormRef, Grid } from '@rockethash/uikit';
 import merge from 'lodash.merge';
-import { type FC } from 'react';
+import { type FC, useRef } from 'react';
 
 import { useWalletData } from '../../WalletProvider';
 import { useWalletSettings } from '../Wallet.hooks';
@@ -16,8 +16,7 @@ import {
 
 const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const { userBalances, cryptoCurrencies, paymentMethods } = useWalletData();
-
-  console.log(paymentMethods);
+  const formRef = useRef<FormRef<WalletDepositCryptoForm>>(null);
 
   const [settings, setSettings] = useWalletSettings();
 
@@ -41,6 +40,10 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
       (paymentMethod) => paymentMethod.currencies[balance],
     );
     const paymentMethod = methods[0].name;
+    formRef.current?.setValue({
+      name: WalletDepositCryptoFormFields.PaymentMethod,
+      value: paymentMethod,
+    });
     setSettings((prev) =>
       merge(prev, {
         depositCrypto: {
@@ -63,6 +66,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
     <Form<WalletDepositCryptoForm>
       defaultValues={defaultValues}
       onSubmit={handleOnSubmit}
+      ref={formRef}
     >
       <Grid spacing={3}>
         <Grid.Cell>

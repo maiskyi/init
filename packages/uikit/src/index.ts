@@ -24,7 +24,7 @@ export {
   type FiatIconName,
   type FiatIconProps,
 } from './components/FiatIcon';
-export { Form } from './components/Form';
+export { Form, type FormRef } from './components/Form';
 export { Grid, type GridProps, type GridSpacing } from './components/Grid';
 export {
   Heading,
