@@ -4,10 +4,11 @@ import {
 } from '@common/components';
 import { Form, type FormRef, Grid } from '@rockethash/uikit';
 import merge from 'lodash.merge';
-import { type FC, useRef } from 'react';
+import { type FC, Fragment, useRef } from 'react';
 
 import { useWalletData } from '../../WalletProvider';
 import { useWalletSettings } from '../Wallet.hooks';
+import { WALLET_DEPOSIT_CRYPTO_METHODS } from './WalletDepositCrypto.const';
 import {
   type WalletDepositCryptoForm,
   WalletDepositCryptoFormFields,
@@ -62,6 +63,11 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
     console.log(data);
   };
 
+  const MethodComponent =
+    // @ts-expect-error
+    WALLET_DEPOSIT_CRYPTO_METHODS[settings?.depositCrypto.paymentMethod] ||
+    Fragment;
+
   return (
     <Form<WalletDepositCryptoForm>
       defaultValues={defaultValues}
@@ -110,6 +116,9 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
               }}
             />
           </Form.Group>
+        </Grid.Cell>
+        <Grid.Cell>
+          <MethodComponent />
         </Grid.Cell>
       </Grid>
     </Form>
