@@ -1,0 +1,51 @@
+@use "../../assets/scss/variables" as vars;
+
+// Size and weight modifiers are namespaced (`_size_*`, `_weight_*`) rather
+// than flat as in Heading.module.scss: the Paragraph scale names both a size
+// and a weight `regular`, so flat modifiers would emit one `.text_regular`
+// carrying both sets of declarations.
+@each $theme, $config in vars.$themes {
+  [data-theme="#{$theme}"] {
+    .text {
+      margin: 0;
+      padding: 0;
+      color: var(--text-primary);
+      font-family: var(--fonts-family-main), sans-serif;
+      &_size_medium {
+        font-size: 15px;
+        line-height: 20px;
+      }
+      &_size_regular {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      &_size_small {
+        font-size: 13px;
+        line-height: 18px;
+      }
+      &_size_mini {
+        font-size: 12px;
+        line-height: 16px;
+      }
+      &_size_micro {
+        font-size: 10px;
+        line-height: 12px;
+      }
+      &_weight_regular {
+        font-weight: 400;
+      }
+      &_weight_semibold {
+        font-weight: 600;
+      }
+      &_weight_bold {
+        font-weight: 700;
+      }
+      &_weight_extrabold {
+        font-weight: 800;
+      }
+      &_uppercase {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

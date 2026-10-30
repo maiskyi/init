@@ -1,4 +1,4 @@
-import { Button, ThemeProvider } from '@rockethash/uikit';
+import { Button, Heading, ThemeProvider } from '@rockethash/uikit';
 import { Fragment, useRef, useState } from 'react';
 
 import { WALLET_SCREENS_TITLES } from './App.const';
@@ -41,7 +41,9 @@ export const App = () => {
               onClick={handleOnBackClick}
               variant="secondary"
             />
-            <h3>{WALLET_SCREENS_TITLES[screen]}</h3>
+            <Heading as="h4" weight="semibold">
+              {WALLET_SCREENS_TITLES[screen]}
+            </Heading>
           </Fragment>
         )}
       </div>

@@ -51,5 +51,12 @@ export {
   type PaymentMethodIconProps,
 } from './components/PaymentMethodIcon';
 export { Select, type SelectProps } from './components/Select';
+export {
+  Text,
+  type TextProps,
+  type TextSize,
+  type TextTag,
+  type TextWeight,
+} from './components/Text';
 export { ThemeProvider } from './components/ThemeProvider';
 export { Toggle, type ToggleProps } from './components/Toggle';
