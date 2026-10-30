@@ -1,4 +1,8 @@
-import { COMMON_DATA, COMMON_USER_DATA } from '@services/api';
+import {
+  CASHIER_INFO_DATA,
+  COMMON_DATA,
+  COMMON_USER_DATA,
+} from '@services/api';
 import { type FC, type PropsWithChildren } from 'react';
 
 import { EXCLUDED_FIAT_CURRENCIES } from './WalletDataProvider.const';
@@ -22,9 +26,20 @@ const WalletDataProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const userBalances = COMMON_USER_DATA.userBalances;
 
+  const paymentMethods = CASHIER_INFO_DATA.deposit.availableMethods.map(
+    (paymentMethod) => {
+      return {
+        currencies: paymentMethod.currencies.reduce((acc, currency) => {
+          return { ...acc, [currency]: currency };
+        }, {}),
+        name: paymentMethod.name,
+      };
+    },
+  );
+
   return (
     <WalletDataProviderContext.Provider
-      value={{ cryptoCurrencies, fiatCurrencies, userBalances }}
+      value={{ cryptoCurrencies, fiatCurrencies, paymentMethods, userBalances }}
     >
       {children}
     </WalletDataProviderContext.Provider>
