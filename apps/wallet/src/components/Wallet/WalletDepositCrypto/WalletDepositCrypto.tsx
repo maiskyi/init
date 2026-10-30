@@ -3,6 +3,7 @@ import { Form, Grid } from '@rockethash/uikit';
 import { type FC } from 'react';
 
 import { useWalletData } from '../../WalletProvider';
+import { useWalletSettings } from '../Wallet.hooks';
 import {
   type WalletDepositCryptoForm,
   WalletDepositCryptoFormFields,
@@ -10,7 +11,24 @@ import {
 } from './WalletDepositCrypto.types';
 
 const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
-  const { userBalances, cryptoCurrencies } = useWalletData();
+  const { userBalances, cryptoCurrencies, paymentMethods } = useWalletData();
+
+  const [settings] = useWalletSettings();
+
+  const defaultBalance =
+    settings?.depositCrypto?.balance || cryptoCurrencies[0].symbol;
+
+  const paymentMethodOptions = paymentMethods.filter(
+    (paymentMethod) => paymentMethod.currencies[defaultBalance],
+  );
+
+  const defaultPaymentMethod =
+    settings?.depositCrypto.paymentMethod || paymentMethodOptions[0].name;
+
+  const defaultValues: WalletDepositCryptoForm = {
+    [WalletDepositCryptoFormFields.Balance]: defaultBalance,
+    [WalletDepositCryptoFormFields.PaymentMethod]: defaultPaymentMethod,
+  };
 
   const handleOnSubmit = (data: WalletDepositCryptoForm) => {
     console.log(data);
@@ -18,10 +36,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
 
   return (
     <Form<WalletDepositCryptoForm>
-      defaultValues={{
-        [WalletDepositCryptoFormFields.Balance]: cryptoCurrencies[0].symbol,
-        [WalletDepositCryptoFormFields.PaymentMethod]: '',
-      }}
+      defaultValues={defaultValues}
       onSubmit={handleOnSubmit}
     >
       <Grid spacing={3}>
@@ -50,10 +65,10 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
           <Form.Group>
             <Form.Label>Payment method</Form.Label>
             <Form.Select
-              getOptionLabel={() => ''}
-              getOptionValue={() => ''}
+              getOptionLabel={({ option }) => option.name}
+              getOptionValue={({ option }) => option.name}
               name={WalletDepositCryptoFormFields.PaymentMethod}
-              options={[]}
+              options={paymentMethodOptions}
               validation={{
                 required: true,
               }}
