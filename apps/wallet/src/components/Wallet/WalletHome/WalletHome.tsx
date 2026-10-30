@@ -65,7 +65,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
 
   return (
     <Grid spacing={3}>
-      <Grid.Cell md={6} xs={12}>
+      <Grid.Cell xs={6}>
         <Card
           as="button"
           className={styles.button}
@@ -88,7 +88,7 @@ const WalletHome: FC<WalletHomeProps> = () => {
           </span>
         </Card>
       </Grid.Cell>
-      <Grid.Cell md={6} xs={12}>
+      <Grid.Cell xs={6}>
         <Card
           as="button"
           className={styles.button}

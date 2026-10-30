@@ -1,0 +1,28 @@
+[data-theme="duckdice"] {
+  .payment-method-option {
+    display: flex;
+    width: 100%;
+    column-gap: var(--Details-Spacing-10);
+    align-items: center;
+    &__icon {
+      display: inline-flex;
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+    &__label {
+      // No colour is set here on purpose: the label inherits the row's
+      // currentColor, which Dropdown.MenuItem already resolves for its
+      // default, hovered and selected appearances.
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      white-space: nowrap;
+      &_active {
+        font-weight: 600;
+      }
+    }
+  }
+}

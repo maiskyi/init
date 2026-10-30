@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
 import { PAYMENT_METHOD_ICONS } from './PaymentMethodIcon.const';
-import { type PaymentMethodName } from './PaymentMethodIcon.types';
+import { type PaymentMethodIconName } from './PaymentMethodIcon.types';
 
 interface PaymentMethodIconProps {
   className?: string;
-  name: PaymentMethodName;
+  name: PaymentMethodIconName;
   size?: number;
 }
 

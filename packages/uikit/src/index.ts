@@ -48,6 +48,7 @@ export {
 } from './components/OutsideClickHandler';
 export {
   PaymentMethodIcon,
+  type PaymentMethodIconName,
   type PaymentMethodIconProps,
 } from './components/PaymentMethodIcon';
 export { Select, type SelectProps } from './components/Select';
