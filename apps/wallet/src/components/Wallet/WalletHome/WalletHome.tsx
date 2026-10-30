@@ -1,6 +1,7 @@
 import {
   Card,
   CryptoIcon,
+  type CryptoIconName,
   Divider,
   FiatIcon,
   Grid,
@@ -11,7 +12,7 @@ import {
 import cn from 'classnames';
 import { type FC } from 'react';
 
-import { useWallet } from '../Wallet.hooks';
+import { useWallet, useWalletSettings } from '../Wallet.hooks';
 import { WalletScreen } from '../Wallet.types';
 import { CRYPTO_ICONS, FIAT_ICONS } from './WalletHome.const';
 import { type WalletHomeProps } from './WalletHome.types';
@@ -20,6 +21,8 @@ import styles from './WalletHome.module.scss';
 
 const WalletHome: FC<WalletHomeProps> = () => {
   const { setActiveScreen } = useWallet();
+
+  const [settings] = useWalletSettings();
 
   const handleOnDepositCryptoClick = () => {
     setActiveScreen({
@@ -73,7 +76,10 @@ const WalletHome: FC<WalletHomeProps> = () => {
           onClick={handleOnDepositCryptoClick}
           outline
         >
-          <CryptoIcon name="USDT" size={30} />
+          <CryptoIcon
+            name={settings?.depositCrypto?.balance as CryptoIconName}
+            size={30}
+          />
           Deposit Crypto
           <span className={styles.currencies}>
             {CRYPTO_ICONS.map((icon) => (

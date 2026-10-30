@@ -32,6 +32,9 @@ importers:
 
   apps/wallet:
     dependencies:
+      lodash.merge:
+        specifier: ^4.6.2
+        version: 4.6.2
       react-hook-form:
         specifier: ^7.90.0
         version: 7.90.0(@types/react@18.3.31)(react@18.3.1)
@@ -57,6 +60,9 @@ importers:
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
+      '@types/lodash.merge':
+        specifier: ^4.6.9
+        version: 4.6.9
       '@types/node':
         specifier: ^24.19.2
         version: 24.19.2

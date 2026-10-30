@@ -3,6 +3,7 @@ import {
   WalletPaymentMethodOption,
 } from '@common/components';
 import { Form, Grid } from '@rockethash/uikit';
+import merge from 'lodash.merge';
 import { type FC } from 'react';
 
 import { useWalletData } from '../../WalletProvider';
@@ -16,7 +17,9 @@ import {
 const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const { userBalances, cryptoCurrencies, paymentMethods } = useWalletData();
 
-  const [settings] = useWalletSettings();
+  console.log(paymentMethods);
+
+  const [settings, setSettings] = useWalletSettings();
 
   const defaultBalance =
     settings?.depositCrypto?.balance || cryptoCurrencies[0].symbol;
@@ -31,6 +34,25 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
   const defaultValues: WalletDepositCryptoForm = {
     [WalletDepositCryptoFormFields.Balance]: defaultBalance,
     [WalletDepositCryptoFormFields.PaymentMethod]: defaultPaymentMethod,
+  };
+
+  const handleOnBalanceChange = (balance: string | number) => {
+    const methods = paymentMethods.filter(
+      (paymentMethod) => paymentMethod.currencies[balance],
+    );
+    const paymentMethod = methods[0].name;
+    setSettings((prev) =>
+      merge(prev, {
+        depositCrypto: {
+          balance,
+          paymentMethod,
+        },
+      }),
+    );
+  };
+
+  const handleOnPaymentMethodChange = (paymentMethod: string | number) => {
+    setSettings((prev) => merge(prev, { depositCrypto: { paymentMethod } }));
   };
 
   const handleOnSubmit = (data: WalletDepositCryptoForm) => {
@@ -56,6 +78,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
               )}
               getOptionValue={({ option }) => option.symbol}
               name={WalletDepositCryptoFormFields.Balance}
+              onChange={handleOnBalanceChange}
               options={cryptoCurrencies}
               placeholder="Select balance"
               validation={{
@@ -76,6 +99,7 @@ const WalletDepositCrypto: FC<WalletDepositCryptoProps> = () => {
               )}
               getOptionValue={({ option }) => option.name}
               name={WalletDepositCryptoFormFields.PaymentMethod}
+              onChange={handleOnPaymentMethodChange}
               options={paymentMethodOptions}
               validation={{
                 required: true,

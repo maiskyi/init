@@ -30,7 +30,7 @@ const WalletDataProvider: FC<PropsWithChildren> = ({ children }) => {
     (paymentMethod) => {
       return {
         currencies: paymentMethod.currencies.reduce((acc, currency) => {
-          return { ...acc, [currency]: currency };
+          return { ...acc, [currency]: true };
         }, {}),
         name: paymentMethod.name,
       };

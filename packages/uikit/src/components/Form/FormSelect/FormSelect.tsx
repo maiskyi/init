@@ -28,6 +28,7 @@ const FormSelect: FormSelectComponent = ({
   getOptionValue,
   options,
   errors,
+  onChange: onChangeOuter,
 }) => {
   return (
     <FormController<string>
@@ -37,7 +38,7 @@ const FormSelect: FormSelectComponent = ({
       type="select"
       validation={validation}
     >
-      {({ value = '', invalid, onChange }) => (
+      {({ value = '', invalid, onChange: onChangeInner }) => (
         <Select
           className={cn(
             styles.select,
@@ -49,7 +50,10 @@ const FormSelect: FormSelectComponent = ({
           getOptionLabel={getOptionLabel}
           getOptionValue={getOptionValue}
           invalid={invalid}
-          onChange={onChange}
+          onChange={(value) => {
+            onChangeInner(value);
+            onChangeOuter?.(value);
+          }}
           options={options}
           placeholder={placeholder}
           value={value}
