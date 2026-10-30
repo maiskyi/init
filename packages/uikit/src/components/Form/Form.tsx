@@ -1,4 +1,9 @@
-import { type PropsWithChildren, type ReactElement } from 'react';
+import {
+  forwardRef,
+  type PropsWithChildren,
+  type ReactElement,
+  useImperativeHandle,
+} from 'react';
 import {
   type DefaultValues,
   type FieldValues,
@@ -7,6 +12,7 @@ import {
 } from 'react-hook-form';
 
 import { FormContext } from './Form.context';
+import { type FormRef, type FormRefSetValueMethod } from './Form.types';
 import { FormAddon } from './FormAddon';
 import { FormCheckbox } from './FormCheckbox';
 import { FormGroup } from './FormGroup';
@@ -19,7 +25,7 @@ import { FormSubmit } from './FormSubmit';
 import { FormText } from './FormText';
 import { FormToggle } from './FormToggle';
 
-type FormProps<T extends FieldValues> = PropsWithChildren<{
+type FormProps<T extends FieldValues = FieldValues> = PropsWithChildren<{
   onSubmit: (data: T) => void | Promise<void>;
   defaultValues?: T;
 }>;
@@ -39,23 +45,33 @@ interface FormCompoundedComponent {
   <T extends FieldValues = FieldValues>(props: FormProps<T>): ReactElement;
 }
 
-const Form: FormCompoundedComponent = ({
-  children,
-  onSubmit,
-  defaultValues,
-}) => {
+const Form = forwardRef<FormRef, FormProps>(function Form(
+  { children, onSubmit, defaultValues },
+  ref,
+) {
   const methods = useForm({
     defaultValues: defaultValues as DefaultValues<typeof defaultValues>,
   });
 
   const submit = methods.handleSubmit(onSubmit);
 
+  const setValue: FormRefSetValueMethod<typeof defaultValues> = ({
+    name,
+    value,
+  }) => {
+    methods.setValue(name, value);
+  };
+
+  useImperativeHandle(ref, () => ({
+    setValue,
+  }));
+
   return (
     <FormContext.Provider value={{ submit }}>
       <FormProvider {...methods}>{children}</FormProvider>
     </FormContext.Provider>
   );
-};
+}) as unknown as FormCompoundedComponent;
 
 Form.Text = FormText;
 Form.Submit = FormSubmit;

@@ -1,10 +1,21 @@
-import { type ControllerProps } from 'react-hook-form';
-import { type PartialDeep } from 'type-fest';
+import { type ControllerProps, type FieldValues } from 'react-hook-form';
+import { type Paths } from 'type-fest';
 
 import { type FORM_CONTROL_RULES } from './Form.const';
 
-export interface FormInstance<T extends object = object> {
-  reset: (values?: PartialDeep<T>) => void;
+export interface FormRefSetValueMethodParams<
+  T extends FieldValues = FieldValues,
+> {
+  name: Paths<T>;
+  value: unknown;
+}
+
+export type FormRefSetValueMethod<T extends FieldValues = FieldValues> = (
+  params: FormRefSetValueMethodParams<T>,
+) => void;
+
+export interface FormRef<T extends FieldValues = FieldValues> {
+  setValue: FormRefSetValueMethod<T>;
   submit: () => Promise<unknown>;
 }
 
